@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Science – Digital Interactive Book</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== COVER SCREEN ===== -->
+  <div id="cover-screen" class="cover-screen">
+    <div class="cover-book">
+      <div class="cover-title">
+        <span class="cover-subject">Social Science</span>
+        <span class="cover-subtitle">Digital Interactive Book</span>
+        <span class="cover-grade">Grades 6 – 8</span>
+      </div>
+      <button id="open-book-btn" class="btn-primary">Open Book ▶</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN BOOK ===== -->
+  <div id="app" class="app hidden">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <button id="toc-toggle" class="icon-btn" title="Table of Contents">☰</button>
+      <span class="topbar-title">Social Science</span>
+      <button id="cover-btn" class="icon-btn" title="Back to Cover">⌂</button>
+    </header>
+
+    <!-- Table of Contents drawer -->
+    <aside id="toc-drawer" class="toc-drawer closed">
+      <h2>Contents</h2>
+      <ul id="toc-list"></ul>
+    </aside>
+
+    <!-- Book viewport -->
+    <main class="book-container">
+      <div id="book" class="book">
+
+        <!-- Pages are injected by script.js -->
+
+      </div>
+    </main>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+      <button id="prev-btn" class="nav-btn" disabled>&#8592; Previous</button>
+      <span id="page-indicator" class="page-indicator">Page 1</span>
+      <button id="next-btn" class="nav-btn">Next &#8594;</button>
+    </nav>
+
+  </div>
+
+  <!-- ===== QUIZ MODAL ===== -->
+  <div id="quiz-modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="quiz-close" class="modal-close">&#10005;</button>
+      <h2 id="quiz-title">Quick Quiz</h2>
+      <div id="quiz-body"></div>
+      <button id="quiz-submit" class="btn-primary">Submit</button>
+      <div id="quiz-result" class="quiz-result hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
