@@ -1,0 +1,2541 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f766e">
+<meta name="description" content="Class 7 Social Science Chapter 1 – Geographical Diversity of India. Interactive learning with quizzes, flashcards, and AI chatbot.">
+<meta property="og:title" content="Geographical Diversity of India – Class 7 | OMNIGRID">
+<meta property="og:description" content="Interactive Class 7 Geography Chapter – explore Himalayas, deserts, plains, coasts and more.">
+<meta property="og:type" content="website">
+<title>Geographical Diversity of India - Class 7 | OMNIGRID</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#e8f4fd;
+  --c1:#f97316; /* orange - Read Chapter */
+  --c2:#8b5cf6; /* purple - Quiz */
+  --c3:#06b6d4; /* cyan - Summary */
+  --c4:#10b981; /* green - Exam */
+  --c5:#f59e0b; /* amber - NCERT */
+  --c6:#3b82f6; /* blue - Olympiad/Activities */
+  --c7:#ec4899; /* pink - Activities */
+  --white:#fff;
+  --text:#1e293b;
+  --text2:#475569;
+  --text3:#94a3b8;
+  --border:#e2e8f0;
+  --card:#fff;
+  --teal:#0d9488;
+  --sh:0 4px 20px rgba(0,0,0,.12);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.7;
+}
+
+/* -- ANIMATED MAP BG -- */
+#mapbg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:.22;
+}
+#mapbg svg{width:100%;height:100%}
+
+/* -- TOPBAR -- */
+.topbar{
+  position:sticky;top:0;z-index:500;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  height:54px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+.logo{
+  font-size:1.2rem;font-weight:900;
+  background:linear-gradient(135deg,#0d9488,#3b82f6);
+  background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:3px;
+}
+.topbar-r{display:flex;align-items:center;gap:10px}
+.lang-wrap{display:flex;background:#f1f5f9;border-radius:22px;padding:3px;gap:3px}
+.lbtn{
+  padding:5px 15px;border-radius:18px;font-size:.78rem;font-weight:700;
+  cursor:pointer;border:none;background:transparent;color:#64748b;transition:.2s;
+}
+.lbtn.on{background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;box-shadow:0 2px 8px rgba(13,148,136,.3)}
+
+/* -- HERO -- */
+.hero{
+  position:relative;z-index:1;
+  background:#0f766e;
+  padding:30px 20px 26px;color:#fff;text-align:center;overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(15,23,42,.22),rgba(15,118,110,.12) 38%,rgba(15,23,42,.3));
+  pointer-events:none;
+  z-index:1;
+}
+.hero > *{position:relative;z-index:2}
+.hero-landscape{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-photo{
+  position:absolute;
+  inset:-6%;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transform:scale(1.05);
+}
+.hero-photo.mountains{
+  background-image:url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2200&q=80");
+  animation:heroPanA 30s ease-in-out infinite alternate;
+}
+.hero-photo.forest{
+  background-image:url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=80");
+  mix-blend-mode:multiply;
+  opacity:.38;
+  animation:heroPanB 36s ease-in-out infinite alternate;
+}
+.hero-river-sheen{
+  position:absolute;
+  left:-8%;
+  right:-8%;
+  bottom:10%;
+  height:34%;
+  border-radius:52% 48% 46% 54% / 58% 42% 54% 46%;
+  background:linear-gradient(95deg,rgba(191,219,254,.25),rgba(56,189,248,.38),rgba(224,242,254,.18));
+  filter:blur(10px);
+  animation:riverShift 12s linear infinite;
+}
+@keyframes heroPanA{
+  0%{transform:scale(1.07) translate3d(0,0,0)}
+  100%{transform:scale(1.14) translate3d(-1.5%,-1%,0)}
+}
+@keyframes heroPanB{
+  0%{transform:scale(1.1) translate3d(0,0,0)}
+  100%{transform:scale(1.18) translate3d(1.8%,-1.2%,0)}
+}
+@keyframes riverShift{
+  0%{transform:translateX(-1.5%) rotate(-1.2deg)}
+  100%{transform:translateX(1.5%) rotate(1.2deg)}
+}
+.hero-pill{
+  display:inline-block;
+  background:linear-gradient(135deg,#1d4ed8,#2563eb,#3b82f6);
+  border:2px solid #ef4444;
+  border-radius:999px;
+  padding:6px 16px;
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.6px;
+  color:#ffffff;
+  margin-bottom:8px;
+  box-shadow:0 0 0 2px rgba(255,255,255,.12),0 0 14px rgba(59,130,246,.8),0 0 22px rgba(239,68,68,.45);
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
+}
+.hero h1{font-size:clamp(1.25rem,4vw,1.9rem);font-weight:800;margin-bottom:4px}
+.hero-title-glow{
+  display:inline-block;
+  margin:2px auto 8px;
+  padding:8px 16px;
+  border-radius:14px;
+  border:1.5px solid rgba(191,219,254,.95);
+  background:linear-gradient(135deg,rgba(15,23,42,.52),rgba(30,58,138,.48));
+  color:#ffffff;
+  font-weight:900;
+  box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 14px rgba(56,189,248,.65),0 0 24px rgba(37,99,235,.45);
+  text-shadow:0 2px 8px rgba(15,23,42,.8);
+}
+.hero-sub{font-size:.88rem;opacity:.88;max-width:500px;margin:0 auto}
+
+/* -- PAGE WRAP -- */
+.page{
+  position:relative;z-index:1;
+  max-width:720px;margin:0 auto;
+  padding:24px 16px 80px;
+  /* grid layout for tabs */
+  display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;
+}
+
+/* -- TAB CARD GRID -- */
+.tab-wrap{
+  flex:0 0 calc(25% - 11px);
+  min-width:0;
+  border-radius:22px;
+  overflow:visible;
+  margin-bottom:0;
+}
+/* open card spans full row */
+.tab-wrap:has(.tab-content.open){
+  flex:0 0 100%;
+}
+.tab-wrap:has(.tab-content.open) .tab-content{
+  border-radius:0 0 22px 22px;
+  box-shadow:0 10px 28px rgba(0,0,0,.13);
+  overflow:hidden;
+}
+
+/* -- VERTICAL CARD PILL -- */
+.tab-pill{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  cursor:pointer;border:none;width:100%;text-align:center;
+  padding:20px 10px 16px;
+  border-radius:22px;
+  min-height:130px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+  will-change:transform;
+}
+/* shimmer sweep on hover */
+.tab-pill::before{
+  content:'';
+  position:absolute;
+  top:-80%;left:-70%;
+  width:55%;height:260%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-18deg);
+  transition:left .55s ease;
+  pointer-events:none;z-index:1;
+}
+.tab-pill:hover::before{left:130%}
+.tab-pill:hover{
+  transform:translateY(-12px) scale(1.05);
+  z-index:10;
+}
+.tab-pill:active{transform:translateY(-4px) scale(1.02)}
+.tab-pill.open{border-radius:22px 22px 0 0}
+
+/* icon box */
+.tpill-icon{
+  width:54px;height:54px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.9rem;
+  background:rgba(255,255,255,.22);
+  border-radius:16px;
+  margin-bottom:10px;
+}
+.tab-pill.open .tpill-icon{border-radius:16px}
+
+/* text */
+.tpill-txt{flex:unset;padding:0 4px}
+.tpill-title{font-size:.84rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:3px}
+.tpill-sub{font-size:.7rem;color:rgba(255,255,255,.82);font-weight:500;line-height:1.35}
+
+/* arrow + small dot indicator at bottom */
+.tpill-arr{
+  width:22px;height:22px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.7);font-size:.65rem;
+  background:rgba(255,255,255,.16);
+  border-radius:50%;
+  margin-top:10px;
+  transition:.3s;
+}
+.tab-pill.open .tpill-arr{transform:rotate(90deg)}
+
+/* gradients per tab */
+.tc1{background:linear-gradient(150deg,#fb923c,#f97316,#ea580c)}
+.tc2{background:linear-gradient(150deg,#a78bfa,#8b5cf6,#7c3aed)}
+.tc3{background:linear-gradient(150deg,#22d3ee,#06b6d4,#0891b2)}
+.tc4{background:linear-gradient(150deg,#34d399,#10b981,#059669)}
+.tc5{background:linear-gradient(150deg,#fcd34d,#f59e0b,#d97706)}
+.tc6{background:linear-gradient(150deg,#60a5fa,#3b82f6,#2563eb)}
+.tc7{background:linear-gradient(150deg,#f472b6,#ec4899,#db2777)}
+.tc8{background:linear-gradient(150deg,#818cf8,#6366f1,#4338ca)}
+.tc9{background:linear-gradient(150deg,#f472b6,#ec4899,#be185d)}
+
+/* -- IDLE GLOW PULSE -- */
+.tc1{animation:gp1 3.2s ease-in-out infinite}
+.tc2{animation:gp2 3.5s ease-in-out infinite}
+.tc3{animation:gp3 2.9s ease-in-out infinite}
+.tc4{animation:gp4 3.3s ease-in-out infinite}
+.tc5{animation:gp5 3.1s ease-in-out infinite}
+.tc6{animation:gp6 3.4s ease-in-out infinite}
+.tc7{animation:gp7 2.8s ease-in-out infinite}
+.tc8{animation:gp8 3.6s ease-in-out infinite}
+.tc9{animation:gp9 3.0s ease-in-out infinite}
+@keyframes gp1{0%,100%{box-shadow:0 6px 18px rgba(249,115,22,.35)}55%{box-shadow:0 6px 34px rgba(249,115,22,.7),0 0 0 5px rgba(249,115,22,.14)}}
+@keyframes gp2{0%,100%{box-shadow:0 6px 18px rgba(139,92,246,.35)}55%{box-shadow:0 6px 34px rgba(139,92,246,.7),0 0 0 5px rgba(139,92,246,.14)}}
+@keyframes gp3{0%,100%{box-shadow:0 6px 18px rgba(6,182,212,.35)}55%{box-shadow:0 6px 34px rgba(6,182,212,.7),0 0 0 5px rgba(6,182,212,.14)}}
+@keyframes gp4{0%,100%{box-shadow:0 6px 18px rgba(16,185,129,.35)}55%{box-shadow:0 6px 34px rgba(16,185,129,.7),0 0 0 5px rgba(16,185,129,.14)}}
+@keyframes gp5{0%,100%{box-shadow:0 6px 18px rgba(245,158,11,.35)}55%{box-shadow:0 6px 34px rgba(245,158,11,.7),0 0 0 5px rgba(245,158,11,.14)}}
+@keyframes gp6{0%,100%{box-shadow:0 6px 18px rgba(59,130,246,.35)}55%{box-shadow:0 6px 34px rgba(59,130,246,.7),0 0 0 5px rgba(59,130,246,.14)}}
+@keyframes gp7{0%,100%{box-shadow:0 6px 18px rgba(236,72,153,.35)}55%{box-shadow:0 6px 34px rgba(236,72,153,.7),0 0 0 5px rgba(236,72,153,.14)}}
+@keyframes gp8{0%,100%{box-shadow:0 6px 18px rgba(99,102,241,.35)}55%{box-shadow:0 6px 34px rgba(99,102,241,.7),0 0 0 5px rgba(99,102,241,.14)}}
+@keyframes gp9{0%,100%{box-shadow:0 6px 18px rgba(236,72,153,.35)}55%{box-shadow:0 6px 34px rgba(236,72,153,.7),0 0 0 5px rgba(236,72,153,.14)}}
+
+/* -- CONTENT AREA (expands below pill) -- */
+.tab-content{
+  display:none;
+  background:#fff;
+  border-radius:0 0 20px 20px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.tab-content.open{display:block;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.tc-inner{padding:24px 20px 20px}
+
+/* -- BACK BUBBLE BUTTON -- */
+.back-btn-wrap{display:flex;justify-content:flex-start;margin-bottom:18px}
+.back-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 22px 9px 16px;
+  border:none;border-radius:999px;
+  background:linear-gradient(135deg,#0d9488,#14b8a6,#0ea5e9);
+  color:#fff;font-size:.85rem;font-weight:800;
+  cursor:pointer;
+  box-shadow:0 0 0 0 rgba(13,148,136,.55);
+  animation:backGlow 2.4s ease-in-out infinite;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),filter .2s;
+  letter-spacing:.3px;
+  position:relative;overflow:hidden;
+}
+.back-btn::before{
+  content:'';
+  position:absolute;top:-60%;left:-60%;
+  width:50%;height:220%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:skewX(-18deg);
+  transition:left .5s ease;
+  pointer-events:none;
+}
+.back-btn:hover::before{left:160%}
+.back-btn:hover{transform:translateY(-4px) scale(1.07);filter:brightness(1.1)}
+.back-btn:active{transform:translateY(-1px) scale(1.02)}
+.back-btn .back-arrow{
+  font-size:1rem;line-height:1;
+  display:inline-block;
+  transition:transform .25s ease;
+}
+.back-btn:hover .back-arrow{transform:translateX(-4px)}
+@keyframes backGlow{
+  0%,100%{box-shadow:0 0 10px rgba(13,148,136,.4),0 4px 18px rgba(14,165,233,.25)}
+  50%{box-shadow:0 0 22px rgba(13,148,136,.75),0 6px 28px rgba(14,165,233,.5),0 0 0 6px rgba(13,148,136,.12)}
+}
+
+/* -- READ TAB INTRO DIALOGUE -- */
+.read-dialogue{
+  display:grid;
+  gap:12px;
+  margin-bottom:16px;
+  padding:14px;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(219,234,254,.95),rgba(224,231,255,.96),rgba(220,252,231,.93));
+  border:1px solid rgba(147,197,253,.85);
+  box-shadow:0 10px 26px rgba(37,99,235,.16),0 0 0 2px rgba(255,255,255,.5),0 0 24px rgba(96,165,250,.24);
+  position:relative;
+  overflow:hidden;
+}
+.read-dialogue::before{
+  content:'';
+  position:absolute;
+  inset:-35% auto auto -18%;
+  width:42%;
+  height:180%;
+  background:radial-gradient(circle,rgba(255,255,255,.72) 0%,rgba(255,255,255,0) 72%);
+  pointer-events:none;
+}
+.read-dialogue::after{
+  content:'';
+  position:absolute;
+  inset:auto -14% -42% auto;
+  width:34%;
+  height:130%;
+  background:radial-gradient(circle,rgba(16,185,129,.18) 0%,rgba(16,185,129,0) 72%);
+  pointer-events:none;
+}
+.speak-row{display:flex;align-items:flex-end;gap:10px}
+.speak-row.left{justify-content:flex-start}
+.speak-row.right{justify-content:flex-end}
+.speak-avatar{
+  width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.2),0 0 0 4px rgba(14,165,233,.2);
+  background:linear-gradient(135deg,#e2e8f0,#cbd5e1);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;
+}
+.speak-avatar:hover{
+  transform:translateY(-8px) scale(1.08) rotate(-2deg);
+  box-shadow:0 10px 24px rgba(0,0,0,.24),0 0 0 6px rgba(14,165,233,.26),0 0 18px rgba(20,184,166,.5);
+}
+.speak-row.right .speak-avatar{object-position:center 18%}
+.speak-bubble{
+  max-width:76%;padding:10px 14px;border-radius:16px;
+  font-size:.86rem;font-weight:700;line-height:1.45;position:relative;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  animation:sbGlow 2.8s ease-in-out infinite;
+  z-index:1;
+}
+.speak-row.left .speak-bubble{background:linear-gradient(135deg,#dbeafe,#bfdbfe,#c7d2fe);color:#1e3a8a;border:1px solid #93c5fd}
+.speak-row.right .speak-bubble{background:linear-gradient(135deg,#dcfce7,#bbf7d0,#a7f3d0);color:#065f46;border:1px solid #6ee7b7}
+.speak-row.left .speak-bubble::before{
+  content:'';position:absolute;left:-8px;bottom:12px;width:14px;height:14px;
+  background:#c7d2fe;transform:rotate(45deg);border-radius:3px;
+}
+.speak-row.right .speak-bubble::before{
+  content:'';position:absolute;right:-8px;bottom:12px;width:14px;height:14px;
+  background:#bbf7d0;transform:rotate(45deg);border-radius:3px;
+}
+@keyframes sbGlow{
+  0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.12),0 0 0 rgba(59,130,246,0)}
+  50%{box-shadow:0 12px 28px rgba(0,0,0,.16),0 0 18px rgba(59,130,246,.28)}
+}
+
+/* Read Chapter section tabs */
+.sec-tabs{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;
+}
+.stab{
+  padding:7px 16px;border-radius:20px;font-size:.82rem;font-weight:600;
+  cursor:pointer;border:2px solid #e2e8f0;background:#f8fafc;
+  color:#475569;transition:.18s;
+}
+.stab:hover{border-color:#0d9488;color:#0d9488}
+.stab.on{background:#0d9488;border-color:#0d9488;color:#fff;box-shadow:0 2px 8px rgba(13,148,136,.3)}
+.sec-panel{display:none}.sec-panel.on{display:block;animation:slideDown .25s ease}
+
+/* -- CONTENT COMPONENTS -- */
+.cc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.cc h4{font-size:.92rem;font-weight:700;color:#0d9488;margin-bottom:8px}
+.cc p{font-size:.9rem;color:#475569;margin-bottom:10px}
+.cc p:last-child{margin-bottom:0}
+
+.hl{background:linear-gradient(135deg,rgba(13,148,136,.07),rgba(20,184,166,.04));border-left:3px solid #0d9488;border-radius:0 9px 9px 0;padding:11px 15px;margin:11px 0;font-size:.88rem;color:#374151}
+.ibox{background:#eff6ff;border-left:3px solid #3b82f6;border-radius:0 9px 9px 0;padding:10px 14px;margin:11px 0;font-size:.86rem;color:#1e3a8a}
+.wbox{background:#fffbeb;border-left:3px solid #f59e0b;border-radius:0 9px 9px 0;padding:10px 14px;margin:11px 0;font-size:.86rem;color:#713f12}
+.fbox{background:linear-gradient(135deg,#faf5ff,#fff);border:1.5px solid #e9d5ff;border-radius:12px;padding:13px 15px;margin:12px 0}
+.fbox h4{color:#7c3aed;font-size:.88rem;margin-bottom:6px}
+.fbox p{font-size:.86rem;color:#4c1d95;margin:0}
+.explore-box{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:12px;padding:13px 17px;margin:14px 0}
+.explore-box h4{color:#065f46;margin-bottom:8px;font-size:.88rem;display:flex;align-items:center;gap:6px}
+.explore-box ul{padding-left:16px;color:#047857;font-size:.86rem}
+.explore-box li{margin-bottom:5px}
+.dont-box{background:linear-gradient(135deg,#fffde7,#fff9c4);border:1.5px solid #fde047;border-radius:12px;padding:13px 17px;margin:14px 0}
+.dont-box h4{color:#92400e;font-size:.88rem;margin-bottom:6px}
+.dont-box p{font-size:.86rem;color:#78350f;margin:0}
+
+.kw{color:#0d9488;font-weight:700}
+.hi-txt{color:#065f46;font-style:italic}
+
+/* Section title bar */
+.sec-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #e2e8f0}
+.sec-n{background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0;box-shadow:0 2px 8px rgba(13,148,136,.3)}
+.sec-t h3{font-size:1.05rem;color:#0f172a}
+.sec-t p{font-size:.78rem;color:#94a3b8}
+
+/* Interactive figure */
+.ifig{background:#f0fdfa;border:1.5px solid #99f6e4;border-radius:12px;padding:14px;margin:14px 0;text-align:center}
+.ifig h4{color:#0d9488;margin-bottom:10px;font-size:.85rem}
+.ifig svg{max-width:100%;height:auto}
+.figcap{font-size:.72rem;color:#94a3b8;margin-top:6px;font-style:italic}
+
+
+/* Table */
+.dtbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}
+.dtbl th{background:#0d9488;color:#fff;padding:8px 11px;text-align:left}
+.dtbl td{padding:8px 11px;border-bottom:1px solid #e2e8f0;color:#475569}
+.dtbl tr:hover td{background:#f0fdfa}
+
+/* Globe cards */
+.gcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.gc{background:#f0fdfa;border:1.5px solid #99f6e4;border-radius:10px;padding:11px;text-align:center;cursor:pointer;transition:.18s}
+.gc:hover{border-color:#0d9488;background:#ccfbf1;transform:scale(1.02)}
+.gc .gl{font-size:.72rem;color:#64748b;margin-bottom:2px}
+.gc .gv{font-size:.9rem;font-weight:700;color:#0d9488}
+#cityBox{display:none;margin-top:8px;padding:10px 13px;background:#f0fdfa;border-left:3px solid #0d9488;border-radius:8px}
+
+/* TZ strip */
+/* tz strip removed - replaced with 3D canvas */
+
+/* Quiz */
+.qscore{display:flex;flex-wrap:wrap;gap:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:13px 16px;margin-bottom:16px}
+.qss .qsn{font-size:1.6rem;font-weight:800;color:#0d9488}
+.qss .qsl{font-size:.68rem;color:#94a3b8}
+.qcard{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:10px}
+.qnum{font-size:.68rem;color:#0d9488;font-weight:700;letter-spacing:.7px;margin-bottom:4px}
+.qtxt{color:#0f172a;font-size:.9rem;font-weight:600;margin-bottom:11px}
+.qopts{display:flex;flex-direction:column;gap:6px}
+.qopt{background:#fff;border:1.5px solid #e2e8f0;border-radius:9px;padding:9px 13px;cursor:pointer;transition:.16s;font-size:.86rem;color:#475569;text-align:left}
+.qopt:hover{border-color:#0d9488;color:#0d9488;background:#f0fdfa}
+.qopt.ok{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.qopt.no{background:#fee2e2;border-color:#dc2626;color:#7f1d1d}
+.qfb{margin-top:8px;padding:8px 11px;border-radius:7px;font-size:.8rem;display:none}
+.qfb.show{display:block}
+.qfb.ok{background:#dcfce7;color:#14532d;border:1px solid #86efac}
+.qfb.no{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5}
+
+/* Summary */
+.slist{list-style:none;padding:0}
+.slist li{display:flex;gap:8px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #e2e8f0;font-size:.88rem;color:#475569}
+.slist li:last-child{border-bottom:none}
+.sch{color:#16a34a;flex-shrink:0;margin-top:2px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:10px}
+.gcard{background:#f0fdfa;border:1.5px solid #99f6e4;border-radius:10px;padding:11px 13px}
+.gterm{font-weight:700;color:#0d9488;font-size:.84rem;margin-bottom:2px}
+.gdef{font-size:.76rem;color:#64748b}
+
+/* Accordion */
+.acc{background:#fff;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:6px;overflow:hidden}
+.aq{padding:11px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.86rem;color:#475569;transition:.15s}
+.aq:hover{background:#f0fdfa;color:#0d9488}
+.aq .ar{transition:.25s;color:#0d9488;font-size:.72rem}
+.aq.open .ar{transform:rotate(90deg)}
+.aa{max-height:0;overflow:hidden;transition:max-height .38s ease,padding .25s;font-size:.84rem;color:#475569;line-height:1.8}
+.aa.open{max-height:500px;padding:10px 14px;border-top:1px solid #e2e8f0}
+.nsec{margin-bottom:20px}
+.nsec-h{background:linear-gradient(90deg,rgba(13,148,136,.1),transparent);padding:7px 11px;border-radius:7px;margin-bottom:8px;font-size:.86rem;font-weight:700;color:#0d9488;border-left:3px solid #0d9488}
+
+/* Exam */
+.exh{background:linear-gradient(135deg,#eff6ff,#ecfdf5);border:1px solid #bfdbfe;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:14px}
+.exs .ev{font-size:1.3rem;font-weight:800;color:#2563eb}
+.exs .el{font-size:.68rem;color:#64748b}
+.exsec{background:linear-gradient(135deg,#eff6ff,#fff);border-left:4px solid #3b82f6;padding:8px 12px;border-radius:0 7px 7px 0;margin:18px 0 10px;font-weight:700;color:#1e3a8a;font-size:.84rem}
+
+/* Direction grid */
+.dgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;max-width:230px;margin:10px auto}
+.dc{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:10px 3px;font-size:.76rem;cursor:pointer;transition:.16s;text-align:center;min-height:40px;display:flex;align-items:center;justify-content:center;color:#475569}
+.dc:hover{border-color:#0d9488;color:#0d9488;background:#f0fdfa}
+.dc.ctr{background:#0d9488;color:#fff;cursor:default;font-size:.7rem}
+.dc.ok{background:#dcfce7;border-color:#16a34a;color:#14532d}
+
+/* Activity card */
+.acard{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}
+.acard h3{font-size:.9rem;font-weight:700;color:#0d9488;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.geo-chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.geo-chip{background:#fff;border:1.5px solid #dbeafe;color:#1e40af;border-radius:999px;padding:7px 12px;font-size:.76rem;font-weight:700;cursor:pointer;transition:.18s;font-family:inherit}
+.geo-chip:hover,.geo-chip.active{transform:translateY(-2px);background:#eff6ff;border-color:#60a5fa;box-shadow:0 6px 16px rgba(37,99,235,.12)}
+.geo-fact-box{margin-top:10px;background:linear-gradient(135deg,#eff6ff,#f8fafc);border:1px solid #bfdbfe;border-radius:12px;padding:12px 14px;color:#334155;line-height:1.55;font-size:.8rem}
+.flow-list{display:grid;gap:10px}
+.flow-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px}
+.flow-q{font-size:.82rem;font-weight:700;color:#0f172a;margin-bottom:8px}
+.flow-btns{display:flex;flex-wrap:wrap;gap:8px}
+.flow-btn{background:#f8fafc;border:1.5px solid #e2e8f0;color:#475569;border-radius:9px;padding:6px 10px;font-size:.76rem;font-weight:700;cursor:pointer;font-family:inherit}
+.flow-btn:hover{border-color:#0d9488;color:#0d9488;background:#f0fdfa}
+.flow-btn.ok{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.flow-btn.no{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+.mini-note{font-size:.76rem;color:#64748b;margin-top:7px;min-height:18px}
+
+
+
+/* Lang content */
+.en-c,.hi-c{display:none}
+body.en .en-c{display:revert}
+body.hi .hi-c{display:revert}
+/* for inline spans */
+.en-s,.hi-s{display:none}
+body.en .en-s{display:inline}
+body.hi .hi-s{display:inline}
+
+/* -- FLASH CARDS -- */
+.fc-wrap{position:relative;perspective:900px;height:210px;margin:0 auto 18px;max-width:420px;cursor:pointer;user-select:none}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-front,.fc-back{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:20px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:22px 20px;text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,.14);
+}
+.fc-front{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.fc-back{background:linear-gradient(135deg,#0d9488,#10b981);color:#fff;transform:rotateY(180deg)}
+.fc-front .fc-label,.fc-back .fc-label{font-size:.66rem;font-weight:700;letter-spacing:1.5px;opacity:.7;margin-bottom:10px;text-transform:uppercase}
+.fc-front .fc-q{font-size:1rem;font-weight:800;line-height:1.4}
+.fc-back .fc-a{font-size:.92rem;font-weight:700;line-height:1.5}
+.fc-hint{font-size:.7rem;color:rgba(255,255,255,.65);margin-top:10px;font-style:italic}
+.fc-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+.fcbtn{border:none;border-radius:22px;padding:8px 18px;font-size:.8rem;font-weight:700;cursor:pointer;transition:.18s}
+.fcbtn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.fcbtn:active{transform:translateY(0)}
+.fcbtn.prev{background:#f1f5f9;color:#475569;border:1.5px solid #e2e8f0}
+.fcbtn.nxt{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;box-shadow:0 4px 14px rgba(102,126,234,.4)}
+.fcbtn.shuf{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;box-shadow:0 4px 14px rgba(249,115,22,.3)}
+.fcbtn.mast{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.fcbtn.need{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.fc-progress{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 16px;margin-bottom:14px}
+.fc-prog-bar{height:10px;background:#e2e8f0;border-radius:8px;overflow:hidden;margin:7px 0 4px}
+.fc-prog-fill{height:100%;background:linear-gradient(90deg,#10b981,#34d399);border-radius:8px;transition:width .4s ease}
+.fc-prog-txt{font-size:.74rem;color:#475569;font-weight:600;text-align:center}
+.fc-counter{text-align:center;font-size:.78rem;color:#64748b;margin-bottom:8px;font-weight:600}
+.fc-tap-hint{text-align:center;font-size:.72rem;color:#94a3b8;margin-bottom:14px}
+.fc-status-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.fc-spill{display:inline-flex;align-items:center;gap:4px;padding:4px 11px;border-radius:20px;font-size:.7rem;font-weight:700}
+.fc-spill.easy{background:#dcfce7;color:#14532d}
+.fc-spill.need{background:#fef3c7;color:#78350f}
+.fc-spill.mast{background:#dbeafe;color:#1e3a8a}
+
+/* -- DEBATE / AI CHAT -- */
+.debate-topics{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.dtopic{background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:12px 15px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px}
+.dtopic:hover{border-color:#8b5cf6;background:#faf5ff;transform:translateX(3px)}
+.dtopic.active{border-color:#8b5cf6;background:linear-gradient(135deg,#faf5ff,#ede9fe);box-shadow:0 4px 14px rgba(139,92,246,.18)}
+.dtopic-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#8b5cf6);color:#fff;font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dtopic.active .dtopic-num{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.dtopic-txt{font-size:.86rem;font-weight:600;color:#374151;line-height:1.3}
+.debate-arena{background:#faf5ff;border:2px solid #e9d5ff;border-radius:18px;padding:18px;display:none}
+.debate-arena.open{display:block;animation:slideDown .3s ease}
+.debate-topic-badge{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border-radius:12px;padding:10px 15px;margin-bottom:16px;font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.debate-input-area{margin-bottom:12px}
+.debate-input-area label{font-size:.8rem;font-weight:700;color:#6d28d9;display:block;margin-bottom:6px}
+.debate-textarea{width:100%;border:2px solid #ddd6fe;border-radius:12px;padding:10px 13px;font-size:.86rem;resize:vertical;min-height:72px;font-family:inherit;color:#374151;background:#fff;outline:none;transition:.18s}
+.debate-textarea:focus{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.1)}
+.debate-btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.dbtn{border:none;border-radius:20px;padding:9px 20px;font-size:.82rem;font-weight:700;cursor:pointer;transition:.2s}
+.dbtn.submit{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;box-shadow:0 4px 14px rgba(139,92,246,.3)}
+.dbtn.submit:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.dbtn.dreset{background:#f1f5f9;color:#64748b;border:1.5px solid #e2e8f0}
+.ai-response-wrap{margin-top:14px;display:none}
+.ai-response-wrap.show{display:block;animation:slideDown .35s ease}
+.user-bubble{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:16px;padding:12px 15px;margin-bottom:10px}
+.user-bubble .u-name{font-size:.7rem;font-weight:800;color:#6d28d9;margin-bottom:4px}
+.user-bubble .u-txt{font-size:.86rem;color:#3b0764}
+.ai-bubble{background:#fff;border:2px solid #ddd6fe;border-radius:16px;padding:15px;margin-bottom:0}
+.ai-bubble .ai-name{font-size:.7rem;font-weight:800;color:#8b5cf6;display:flex;align-items:center;gap:5px;margin-bottom:8px}
+.ai-bubble .ai-txt{font-size:.87rem;color:#374151;line-height:1.65}
+.ai-bubble .ai-q{background:linear-gradient(135deg,#faf5ff,#ede9fe);border-radius:10px;padding:10px 13px;margin-top:10px;font-size:.84rem;color:#5b21b6;font-weight:600;border-left:3px solid #8b5cf6}
+.ai-loading{display:flex;align-items:center;gap:10px;padding:14px 15px;background:#fff;border:2px solid #ddd6fe;border-radius:14px;font-size:.82rem;color:#8b5cf6;font-weight:600}
+.thinking span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#a78bfa;animation:bounce .9s infinite}
+.thinking span:nth-child(2){animation-delay:.15s}
+.thinking span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ============================================================
+   RESPONSIVE – mobile-first, tablet, desktop
+   ============================================================ */
+
+/* -- Shared baseline: all interactive targets min 44px tall -- */
+button,select,input,textarea,.qopt,.stab,.fcbtn,.dbtn,.dtopic,.geo-chip,.dc,.flow-btn{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* -- Images & canvases never overflow their container -- */
+img,canvas,video,iframe,svg{
+  max-width:100%;
+  height:auto;
+}
+canvas{
+  display:block;
+}
+
+/* -- Tables scroll horizontally on small screens -- */
+.dtbl-wrap,.dtbl{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dtbl{display:table}
+
+/* ---- 768 px and below (tablets portrait + phones) ---- */
+@media(max-width:768px){
+  .topbar{padding:0 14px;height:52px}
+  .logo{font-size:1.05rem;letter-spacing:2px}
+  .lbtn{padding:4px 11px;font-size:.72rem}
+
+  .hero{padding:22px 14px 20px}
+  .hero h1{font-size:clamp(1.1rem,5vw,1.6rem)}
+  .hero-sub{font-size:.82rem}
+
+  .page{padding:16px 10px 64px;gap:10px}
+
+  /* 2-column tab grid on tablets */
+  .tab-wrap{flex:0 0 calc(50% - 5px)}
+  .tab-pill{padding:16px 8px 13px;min-height:116px}
+  .tpill-icon{width:46px;height:46px;font-size:1.65rem}
+  .tpill-title{font-size:.8rem}
+  .tpill-sub{font-size:.64rem}
+
+  .sec-tabs{gap:6px}
+  .stab{padding:6px 12px;font-size:.76rem}
+
+  .fc-wrap{height:190px}
+  .fc-front .fc-q{font-size:.9rem}
+  .fc-back .fc-a{font-size:.84rem}
+
+  .dgrid{max-width:200px}
+  .dc{font-size:.7rem;padding:8px 2px}
+
+  #geoMatchArea{grid-template-columns:1fr !important}
+
+  .debate-btn-row{gap:6px}
+  .dbtn{padding:8px 14px;font-size:.78rem}
+  .debate-textarea{font-size:.82rem}
+
+  .speak-avatar{width:68px;height:68px}
+  .speak-bubble{max-width:82%;font-size:.82rem}
+
+  .qcard{padding:13px}
+  .qtxt{font-size:.86rem}
+  .qopt{padding:8px 11px;font-size:.82rem}
+
+  .exh{gap:10px}
+  .ggrid{grid-template-columns:1fr 1fr}
+
+  .gcards{grid-template-columns:1fr 1fr}
+
+  .ifig{padding:0}
+  .ifig img{max-height:260px;object-fit:cover}
+}
+
+/* ---- 600 px and below (phones landscape + large phones) ---- */
+@media(max-width:600px){
+  .tab-wrap{flex:0 0 calc(50% - 5px)}
+  .speak-avatar{width:60px;height:60px}
+  .speak-bubble{max-width:84%;font-size:.8rem}
+  .tpill-title{font-size:.78rem}
+  .tpill-sub{font-size:.62rem}
+  .fc-wrap{height:180px}
+  .fc-controls{gap:6px}
+  .fcbtn{padding:7px 14px;font-size:.74rem}
+  .sec-tabs{gap:4px}
+  .stab{padding:5px 10px;font-size:.72rem}
+  .debate-btn-row{flex-direction:column}
+  .dbtn{width:100%;text-align:center}
+  .gcards{grid-template-columns:1fr}
+}
+
+/* ---- 480 px and below (most phones portrait) ---- */
+@media(max-width:480px){
+  .gcards{grid-template-columns:1fr}
+  .ggrid{grid-template-columns:1fr}
+  .exh{flex-direction:column;gap:8px}
+  .back-btn{padding:8px 16px 8px 12px;font-size:.78rem}
+  .tpill-icon{width:40px;height:40px;font-size:1.4rem}
+  .read-dialogue{padding:10px}
+  .speak-row{gap:7px}
+
+  /* hero flush on very small screens */
+  .hero{padding:18px 10px 16px}
+}
+
+/* ---- 400 px and below (small phones) ---- */
+@media(max-width:400px){
+  /* single-column tab grid on very small phones */
+  .tab-wrap{flex:0 0 100%}
+  .tab-pill{min-height:80px;flex-direction:row;padding:14px 14px}
+  .tpill-icon{margin-bottom:0;margin-right:12px;flex-shrink:0}
+  .tpill-txt{text-align:left}
+  .tpill-arr{margin-top:0;margin-left:auto}
+  .tpill-title{font-size:.84rem}
+  .tpill-sub{font-size:.66rem}
+  .logo{font-size:.95rem;letter-spacing:1.5px}
+  .page{padding:12px 8px 56px;gap:8px}
+}
+</style>
+</head>
+<body class="en">
+
+<!-- -- MAP BG -- -->
+<div id="mapbg">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#dbeafe"/>
+        <stop offset="52%" stop-color="#bfdbfe"/>
+        <stop offset="100%" stop-color="#d1fae5"/>
+      </linearGradient>
+      <linearGradient id="mountFar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#94a3b8"/>
+        <stop offset="100%" stop-color="#64748b"/>
+      </linearGradient>
+      <linearGradient id="mountMid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#64748b"/>
+        <stop offset="100%" stop-color="#334155"/>
+      </linearGradient>
+      <linearGradient id="mountNear" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#475569"/>
+        <stop offset="100%" stop-color="#1e293b"/>
+      </linearGradient>
+      <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0ea5e9"/>
+        <stop offset="45%" stop-color="#38bdf8"/>
+        <stop offset="100%" stop-color="#7dd3fc"/>
+      </linearGradient>
+      <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="9"/>
+      </filter>
+    </defs>
+
+    <rect x="0" y="0" width="1200" height="800" fill="url(#skyGrad)"/>
+
+    <g opacity=".35" filter="url(#softBlur)">
+      <circle cx="190" cy="150" r="70" fill="#ffffff"/>
+      <circle cx="930" cy="130" r="86" fill="#ffffff"/>
+      <circle cx="1080" cy="190" r="60" fill="#f8fafc"/>
+    </g>
+
+    <g opacity=".55">
+      <path d="M0 520 L120 380 L230 500 L380 330 L520 505 L700 300 L860 510 L1020 360 L1200 520 L1200 800 L0 800 Z" fill="url(#mountFar)">
+        <animateTransform attributeName="transform" type="translate" values="0 0;12 -4;0 0" dur="20s" repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <g opacity=".72">
+      <path d="M0 610 L140 420 L270 560 L420 370 L560 560 L740 350 L930 585 L1080 430 L1200 575 L1200 800 L0 800 Z" fill="url(#mountMid)">
+        <animateTransform attributeName="transform" type="translate" values="0 0;-10 6;0 0" dur="16s" repeatCount="indefinite"/>
+      </path>
+      <path d="M140 420 L175 454 L110 454 Z" fill="#e2e8f0" opacity=".85"/>
+      <path d="M420 370 L455 402 L390 402 Z" fill="#f1f5f9" opacity=".86"/>
+      <path d="M740 350 L775 386 L710 386 Z" fill="#f1f5f9" opacity=".9"/>
+      <path d="M1080 430 L1110 460 L1054 460 Z" fill="#e2e8f0" opacity=".83"/>
+    </g>
+
+    <g opacity=".88">
+      <path d="M0 675 L180 520 L320 650 L500 500 L660 670 L850 500 L1010 665 L1200 540 L1200 800 L0 800 Z" fill="url(#mountNear)">
+        <animateTransform attributeName="transform" type="translate" values="0 0;8 -5;0 0" dur="13s" repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <g>
+      <path d="M-40 590 C 120 520, 255 640, 410 585 C 590 520, 740 650, 900 592 C 1040 545, 1120 610, 1240 575" fill="none" stroke="#e0f2fe" stroke-width="76" opacity=".26" stroke-linecap="round"/>
+      <path d="M-40 590 C 120 520, 255 640, 410 585 C 590 520, 740 650, 900 592 C 1040 545, 1120 610, 1240 575" fill="none" stroke="url(#riverGrad)" stroke-width="54" opacity=".95" stroke-linecap="round"/>
+      <path d="M-40 590 C 120 520, 255 640, 410 585 C 590 520, 740 650, 900 592 C 1040 545, 1120 610, 1240 575" fill="none" stroke="#ecfeff" stroke-width="7" stroke-linecap="round" stroke-dasharray="14 22" opacity=".95">
+        <animate attributeName="stroke-dashoffset" from="0" to="-280" dur="6s" repeatCount="indefinite"/>
+      </path>
+      <ellipse cx="260" cy="615" rx="58" ry="15" fill="#ffffff" opacity=".22">
+        <animate attributeName="rx" values="52;68;52" dur="4.6s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="830" cy="618" rx="48" ry="12" fill="#ffffff" opacity=".22">
+        <animate attributeName="rx" values="44;60;44" dur="5.2s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+
+    <g opacity=".24">
+      <path d="M0 690 C 170 652, 355 728, 535 690 C 730 648, 920 742, 1200 690 L1200 800 L0 800 Z" fill="#166534"/>
+    </g>
+  </svg>
+</div>
+
+<!-- -- TOPBAR -- -->
+<header class="topbar">
+  <div class="logo">OMNIGRID</div>
+  <div class="topbar-r">
+    <div class="lang-wrap">
+      <button class="lbtn on" id="lEn" onclick="setLang('en')">English</button>
+      <button class="lbtn" id="lHi" onclick="setLang('hi')">Hinglish</button>
+    </div>
+  </div>
+</header>
+
+<!-- -- HERO -- -->
+<div class="hero">
+  <div class="hero-landscape" aria-hidden="true">
+    <div class="hero-photo mountains"></div>
+    <div class="hero-photo forest"></div>
+    <div class="hero-river-sheen"></div>
+  </div>
+  <div class="hero-pill">Class 7 - Social Science</div>
+  <p style="font-size:1rem;font-weight:800;color:#000;letter-spacing:2px;opacity:1;margin-bottom:5px">📘 CHAPTER 1</p>
+  <h1 class="hero-title-glow">Geographical Diversity of India</h1>
+  <p class="hero-sub en-c">Explore India's diverse landforms, climate, soils, vegetation, and people across different regions.</p>
+  <p class="hero-sub hi-c">India ke alag-alag bhaugolik roop, jalvayu, mitti, vanaspati aur sanskritik vividhta ko samjho!</p>
+</div>
+
+<!-- -- PAGE -- -->
+<div class="page">
+
+  <!-- -- TAB 1: READ CHAPTER -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc1" onclick="togTab('read',this)" id="pill-read">
+      <div class="tpill-icon">📖</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Read Chapter</div>
+        <div class="tpill-title hi-s">Chapter Padho</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-read">
+      <div class="tc-inner">
+        <div class="read-dialogue">
+          <div class="speak-row left">
+            <img class="speak-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/IndiraGandhi.png/960px-IndiraGandhi.png" alt="Indira Gandhi">
+            <div class="speak-bubble">"How does India look from space?"</div>
+          </div>
+          <div class="speak-row right">
+            <div class="speak-bubble">"Saare jahan se achchha" - better than the whole world.</div>
+            <img class="speak-avatar" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Rakesh_Sharma_%28cropped%29.jpg" alt="Rakesh Sharma">
+          </div>
+        </div>
+        <!-- Section tabs -->
+        <div class="sec-tabs">
+          <button class="stab on" onclick="goSec('s1',this)"><span class="en-s">1.1 The Himalayas</span><span class="hi-s">1.1 Himalay Parvat</span></button>
+          <button class="stab" onclick="goSec('s2',this)"><span class="en-s">1.2 Cold Desert</span><span class="hi-s">1.2 Thand Mruthal</span></button>
+          <button class="stab" onclick="goSec('s3',this)"><span class="en-s">1.3 Gangetic Plains</span><span class="hi-s">1.3 Ganga ke Maidan</span></button>
+          <button class="stab" onclick="goSec('s4',this)"><span class="en-s">1.4 Thar Desert</span><span class="hi-s">1.4 Thar Mruthal</span></button>
+          <button class="stab" onclick="goSec('s5',this)"><span class="en-s">1.5 Aravalli Hills</span><span class="hi-s">1.5 Aravalli Pahad</span></button>
+          <button class="stab" onclick="goSec('s6',this)"><span class="en-s">1.6 Peninsular Plateau</span><span class="hi-s">1.6 Dakshan Plateau</span></button>
+          <button class="stab" onclick="goSec('s7',this)"><span class="en-s">1.7 Coastlines</span><span class="hi-s">1.7 Kinare</span></button>
+          <button class="stab" onclick="goSec('s8',this)"><span class="en-s">1.8 Indian Islands</span><span class="hi-s">1.8 Bharat ke Dweep</span></button>
+          <button class="stab" onclick="goSec('s9',this)"><span class="en-s">1.9 Sundarbans Delta</span><span class="hi-s">1.9 Sundarbans</span></button>
+          <button class="stab" onclick="goSec('s10',this)"><span class="en-s">1.10 Northeast Hills</span><span class="hi-s">1.10 Uttar-Purv Pahad</span></button>
+        </div>
+
+        <!-- S1 -->
+        <div class="sec-panel on" id="sp-s1">
+          <div class="sec-bar">
+            <div class="sec-n">1</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Himalayas</h3>
+              <h3 class="hi-s">Himalay Parvat Shreni</h3>
+              <p class="en-s">The world's largest and youngest mountain range</p>
+              <p class="hi-s">Duniya ki sabse badi aur sabse nayi parvat shreni</p>
+            </div>
+          </div>
+
+          <div class="ifig" style="padding:0;overflow:hidden;border-radius:14px;background:#fff;border:1.5px solid #e2e8f0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80" alt="Snow covered Himalayan mountains" style="display:block;width:100%;height:340px;object-fit:cover">
+            <div style="padding:12px 14px 8px;color:#1e3a8a;font-size:.82rem;font-weight:800">3D Himalayan Cross-Section</div>
+            <div style="padding:0 12px 8px">
+              <canvas id="himalaya3d" height="280" style="display:block;width:100%;height:clamp(220px,34vw,300px);border-radius:10px;background:linear-gradient(180deg,#dbeafe 0%,#eff6ff 35%,#f8fafc 100%);border:1px solid #bfdbfe"></canvas>
+            </div>
+            <div style="padding:0 12px 10px;display:flex;justify-content:flex-end">
+              <button id="himalaya3dToggle" type="button" style="font-size:.74rem;font-weight:800;border:1px solid #93c5fd;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:6px 12px;cursor:pointer">Pause Animation</button>
+            </div>
+            <div class="h3d-chip-row" style="display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 8px">
+              <button type="button" class="h3d-chip" data-belt="himadri" style="font-size:.72rem;font-weight:700;background:#dbeafe;color:#1d4ed8;border:1px solid #93c5fd;border-radius:20px;padding:4px 10px;cursor:pointer">Himadri (Greater Himalayas)</button>
+              <button type="button" class="h3d-chip" data-belt="himachal" style="font-size:.72rem;font-weight:700;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:20px;padding:4px 10px;cursor:pointer">Himachal (Lower Himalayas)</button>
+              <button type="button" class="h3d-chip" data-belt="shivalik" style="font-size:.72rem;font-weight:700;background:#ffedd5;color:#9a3412;border:1px solid #fdba74;border-radius:20px;padding:4px 10px;cursor:pointer">Shivalik (Outer Himalayas)</button>
+            </div>
+            <div id="h3dInfoBox" style="margin:0 12px 10px;padding:10px 12px;border:1px solid #bfdbfe;border-radius:10px;background:#f8fbff;display:none">
+              <div id="h3dInfoTitle" style="font-size:.8rem;font-weight:800;color:#1e40af;margin-bottom:4px"></div>
+              <div id="h3dInfoBody" style="font-size:.78rem;line-height:1.5;color:#334155"></div>
+            </div>
+            <div style="padding:0 14px 12px;color:#475569;font-size:.8rem">Fig 1.1 - Snow-covered Himalayan peaks with animated demarcation of Himadri, Himachal, and Shivalik</div>
+          </div>
+          <style>
+          .h3d-chip{
+            font-family:inherit;
+            transition:transform .18s ease, box-shadow .18s ease;
+          }
+          .h3d-chip:hover,
+          .h3d-chip:focus-visible{
+            transform:translateY(-3px) scale(1.03);
+            box-shadow:0 8px 16px rgba(15,23,42,.16);
+            outline:none;
+          }
+          .h3d-chip.h3d-active{
+            box-shadow:0 8px 16px rgba(15,23,42,.2);
+            transform:translateY(-2px);
+          }
+          </style>
+          <script>
+          (function(){
+            const cv = document.getElementById('himalaya3d');
+            const toggleBtn = document.getElementById('himalaya3dToggle');
+            const infoBox = document.getElementById('h3dInfoBox');
+            const infoTitle = document.getElementById('h3dInfoTitle');
+            const infoBody = document.getElementById('h3dInfoBody');
+            const chips = Array.from(document.querySelectorAll('.h3d-chip'));
+            if(!cv) return;
+            const ctx = cv.getContext('2d');
+            const canvasHost = cv.parentElement;
+            const BELT_INFO = {
+              himadri: {
+                title: 'Himadri (Greater Himalayas)',
+                desc: 'The highest, most rugged part, home to peaks like Mt. Everest and Kanchenjunga.'
+              },
+              himachal: {
+                title: 'Himachal (Lower Himalayas)',
+                desc: 'Features a moderate climate and popular hill stations like Shimla, Mussoorie, and Darjeeling.'
+              },
+              shivalik: {
+                title: 'Shivalik (Outer Himalayas)',
+                desc: 'The lowest range, consisting of rolling hills and dense forests.'
+              }
+            };
+
+            function showInfo(belt){
+              const item = BELT_INFO[belt];
+              if(!item || !infoBox || !infoTitle || !infoBody) return;
+              infoTitle.textContent = item.title;
+              infoBody.textContent = item.desc;
+              infoBox.style.display = 'block';
+              chips.forEach(chip=>chip.classList.toggle('h3d-active', chip.dataset.belt === belt));
+            }
+
+            function fit(){
+              const hostW = (canvasHost && canvasHost.clientWidth) ? canvasHost.clientWidth : cv.clientWidth;
+              if(!hostW) return false;
+              const w = Math.max(320, Math.floor(hostW));
+              const h = Math.max(220, Math.min(300, Math.floor(w * 0.42)));
+              cv.style.height = h + 'px';
+              const dpr = Math.min(window.devicePixelRatio || 1, 2);
+              cv.width = Math.floor(w * dpr);
+              cv.height = Math.floor(h * dpr);
+              ctx.setTransform(dpr,0,0,dpr,0,0);
+              W = w;
+              H = h;
+              return true;
+            }
+
+            function ridge(points, fill, stroke, shadow, wave){
+              ctx.beginPath();
+              for(let i=0;i<points.length;i++){
+                const p = points[i];
+                const y = p.y + Math.sin((t * 0.02) + i * 0.7) * wave;
+                if(i===0) ctx.moveTo(p.x, y);
+                else ctx.lineTo(p.x, y);
+              }
+              ctx.lineTo(W, H);
+              ctx.lineTo(0, H);
+              ctx.closePath();
+              ctx.fillStyle = fill;
+              ctx.shadowColor = shadow;
+              ctx.shadowBlur = 14;
+              ctx.fill();
+              ctx.shadowBlur = 0;
+              ctx.strokeStyle = stroke;
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+            }
+
+            function drawBand(x0,x1,color){
+              ctx.fillStyle = color;
+              ctx.fillRect(x0, 34, x1-x0, H-58);
+            }
+
+            function label(txt, x, y, bg, fg){
+              ctx.font = '700 12px Segoe UI, sans-serif';
+              const w = ctx.measureText(txt).width + 16;
+              const h = 24;
+              ctx.fillStyle = bg;
+              ctx.strokeStyle = fg + '55';
+              ctx.lineWidth = 1;
+              roundRect(x - w/2, y - h/2, w, h, 8);
+              ctx.fill();
+              ctx.stroke();
+              ctx.fillStyle = fg;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(txt, x, y+0.5);
+            }
+
+            function roundRect(x,y,w,h,r){
+              ctx.beginPath();
+              ctx.moveTo(x+r,y);
+              ctx.arcTo(x+w,y,x+w,y+h,r);
+              ctx.arcTo(x+w,y+h,x,y+h,r);
+              ctx.arcTo(x,y+h,x,y,r);
+              ctx.arcTo(x,y,x+w,y,r);
+              ctx.closePath();
+            }
+
+            function arrow(x0,y0,x1,y1,col){
+              ctx.strokeStyle = col;
+              ctx.lineWidth = 1.6;
+              ctx.beginPath();
+              ctx.moveTo(x0,y0);
+              ctx.lineTo(x1,y1);
+              ctx.stroke();
+              const a = Math.atan2(y1-y0,x1-x0);
+              ctx.beginPath();
+              ctx.moveTo(x1,y1);
+              ctx.lineTo(x1-8*Math.cos(a-0.4), y1-8*Math.sin(a-0.4));
+              ctx.lineTo(x1-8*Math.cos(a+0.4), y1-8*Math.sin(a+0.4));
+              ctx.closePath();
+              ctx.fillStyle = col;
+              ctx.fill();
+            }
+
+            let t = 0;
+            let W = 760;
+            let H = 280;
+            let running = true;
+            let animId = null;
+
+            function drawFrame(){
+              ctx.clearRect(0,0,W,H);
+
+              // Sky glow + moving cloud haze
+              const sky = ctx.createLinearGradient(0,0,0,H);
+              sky.addColorStop(0,'#bfdbfe');
+              sky.addColorStop(0.55,'#dbeafe');
+              sky.addColorStop(1,'#eff6ff');
+              ctx.fillStyle = sky;
+              ctx.fillRect(0,0,W,H);
+
+              for(let i=0;i<5;i++){
+                const cx = ((t*1.1)+(i*180))%(W+220)-110;
+                const cy = 36 + i*18;
+                const g = ctx.createRadialGradient(cx,cy,8,cx,cy,46);
+                g.addColorStop(0,'#ffffffb0');
+                g.addColorStop(1,'#ffffff00');
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(cx,cy,46,0,Math.PI*2);
+                ctx.fill();
+              }
+
+              // Demarcation bands: left to right as Himadri, Himachal, Shivalik
+              const xA = Math.floor(W*0.36);
+              const xB = Math.floor(W*0.69);
+              drawBand(0, xA, '#dbeafe55');
+              drawBand(xA, xB, '#dcfce744');
+              drawBand(xB, W, '#ffedd544');
+
+              const himadri = [
+                {x:0,y:188},{x:W*0.08,y:176},{x:W*0.14,y:132},{x:W*0.2,y:95},{x:W*0.26,y:72},{x:W*0.32,y:104},{x:W*0.36,y:156}
+              ];
+              const himachal = [
+                {x:W*0.28,y:200},{x:W*0.38,y:172},{x:W*0.46,y:146},{x:W*0.54,y:128},{x:W*0.62,y:154},{x:W*0.7,y:182},{x:W*0.76,y:208}
+              ];
+              const shivalik = [
+                {x:W*0.62,y:228},{x:W*0.72,y:210},{x:W*0.8,y:196},{x:W*0.88,y:204},{x:W*0.96,y:220},{x:W,y:232}
+              ];
+
+              ridge(himadri,'#93c5fd','#1d4ed8','#1d4ed833',2.8);
+              ridge(himachal,'#86efac','#166534','#16653433',2.1);
+              ridge(shivalik,'#fdba74','#9a3412','#9a341233',1.6);
+
+              // Snow caps on Himadri
+              ctx.fillStyle = '#ffffffee';
+              [[W*0.2,95],[W*0.26,72],[W*0.14,132]].forEach(p=>{
+                ctx.beginPath();
+                ctx.moveTo(p[0]-14,p[1]+8);
+                ctx.lineTo(p[0],p[1]-12);
+                ctx.lineTo(p[0]+14,p[1]+8);
+                ctx.closePath();
+                ctx.fill();
+              });
+
+              // Labels with arrows
+              label('Himadri (Greater Himalayas)', W*0.2, 36, '#dbeafe', '#1d4ed8');
+              label('Himachal (Lower Himalayas)', W*0.52, 64, '#dcfce7', '#166534');
+              label('Shivalik (Outer Himalayas)', W*0.83, 92, '#ffedd5', '#9a3412');
+              arrow(W*0.2, 48, W*0.24, 86, '#1d4ed8');
+              arrow(W*0.52, 76, W*0.56, 132, '#166534');
+              arrow(W*0.83, 104, W*0.84, 194, '#9a3412');
+
+              // Ground baseline
+              ctx.strokeStyle = '#64748b66';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(0,H-24);
+              ctx.lineTo(W,H-24);
+              ctx.stroke();
+
+            }
+
+            function animate(){
+              // Mark current frame as consumed; next frame id is set below.
+              animId = null;
+              if(!running) return;
+              t += 1;
+              drawFrame();
+              animId = requestAnimationFrame(animate);
+            }
+
+            function setRunning(next){
+              running = next;
+              if(toggleBtn){
+                toggleBtn.textContent = running ? 'Pause Animation' : 'Play Animation';
+                toggleBtn.setAttribute('aria-pressed', running ? 'true' : 'false');
+              }
+              if(running){
+                if(animId === null) animId = requestAnimationFrame(animate);
+              }else if(animId !== null){
+                cancelAnimationFrame(animId);
+                animId = null;
+              }
+            }
+
+            function refreshCanvas(){
+              const ok = fit();
+              if(ok) drawFrame();
+            }
+
+            refreshCanvas();
+            setRunning(true);
+
+            if(toggleBtn){
+              toggleBtn.addEventListener('click',()=>{
+                setRunning(!running);
+              });
+            }
+
+            chips.forEach(chip=>{
+              const belt = chip.dataset.belt;
+              chip.addEventListener('mouseenter',()=>showInfo(belt));
+              chip.addEventListener('focus',()=>showInfo(belt));
+              chip.addEventListener('click',()=>showInfo(belt));
+            });
+
+            // Keep the canvas responsive even when tab visibility/layout changes.
+            window.addEventListener('resize', refreshCanvas);
+            if(window.ResizeObserver && canvasHost){
+              const ro = new ResizeObserver(()=>refreshCanvas());
+              ro.observe(canvasHost);
+            }
+
+            // If initialized while hidden, retry once visible.
+            let bootChecks = 0;
+            const bootTimer = setInterval(()=>{
+              bootChecks += 1;
+              if((canvasHost && canvasHost.clientWidth > 0) || bootChecks > 20){
+                refreshCanvas();
+                clearInterval(bootTimer);
+              }
+            }, 150);
+          })();
+          </script>
+
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Himalayas</span> stretch across northern India and act like a giant natural wall. They include the Himadri (Great Himalaya), Himachal (Lesser Himalaya), and Shiwalik ranges.</p>
+            <p class="hi-c"><span class="kw">Himalay</span> Bharat ke uttar mein faila ek vishal prakritik diwar jaisa hai. Ismein Himadri, Himachal aur Shiwalik shreniyan aati hain.</p>
+            <div class="hl en-c"><strong>Length:</strong> About 2,400 km | <strong>Average width:</strong> 150-400 km | <strong>Role:</strong> Climate barrier and source of major rivers</div>
+            <div class="hl hi-c"><strong>Lambai:</strong> Lagbhag 2,400 km | <strong>Chaudai:</strong> 150-400 km | <strong>Bhumika:</strong> Jalvayu suraksha aur bade nadi pranali ka srot</div>
+          </div>
+
+          <div class="cc">
+            <h4>🏔️ <span class="en-s">Why Himalayas Are Important</span><span class="hi-s">Himalay ka Mahatva</span></h4>
+            <ul style="font-size:.85rem">
+              <li class="en-c"><strong>Climate Shield:</strong> Blocks icy winds from Central Asia.</li>
+              <li class="hi-c"><strong>Jalvayu Suraksha:</strong> Madhya Asia ki thandi havaon ko rokta hai.</li>
+              <li class="en-c"><strong>Water Source:</strong> Ganga, Yamuna, and Brahmaputra systems begin here.</li>
+              <li class="hi-c"><strong>Jal ka Srot:</strong> Ganga, Yamuna aur Brahmaputra pranali yahin se shuru hoti hai.</li>
+              <li class="en-c"><strong>Biodiversity:</strong> Alpine meadows, conifer forests, and rare wildlife habitats.</li>
+              <li class="hi-c"><strong>Jeev-Vividhta:</strong> Alpine meadows, conifer jungle aur rare jeevon ka aawas.</li>
+              <li class="en-c"><strong>Tourism and Culture:</strong> Pilgrimage routes, trekking, and hill settlements.</li>
+              <li class="hi-c"><strong>Paryatan aur Sanskriti:</strong> Teerth yatra, trekking aur pahadi bastiyan.</li>
+            </ul>
+          </div>
+
+          <div class="cc">
+            <h4>💧 The Water Tower</h4>
+            <div class="ibox">Often called the "Water Tower of Asia," its melting snow feeds major rivers like the Ganga, Indus, and Brahmaputra, providing a lifeline for millions.</div>
+          </div>
+        </div>
+
+        <!-- S2 -->
+        <div class="sec-panel" id="sp-s2">
+          <div class="sec-bar">
+            <div class="sec-n">2</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Cold Desert of India</h3>
+              <h3 class="hi-s">Bharat ke Thand Mruthal</h3>
+              <p class="en-s">Ladakh - The Frozen Desert at High Altitude</p>
+              <p class="hi-s">Ladakh - High Altitude par Thand Mruthal</p>
+            </div>
+          </div>
+          <div class="ifig" style="padding:0;overflow:hidden;border-radius:14px;background:#fff;border:1.5px solid #e2e8f0;margin-top:10px">
+            <canvas id="coldDesertAnim" height="320" style="display:block;width:100%;height:320px;background:linear-gradient(180deg,#dbeafe 0%,#e0e7ff 40%,#f8fafc 100%)"></canvas>
+            <div style="padding:10px 14px 12px;color:#475569;font-size:.8rem">Animated Cold Desert View - Ladakh (Moonland terrain, Pangong-like lake, and moving snow wind)</div>
+          </div>
+          <script>
+          (function(){
+            const cv = document.getElementById('coldDesertAnim');
+            if(!cv) return;
+            const ctx = cv.getContext('2d');
+
+            let W = 800;
+            let H = 320;
+            let t = 0;
+
+            function fit(){
+              const w = cv.clientWidth || 800;
+              const h = 320;
+              const dpr = Math.min(window.devicePixelRatio || 1, 2);
+              cv.width = Math.floor(w * dpr);
+              cv.height = Math.floor(h * dpr);
+              ctx.setTransform(dpr,0,0,dpr,0,0);
+              W = w;
+              H = h;
+            }
+
+            function ridge(points, fill, stroke){
+              ctx.beginPath();
+              points.forEach((p,i)=>{
+                const y = p.y + Math.sin(t*0.02 + i*0.4) * 1.5;
+                if(i===0) ctx.moveTo(p.x,y);
+                else ctx.lineTo(p.x,y);
+              });
+              ctx.lineTo(W,H);
+              ctx.lineTo(0,H);
+              ctx.closePath();
+              ctx.fillStyle = fill;
+              ctx.fill();
+              ctx.strokeStyle = stroke;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+
+            function drawYak(x,y,s){
+              ctx.fillStyle = '#1f2937';
+              ctx.beginPath();
+              ctx.ellipse(x,y,20*s,11*s,0,0,Math.PI*2);
+              ctx.fill();
+              ctx.fillRect(x+14*s,y-6*s,10*s,6*s);
+              ctx.fillRect(x+22*s,y-8*s,4*s,4*s);
+              [ -12, -3, 8, 17 ].forEach(dx=>ctx.fillRect(x+dx*s,y+8*s,3*s,12*s));
+            }
+
+            function frame(){
+              ctx.clearRect(0,0,W,H);
+
+              const sky = ctx.createLinearGradient(0,0,0,H);
+              sky.addColorStop(0,'#bfdbfe');
+              sky.addColorStop(0.55,'#dbeafe');
+              sky.addColorStop(1,'#f8fafc');
+              ctx.fillStyle = sky;
+              ctx.fillRect(0,0,W,H);
+
+              // Sun glow
+              const sun = ctx.createRadialGradient(W*0.83,56,8,W*0.83,56,56);
+              sun.addColorStop(0,'#fde68a');
+              sun.addColorStop(1,'#fde68a00');
+              ctx.fillStyle = sun;
+              ctx.beginPath();
+              ctx.arc(W*0.83,56,56,0,Math.PI*2);
+              ctx.fill();
+
+              const far = [
+                {x:0,y:186},{x:W*0.12,y:170},{x:W*0.24,y:148},{x:W*0.36,y:164},{x:W*0.48,y:138},{x:W*0.6,y:168},{x:W*0.74,y:150},{x:W*0.88,y:172},{x:W,y:166}
+              ];
+              const mid = [
+                {x:0,y:220},{x:W*0.1,y:206},{x:W*0.2,y:198},{x:W*0.31,y:214},{x:W*0.42,y:194},{x:W*0.56,y:210},{x:W*0.7,y:196},{x:W*0.86,y:214},{x:W,y:208}
+              ];
+              const front = [
+                {x:0,y:254},{x:W*0.16,y:236},{x:W*0.32,y:244},{x:W*0.46,y:230},{x:W*0.62,y:246},{x:W*0.78,y:238},{x:W,y:252}
+              ];
+              ridge(far,'#94a3b8','#64748b');
+              ridge(mid,'#a8b2bf','#6b7280');
+              ridge(front,'#b6ad9a','#8b7355');
+
+              // Pangong-like cold lake shimmer
+              const ly = H - 58;
+              const lg = ctx.createLinearGradient(0,ly-34,0,ly+10);
+              lg.addColorStop(0,'#7dd3fcaa');
+              lg.addColorStop(1,'#0ea5e955');
+              ctx.fillStyle = lg;
+              ctx.fillRect(0,ly-24,W,36);
+              ctx.strokeStyle = '#38bdf8aa';
+              for(let i=0;i<9;i++){
+                const y = ly - 18 + i*4;
+                ctx.beginPath();
+                for(let x=0;x<=W;x+=14){
+                  const wy = y + Math.sin((x*0.03)+(t*0.09)+i)*1.3;
+                  if(x===0) ctx.moveTo(x,wy); else ctx.lineTo(x,wy);
+                }
+                ctx.stroke();
+              }
+
+              // Moving snow-wind streaks
+              ctx.strokeStyle = '#ffffff88';
+              ctx.lineWidth = 1.2;
+              for(let i=0;i<24;i++){
+                const x = ((i*61) - (t*2.2)) % (W+80);
+                const y = 42 + (i*11 % 145);
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                ctx.lineTo(x+20,y-3);
+                ctx.stroke();
+              }
+
+              drawYak(W*0.18,H-84,1);
+              drawYak(W*0.29,H-76,0.78);
+
+              ctx.fillStyle = '#0f172a';
+              ctx.font = '700 12px Segoe UI, sans-serif';
+              ctx.fillText('Ladakh Cold Desert - Moonland', 14, 22);
+
+              t += 1;
+              requestAnimationFrame(frame);
+            }
+
+            fit();
+            frame();
+            window.addEventListener('resize', fit);
+          })();
+          </script>
+          <div class="cc">
+            <p class="en-c"><span class="kw">Ladakh</span> is a cold desert located in the northeastern part of India. It lies between the Himalayas and the Karakoram mountain ranges.</p>
+            <p class="hi-c"><span class="kw">Ladakh</span> Bharat ke uttar-purv mein ek thand mruthal hai. Ye Himalay aur Karakoram parvat shreniyon ke beech mein sthit hai.</p>
+            <div class="hl en-c"><strong>Temperature:</strong> Winter: -30°C to -40°C | Summer: 10°C to 20°C | Very cold year-round!</div>
+            <div class="hl hi-c"><strong>Temperature:</strong> Sardi mein: -30°C se -40°C | Garmi mein: 10°C se 20°C | Saal bhar bahut thanda!</div>
+            <div class="fbox">
+              <h4>⭐ Special Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>High Altitude:</strong> 3,000m-5,000m above sea level</li>
+                <li><strong>Sparse Rain:</strong> Less than 100mm per year</li>
+                <li><strong>Flora:</strong> Cushion plants, grasses - very hardy vegetation</li>
+                <li><strong>Capital:</strong> Leh - the main city: 3,500m altitude</li>
+                <li><strong>People:</strong> Ladakhi people, Buddhist majority</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">❄️ Ladakh is called <strong>"Cold or Frozen Desert"</strong> because it has desert-like conditions (very dry, rocky) BUT it's bitterly cold due to high altitude!</div>
+            <div class="ibox hi-c">❄️ Ladakh ko <strong>"Thand Mruthal"</strong> kehte hain kyunki yahan mruthal jaisa haal (sukha, pathar) hai LEKIN bahut thanda hai altitude se!</div>
+          </div>
+          <div class="cc">
+            <h4>🏜️ Cold Desert Insights</h4>
+            <div class="ibox">While most deserts associate with heat, Ladakh is a cold desert where temperatures can drop below -30°C.</div>
+            <div class="ibox"><strong>Landscape:</strong> Known as "Moonland" due to its rugged, rocky terrain, it features unique salt-water lakes like Pangong Tso.</div>
+            <div class="ibox"><strong>Life:</strong> Residents lead simple lives, rearing Yaks for milk, wool, and transport.</div>
+          </div>
+        </div>
+
+        <!-- S3 -->
+        <div class="sec-panel" id="sp-s3">
+          <div class="sec-bar">
+            <div class="sec-n">3</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Gangetic Plains</h3>
+              <h3 class="hi-s">Ganga ke Maidan</h3>
+              <p class="en-s">India's Most Fertile and Heavily Populated Region</p>
+              <p class="hi-s">Bharat ka Sabse Zyada Upjau aur Bisa Rakshit Kshetre</p>
+            </div>
+          </div>
+          <div class="ifig" style="padding:0;overflow:hidden;border-radius:14px;background:#fff;border:1.5px solid #e2e8f0;margin-top:10px">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80" alt="Scenic fertile plains landscape" style="display:block;width:100%;height:320px;object-fit:cover">
+            <div style="padding:10px 14px 12px;color:#475569;font-size:.8rem">Scenic view of fertile plains and agricultural landscape</div>
+          </div>
+          <div class="cc">
+            <div class="ibox">Located south of the Himalayas, these vast, flat plains are among the most fertile regions globally.</div>
+            <div class="ibox"><strong>Fertility:</strong> Nourished by Himalayan rivers that deposit mineral-rich silt, making them ideal for intensive agriculture.</div>
+            <div class="ibox"><strong>Development:</strong> The flat terrain allowed for an extensive network of roads and railways, leading to high population density.</div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Gangetic Plains</span> stretch from the Himalayas in the north to the Vindhya Mountains in the south, covering about 2,500 km. This is the most populated region of India.</p>
+            <p class="hi-c"><span class="kw">Ganga ke Maidan</span> Himalay se Vindhya Parvat tak phailey hue hain, lagbhag 2,500 km tak. Ye Bharat ka sabse zyada bisa rakshit kshetre hai.</p>
+            <div class="hl en-c"><strong>Fertile Soil:</strong> Alluvial soil from the River Ganges - excellent for crops!</div>
+            <div class="hl hi-c"><strong>Upjau Zameen:</strong> Ganga nadi ki alluvial mitti - fasolon ke liye kamaal ki!</div>
+            <div class="fbox">
+              <h4>🔑 Key Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Rivers:</strong> Ganges, Brahmaputra, Yamuna</li>
+                <li><strong>Climate:</strong> Monsoon-fed, receives heavy rainfall (1,000-2,000mm annually)</li>
+                <li><strong>Agriculture:</strong> Rice, wheat, sugarcane, maize - major crops</li>
+                <li><strong>Population Density:</strong> Over 400 people per sq km (world's highest!)</li>
+                <li><strong>States:</strong> Uttar Pradesh, Bihar, West Bengal, Assam</li>
+                <li><strong>Major Cities:</strong> Delhi, Lucknow, Patna, Kolkata, Guwahati</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">🌾 This region is called the "Granary of India" because it produces majority of India's food grains!</div>
+            <div class="ibox hi-c">🌾 Ye kshaetra "Bharat ka Anaj Bhandar" kahlata hai kyunki yahan Bharat ke zyada tar anunga peda hota hai!</div>
+          </div>
+        </div>
+
+        <!-- S4 -->
+        <div class="sec-panel" id="sp-s4">
+          <div class="sec-bar">
+            <div class="sec-n">4</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Great Indian Desert (Thar)</h3>
+              <h3 class="hi-s">Thar Mruthal</h3>
+              <p class="en-s">India's Largest Hot Desert - A Land of Vast Sand Dunes</p>
+              <p class="hi-s">Bharat ka Sabse Bada Garam Mruthal</p>
+            </div>
+          </div>
+          <div class="ifig" style="padding:0;overflow:hidden;border-radius:14px;background:#fff;border:1.5px solid #e2e8f0;margin-top:10px">
+            <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sam%20dunes%20%28Jaisalmer%29.jpg" alt="Sam Sand Dunes in Jaisalmer, Rajasthan" style="display:block;width:100%;height:320px;object-fit:cover">
+            <div style="padding:10px 14px 12px;color:#475569;font-size:.8rem">Scenic view of the Thar Desert and its golden sand dunes</div>
+          </div>
+          <div class="cc">
+            <div class="ibox">Located in the west (spanning Rajasthan, Gujarat, Punjab, and Haryana), this arid region is dominated by golden sand dunes that can reach 150 meters in height.</div>
+            <div class="ibox"><strong>Adaptation:</strong> Due to water scarcity, locals use traditional conservation systems like taanka or kunds to store rainwater.</div>
+            <div class="ibox"><strong>Aravalli Hills:</strong> One of the world's oldest ranges (2.5 billion years old), it acts as a barrier preventing the desert's expansion toward the east.</div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Thar Desert</span> (or Great Indian Desert) covers about 2,00,000 sq km. It lies mainly in Rajasthan and extends into Gujarat, Punjab, and Haryana.</p>
+            <p class="hi-c"><span class="kw">Thar Mruthal</span> lagbhag 2,00,000 sq km mein faila hai. Ye mukhya roop se Rajasthan mein hai aur Gujarat, Punjab, aur Haryana mein bhi faila hai.</p>
+            <div class="hl en-c"><strong>Characteristics:</strong> Sand dunes, sparse vegetation, very low rainfall (<250mm/year), extreme heat!</div>
+            <div class="hl hi-c"><strong>Visheshtaayein:</strong> Ret ke tille, kam plants, bahut kam barish (<250mm/year), bahut garam!</div>
+            <div class="fbox">
+              <h4>⭐ Special Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Geography:</strong> Expansive sand dunes (barchan dunes), rocky patches</li>
+                <li><strong>Vegetation:</strong> Thorny bushes, cacti, acia trees - adapted to drought</li>
+                <li><strong>Wildlife:</strong> Camel, desert fox, blackbuck, various bird species</li>
+                <li><strong>Human Settlement:</strong> Camel herders, pastoralists, ancient trade routes (Silk Road)</li>
+                <li><strong>Temperature:</strong> Summer: 45°C-50°C | Winter: 5°C-10°C</li>
+                <li><strong>Cities:</strong> Jaisalmer, Bikaner, Jodhpur</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">🐪 The Thar Desert is famous for <strong>camel breeding</strong> and <strong>traditional crafts</strong> like textiles and pottery!</div>
+            <div class="ibox hi-c">🐪 Thar Mruthal <strong>oont paalan</strong> aur <strong>paramparik silpkari</strong> ke liye mashhoor hai!</div>
+          </div>
+        </div>
+
+        <!-- S5 -->
+        <div class="sec-panel" id="sp-s5">
+          <div class="sec-bar">
+            <div class="sec-n">5</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Aravalli Hills</h3>
+              <h3 class="hi-s">Aravalli Parvat Shreni</h3>
+              <p class="en-s">The World's Oldest Fold Mountain Range - Worn Down by Time</p>
+              <p class="hi-s">Duniya ki Sabse Purani Parvat Shreni</p>
+            </div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Aravalli Mountains</span> form one of the oldest mountain ranges in the world, estimated to be over 1 billion years old! They run from Gujarat through Rajasthan to Delhi.</p>
+            <p class="hi-c"><span class="kw">Aravalli Parvat</span> duniya ki sabse purani parvat shreni hai, 1 billion saal se zyada purani! Ye Gujarat se Delhi tak chalti hai.</p>
+            <div class="hl en-c"><strong>Age:</strong> Over 1 billion years old | <strong>Length:</strong> ~800 km | <strong>Max Height:</strong> Guru Shikhar (1,722m)</div>
+            <div class="hl hi-c"><strong>Umar:</strong> 1 billion saal se purani | <strong>Lambai:</strong> ~800 km | <strong>Max Unchai:</strong> 1,722m</div>
+            <div class="fbox">
+              <h4>⭐ Special Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Characteristics:</strong> Highly eroded, worn-down, relatively low peaks</li>
+                <li><strong>Geography:</strong> Runs from Ballabgarh (Delhi) to Palanpur (Gujarat)</li>
+                <li><strong>States:</strong> Delhi, Haryana, Rajasthan, Gujarat</li>
+                <li><strong>Resources:</strong> Various minerals (marble, slate, granite)</li>
+                <li><strong>Ecology:</strong> Dry deciduous forests, water-scarce region</li>
+                <li><strong>Importance:</strong> Divides the Thar Desert from the Indo-Gangetic Plains</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">💡 Despite being very old and worn down, the Aravallis still protect the Indo-Gangetic Plains from desert winds!</div>
+            <div class="ibox hi-c">💡 Bahut puran hone ke baad bhi, Aravalli parvat Indo-Gangetic plains ko thar ke hawaaon se bachate hain!</div>
+          </div>
+        </div>
+
+        <!-- S6 -->
+        <div class="sec-panel" id="sp-s6">
+          <div class="sec-bar">
+            <div class="sec-n">6</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Peninsular Plateau</h3>
+              <h3 class="hi-s">Dakshan Plateau</h3>
+              <p class="en-s">The Deccan Plateau - Ancient Landmass of South India</p>
+              <p class="hi-s">Dakshan Bharat ka Purana Bhumi Khund</p>
+            </div>
+          </div>
+          <div class="ifig" style="padding:0;overflow:hidden;border-radius:14px;background:#fff;border:1.5px solid #e2e8f0;margin-top:10px">
+            <img src="https://en.wikipedia.org/wiki/Special:Redirect/file/Indiahills.png" alt="Map showing the Deccan Plateau with the Western Ghats and Eastern Ghats" style="display:block;width:100%;height:320px;object-fit:contain;background:#f8fafc">
+            <div style="padding:10px 14px 12px;color:#475569;font-size:.8rem">Map view of Peninsular India showing the Deccan Plateau, Western Ghats, Eastern Ghats, and surrounding ranges</div>
+          </div>
+          <div class="cc">
+            <div class="ibox">A triangular landform in central and southern India, surrounded by water on three sides.</div>
+            <div class="ibox"><strong>Ghats:</strong> Bordered by the Western Ghats (tall, continuous "wall" on the west) and the Eastern Ghats (lower, broken hills on the east).</div>
+            <div class="ibox"><strong>Rivers:</strong> The plateau tilts eastward, causing rivers like the Godavari and Krishna to flow into the Bay of Bengal.</div>
+            <div class="ibox"><strong>Resources:</strong> It is rich in minerals and dense forests, which are home to many tribal communities like the Gond and Santhal.</div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Peninsular Plateau</span> (also called Deccan Plateau) is one of the oldest and most stable geographical regions of India. It covers most of South India.</p>
+            <p class="hi-c"><span class="kw">Dakshan Plateau</span> (Deccan Plateau) Bharat ka ek aur purana aur sthir kshetre hai. Ye Dakshan Bharat ka zyada tar hissa cover karta hai.</p>
+            <div class="hl en-c"><strong>Area:</strong> Covers ~5,00,000 sq km | <strong>Elevation:</strong> 300m-900m above sea level</div>
+            <div class="hl hi-c"><strong>Kshetra:</strong> ~5,00,000 sq km | <strong>Unchai:</strong> 300m-900m</div>
+            <div class="fbox">
+              <h4>⭐ Special Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>States:</strong> Maharashtra, Karnataka, Andhra Pradesh, Telangana, Tamil Nadu</li>
+                <li><strong>Rivers:</strong> Godavari, Krishna, Mahanadi - flow eastward to Bay of Bengal</li>
+                <li><strong>Western Ghats:</strong> Mountain range on western edge (averages 1,000-2,000m)</li>
+                <li><strong>Eastern Ghats:</strong> Lower mountain range on eastern edge</li>
+                <li><strong>Crops:</strong> Cotton, sugarcane, tobacco, millet</li>
+                <li><strong>Minerals:</strong> Coal, Iron ore, Manganese - major mineral reserves</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">💎 The Deccan Plateau is famous for <strong>mineral wealth</strong> and is considered the <strong>mineral storehouse of India</strong>!</div>
+            <div class="ibox hi-c">💎 Deccan Plateau <strong>khanij sampda</strong> ke liye mashhoor hai aur Bharat ka <strong>mineral bhandar</strong> maana jaata hai!</div>
+          </div>
+        </div>
+
+        <!-- S7 -->
+        <div class="sec-panel" id="sp-s7">
+          <div class="sec-bar">
+            <div class="sec-n">7</div>
+            <div class="sec-t">
+              <h3 class="en-s">India's Amazing Coastlines</h3>
+              <h3 class="hi-s">Bharat ke Kinare</h3>
+              <p class="en-s">Where Land Meets Ocean - Diverse Coastal Regions</p>
+              <p class="hi-s">Jahan Zameen Samudra se Milti Hai</p>
+            </div>
+          </div>
+          <div class="cc">
+            <p class="en-c">India has an extensive <span class="kw">coastline of about 7,517 km</span> (mainland + islands). It stretches along the Arabian Sea, Bay of Bengal, and Indian Ocean, with diverse coastal landscapes.</p>
+            <p class="hi-c">Bharat ka <span class="kw">kinara lagbhag 7,517 km</span> lambe hai (mainland + dweep). Ye Arabian Sea, Bay of Bengal, aur Indian Ocean ke saath faila hai.</p>
+            <div class="hl en-c"><strong>Coastline:</strong> 7,517 km (3rd longest in world!) | <strong>Coastal States:</strong> 13 major and 8 Union Territories</div>
+            <div class="hl hi-c"><strong>Kinara:</strong> 7,517 km (duniya mein tisara sabse lamha!) | <strong>Kinare ke States:</strong> 13 rajya aur 8 Union Territories</div>
+            <div class="fbox">
+              <h4>🌊 Coastal Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Western Coast:</strong> Arabian Sea - less indented, fairly straight</li>
+                <li><strong>Eastern Coast:</strong> Bay of Bengal - highly indented, sandy beaches</li>
+                <li><strong>Southern Tip:</strong> Cape Comorin (Kanyakumari) - where 3 oceans meet!</li>
+                <li><strong>Types:</strong> Sandy beaches, rocky shores, mangrove swamps, coral reefs</li>
+                <li><strong>Major Ports:</strong> Mumbai, Kolkata, Cochin, Visakhapatnam, Chennai</li>
+                <li><strong>Industries:</strong> Fishing, salt production, oil refining, shipbuilding</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">🌊 India's coastline is a treasure trove of <strong>fish resources</strong>, <strong>trade routes</strong>, and <strong>tourist destinations</strong>!</div>
+            <div class="ibox hi-c">🌊 Bharat ka kinara <strong>machli sansadhan</strong>, <strong>vyapar maarg</strong>, aur <strong>tourism shrondra</strong> se bhara hai!</div>
+          </div>
+        </div>
+
+        <!-- S8 -->
+        <div class="sec-panel" id="sp-s8">
+          <div class="sec-bar">
+            <div class="sec-n">8</div>
+            <div class="sec-t">
+              <h3 class="en-s">Indian Islands</h3>
+              <h3 class="hi-s">Bharat ke Dweep</h3>
+              <p class="en-s">Island Territories - Andaman, Nicobar, and Lakshadweep Archipelagos</p>
+              <p class="hi-s">Andaman, Nicobar aur Lakshadweep</p>
+            </div>
+          </div>
+          <div class="cc">
+            <p class="en-c">India has <span class="kw">about 1,190 islands</span>, with the three major island groups being Andaman & Nicobar Islands, Lakshadweep, and others in the Arabian Sea.</p>
+            <p class="hi-c">Bharat mein <span class="kw">lagbhag 1,190 dweep</span> hain. Tino mukhya dweep samuh hain: Andaman & Nicobar, Lakshadweep, aur dusre.</p>
+            <div class="hl en-c"><strong>Andaman & Nicobar:</strong> ~1,090 islands | <strong>Lakshadweep:</strong> 36 coral islands | Other strategic islands in Arabian Sea</div>
+            <div class="hl hi-c"><strong>Andaman & Nicobar:</strong> ~1,090 dweep | <strong>Lakshadweep:</strong> 36 coral dweep | Dusre islands Arabian Sea mein</div>
+            <div class="fbox">
+              <h4>🏝️ Island Groups:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Andaman & Nicobar:</strong> Bay of Bengal | Tropical forests, biodiversity, tribal population</li>
+                <li><strong>Lakshadweep:</strong> Arabian Sea | Coral atolls, white-sand beaches, Muslim-majority population</li>
+                <li><strong>Coconut Islands:</strong> Known as "Coconut Islands" - major coconut production</li>
+                <li><strong>Biodiversity:</strong> Unique species found nowhere else on Earth (endemic species)</li>
+                <li><strong>Tourism:</strong> Popular for diving, snorkeling, pristine beaches</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">🌿 Islands are home to <strong>unique ecosystems</strong>, <strong>coral reefs</strong>, and some of earth's rarest species!</div>
+            <div class="ibox hi-c">🌿 Dweep <strong>advitiay ekosystem</strong>, <strong>coral reefs</strong>, aur duniya ke sabse rare species se bhare hain!</div>
+          </div>
+        </div>
+
+        <!-- S9 -->
+        <div class="sec-panel" id="sp-s9">
+          <div class="sec-bar">
+            <div class="sec-n">9</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Sundarbans Delta</h3>
+              <h3 class="hi-s">Sundarbans Delta</h3>
+              <p class="en-s">World's Largest Mangrove Forest - Ecological Marvel</p>
+              <p class="hi-s">Duniya ka Sabse Bada Mangrove Jungle</p>
+            </div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Sundarbans</span> is the world's largest mangrove forest, formed by the delta of the Ganges River where it meets the Bay of Bengal. It spans India (West Bengal) and Bangladesh.</p>
+            <p class="hi-c"><span class="kw">Sundarbans</span> duniya ka sabse bada mangrove jungle hai, Ganga delta se bana hai. Ye India (West Bengal) aur Bangladesh mein hai.</p>
+            <div class="hl en-c"><strong>Area:</strong> ~10,000 sq km | <strong>Mangrove Species:</strong> 27 species | <strong>Wildlife:</strong> Royal Bengal Tiger, saltwater crocodile, spotted deer</div>
+            <div class="hl hi-c"><strong>Kshetra:</strong> ~10,000 sq km | <strong>Mangrove Prkar:</strong> 27 prakar | <strong>Jeev-jantu:</strong> Bengali Sher, namkeen paani ke timitar</div>
+            <div class="fbox">
+              <h4>🌳 Sundarbans Features:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Name Meaning:</strong> "Sundari" trees gave it the name</li>
+                <li><strong>Mangrove Adaptation:</strong> Exposed roots (aerial roots) help them breathe in salty mud</li>
+                <li><strong>UNESCO World Heritage:</strong> Recognized for exceptional biodiversity</li>
+                <li><strong>Fishing & Honey Production:</strong> Major livelihood for local communities</li>
+                <li><strong>Threats:</strong> Rising sea levels (climate change), poaching, habitat loss</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">🐅 The <strong>Royal Bengal Tiger</strong> is the apex predator - around 100-150 tigers live in Sundarbans, world's largest tiger population in mangrove forests!</div>
+            <div class="ibox hi-c">🐅 <strong>Royal Bengal Tiger</strong> mangrove jungle ka sabse bada shikari hai - 100-150 baghein rehti hain!</div>
+          </div>
+        </div>
+
+        <!-- S10 -->
+        <div class="sec-panel" id="sp-s10">
+          <div class="sec-bar">
+            <div class="sec-n">10</div>
+            <div class="sec-t">
+              <h3 class="en-s">The Hills of the Northeast</h3>
+              <h3 class="hi-s">Uttar-Purv ke Pahad</h3>
+              <p class="en-s">Himalayan Foothills - Where Mountains Meet the Plains</p>
+              <p class="hi-s">Himalay ke Paad - Jahan Parvat Maidan se Milte Hain</p>
+            </div>
+          </div>
+          <div class="cc">
+            <p class="en-c">The <span class="kw">Northeast Himalayan Hills</span> form a transition zone between the Eastern Himalayas and the Indo-Gangetic Plains. This region includes states like Assam, Meghalaya, Mizoram, Nagaland, Manipur, Tripura, and Arunachal Pradesh.</p>
+            <p class="hi-c"><span class="kw">Uttar-Purv ke Pahad</span> Himalay aur Indo-Gangetic Plains ke beech ek transition zone hai. Ye Assam, Meghalaya, Mizoram, Nagaland, Manipur, Tripura aur Arunachal Pradesh ko include karta hai.</p>
+            <div class="hl en-c"><strong>Geography:</strong> Elevation: 500m-3,500m | Highly forested | Heavily rainfall-dependent (3,000-10,000mm annually!)</div>
+            <div class="hl hi-c"><strong>Bhaugol:</strong> Unchai: 500m-3,500m | Bahut janglon se bhara | Bahut barish (3,000-10,000mm suntak)</div>
+            <div class="fbox">
+              <h4>🏔️ Northeast Hills Characteristics:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Major Ranges:</strong> Khasi Hills, Jaintia Hills, Lushai Hills, Patkai Hills</li>
+                <li><strong>Rivers:</strong> Brahmaputra (and tributaries) - major river system</li>
+                <li><strong>Climate:</strong> Monsoon-dominated, very wet, lush green vegetation</li>
+                <li><strong>Biodiversity:</strong> Rich forests - tropical, subtropical, and temperate varieties</li>
+                <li><strong>People:</strong> Diverse tribal communities with unique cultures, languages, traditions</li>
+                <li><strong>Land:</strong> Hilly terrain makes agriculture challenging; shifting cultivation in some areas</li>
+              </ul>
+            </div>
+            <div class="ibox en-c">? Cherrapunji in Meghalaya is recognized as <strong>one of the wettest places on Earth</strong> with over 10,000mm annual rainfall!</div>
+            <div class="ibox hi-c">? Cherrapunji, Meghalaya duniya ke <strong>sabse zyada barish wale sthanon mein se ek</strong> hai - 10,000mm suntak barish!</div>
+            <div class="fbox">
+              <h4>🌿 Ecological Importance:</h4>
+              <ul style="font-size:.85rem">
+                <li><strong>Biodiversity Hotspot:</strong> Home to many endemic species (found only here)</li>
+                <li><strong>Forest Types:</strong> Tropical rainforests, bamboo forests, subtropical forests</li>
+                <li><strong>Wildlife:</strong> Asian elephants, wild buffalo, various primates, rare bird species</li>
+                <li><strong>Resource Innovation:</strong> Living root bridges created by locals (1,000-years-old!)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 2: QUIZ -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc2" onclick="togTab('quiz',this)" id="pill-quiz">
+      <div class="tpill-icon">🎯</div>
+      <div class="tpill-txt">
+        <div class="tpill-title">Quiz</div>
+        <div class="tpill-sub en-s">12 questions - test yourself!</div>
+        <div class="tpill-sub hi-s">12 sawal - khud ko test karo!</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-quiz">
+      <div class="tc-inner">
+        <div class="qscore">
+          <div class="qss"><div class="qsn" id="qSc">0</div><div class="qsl">Score</div></div>
+          <div class="qss"><div class="qsn" id="qC" style="color:#16a34a">0</div><div class="qsl">✅ Correct</div></div>
+          <div class="qss"><div class="qsn" id="qW" style="color:#dc2626">0</div><div class="qsl">❌ Wrong</div></div>
+          <div class="qss"><div class="qsn" id="qAt">0</div><div class="qsl">Attempted</div></div>
+        </div>
+        <div id="qWrap"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 3: SUMMARY -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc3" onclick="togTab('summary',this)" id="pill-summary">
+      <div class="tpill-icon">🧾</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Chapter Summary</div>
+        <div class="tpill-title hi-s">Chapter Summary</div>
+        <div class="tpill-sub en-s">Key points &amp; glossary</div>
+        <div class="tpill-sub hi-s">Mukhya baatein &amp; glossary</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-summary">
+      <div class="tc-inner">
+        <ul class="slist">
+          <li><span class="sch">🌍</span><span><span class="en-c"><b>India</b>, the seventh-largest country in the world, is often called a <b>subcontinent</b> because its physical features clearly separate it from the rest of Asia.</span><span class="hi-c"><b>Bharat</b> duniya ka saatvan sabse bada desh hai aur iske vishisht bhaugolik roop ke karan ise aksar <b>upmahadweep</b> kaha jata hai.</span></span></li>
+          <li><span class="sch">🧭</span><span><span class="en-c">India can be divided into <b>five major geographical regions</b>: the Himalayas, the Northern Plains, the Thar Desert, the Peninsular Plateau, and the Coastlines and Islands.</span><span class="hi-c">Bharat ko <b>paanch mukhya bhaugolik kshetron</b> mein baanta ja sakta hai: Himalaya, Uttar ke Maidan, Thar Marusthal, Dakshini Pathar aur Tatiya Kshetra tatha Dweep.</span></span></li>
+          <li><span class="sch">🏔️</span><span><span class="en-c"><b>The Himalayas</b> form a mighty wall about <b>2,500 km</b> long in the north and are divided into the <b>Himadri</b>, <b>Himachal</b>, and <b>Shivalik</b> ranges.</span><span class="hi-c"><b>Himalaya</b> uttar mein lagbhag <b>2,500 km</b> lambi vishal parvatmala hai, jise <b>Himadri</b>, <b>Himachal</b> aur <b>Shivalik</b> shreniyon mein baanta jata hai.</span></span></li>
+          <li><span class="sch">💧</span><span><span class="en-c">The Himalayas are called the <b>Water Tower of Asia</b> because they give rise to great rivers like the <b>Ganga</b>, <b>Indus</b>, and <b>Brahmaputra</b>.</span><span class="hi-c">Himalaya ko <b>Asia ka Water Tower</b> kaha jata hai kyunki yahin se <b>Ganga</b>, <b>Indus</b> aur <b>Brahmaputra</b> jaise bade nadi pranaliyon ka janm hota hai.</span></span></li>
+          <li><span class="sch">🌋</span><span><span class="en-c">These mountains were formed nearly <b>50 million years ago</b> when the Indian landmass, once part of <b>Gondwana</b>, collided with the Eurasian plate.</span><span class="hi-c">Ye parvat lagbhag <b>50 million varsh pehle</b> बने jab Bharat ka bhukhanda, jo kabhi <b>Gondwana</b> ka hissa tha, Eurasian plate se takraya.</span></span></li>
+          <li><span class="sch">❄️</span><span><span class="en-c"><b>Ladakh</b>, in the Himalayan region, is a <b>cold desert</b> or <b>moonland</b> with rocky surface, thin air, and sub-zero temperatures.</span><span class="hi-c"><b>Ladakh</b>, jo Himalayi kshetra mein hai, ek <b>cold desert</b> ya <b>moonland</b> hai jahan pathari bhoomi, patli hawa aur shunya se neeche tapman milta hai.</span></span></li>
+          <li><span class="sch">🌾</span><span><span class="en-c"><b>The Gangetic Plains</b> lie south of the Himalayas and are broad, level, and highly <b>fertile</b>, making them ideal for agriculture and dense settlement.</span><span class="hi-c"><b>Gangetic Plains</b> Himalaya ke dakshin mein sthit vistrit, samatal aur bahut <b>upjaau</b> maidan hain, isliye yah kheti aur ghaney basav ke liye upyukt hain.</span></span></li>
+          <li><span class="sch">🚉</span><span><span class="en-c">These plains are enriched by the river systems of the <b>Ganga</b>, <b>Indus</b>, and <b>Brahmaputra</b>, and their flat surface supports extensive <b>roads and railways</b>.</span><span class="hi-c">In maidano ko <b>Ganga</b>, <b>Indus</b> aur <b>Brahmaputra</b> nadi pranaliyon ne samriddh banaya hai, aur yahan ki samatal bhoomi ne vistrit <b>sadak aur rail</b> jaldharon ko sambhav banaya hai.</span></span></li>
+          <li><span class="sch">🏜️</span><span><span class="en-c"><b>The Great Indian Desert</b> or <b>Thar Desert</b> lies in western India, especially in Rajasthan and Gujarat, and is known for its golden sand dunes and dry climate.</span><span class="hi-c"><b>Great Indian Desert</b> ya <b>Thar Desert</b> Bharat ke paschimi bhaag mein, visheshkar Rajasthan aur Gujarat mein, sthit hai aur apni sunehri ret ke teelon aur shushk jalvayu ke liye jana jata hai.</span></span></li>
+          <li><span class="sch">💦</span><span><span class="en-c">People in the Thar Desert survive by using traditional water conservation methods such as <b>taanka</b> and <b>kunds</b>.</span><span class="hi-c">Thar ke log paani ki kami se nipatne ke liye <b>taanka</b> aur <b>kund</b> jaise paramparik jal sanrakshan upaayon ka upyog karte hain.</span></span></li>
+          <li><span class="sch">⛰️</span><span><span class="en-c"><b>The Aravalli Hills</b>, among the oldest mountain ranges in the world, act as a natural barrier and help check the eastward spread of the desert.</span><span class="hi-c"><b>Aravalli Pahadiyan</b>, jo duniya ki sabse prachin parvatmalaon mein se ek hain, prakritik avrodh ka kaam karti hain aur marusthal ke poorv ki ओर prasaar ko rokne mein madad karti hain.</span></span></li>
+          <li><span class="sch">🪨</span><span><span class="en-c"><b>The Peninsular Plateau</b> is a triangular landmass in central and southern India, surrounded by water on three sides and rich in rocks and minerals.</span><span class="hi-c"><b>Peninsular Plateau</b> Bharat ke madhya aur dakshini bhaag ka trikoniya bhukhanda hai, jo teen ओर se jal se ghira hai aur patharon tatha khanijo se samriddh hai.</span></span></li>
+          <li><span class="sch">🌄</span><span><span class="en-c">Its largest part is the <b>Deccan Plateau</b>, lying between the <b>Western Ghats</b> and <b>Eastern Ghats</b>. The Western Ghats are taller and more continuous, while the Eastern Ghats are lower and broken.</span><span class="hi-c">Iska sabse bada hissa <b>Deccan Plateau</b> hai, jo <b>Western Ghats</b> aur <b>Eastern Ghats</b> ke beech sthit hai. Western Ghats unche aur lagatar hain, jabki Eastern Ghats neeche aur tukdon mein bante hue hain.</span></span></li>
+          <li><span class="sch">🌊</span><span><span class="en-c">Rivers like the <b>Godavari</b> and <b>Krishna</b> flow eastward into the <b>Bay of Bengal</b>, while the <b>Narmada</b> and <b>Tapti</b> flow westward into the <b>Arabian Sea</b>.</span><span class="hi-c"><b>Godavari</b> aur <b>Krishna</b> jaise nadiyan poorv ki ओर behkar <b>Bay of Bengal</b> mein girti hain, jabki <b>Narmada</b> aur <b>Tapti</b> paschim ki ओर behkar <b>Arabian Sea</b> mein milti hain.</span></span></li>
+          <li><span class="sch">🌴</span><span><span class="en-c">India has over <b>7,500 km of coastline</b>. The eastern coast has large fertile deltas, while the western coast has many estuaries.</span><span class="hi-c">Bharat ki tat rekha <b>7,500 km se adhik</b> lambi hai. Poorvi tat par bade aur upjaau delta milte hain, jabki paschimi tat par kai estuaries paayi jaati hain.</span></span></li>
+          <li><span class="sch">🏝️</span><span><span class="en-c"><b>Lakshadweep</b> consists of <b>36 coral islands</b> in the Arabian Sea, while the <b>Andaman and Nicobar Islands</b> are a group of more than <b>500 volcanic islands</b> in the Bay of Bengal.</span><span class="hi-c"><b>Lakshadweep</b> Arabian Sea mein स्थित <b>36 coral islands</b> ka samuh hai, jabki <b>Andaman and Nicobar Islands</b> Bay of Bengal mein sthit <b>500 se adhik jwalamukhi dweepon</b> ka samuh hain.</span></span></li>
+          <li><span class="sch">🌋</span><span><span class="en-c"><b>Barren Island</b> in the Andaman region has <b>India’s only active volcano</b>.</span><span class="hi-c">Andaman kshetra ka <b>Barren Island</b> <b>Bharat ka ekmatra sakriya jwalamukhi</b> rakhta hai.</span></span></li>
+        </ul>
+        <h3 style="margin:18px 0 10px;font-size:.95rem;color:#0f172a">📚 <span class="en-s">Glossary</span><span class="hi-s">Shabdaavali</span></h3>
+        <div class="ggrid">
+          <div class="gcard"><div class="gterm">Subcontinent</div><div class="gdef"><span class="en-s">A large distinct part of a continent with separate physical features.</span><span class="hi-s">Mahadweep ka bada aur alag bhaugolik hissa jiske apne vishesh prakritik lakshan hon.</span></div></div>
+          <div class="gcard"><div class="gterm">Himadri</div><div class="gdef"><span class="en-s">The highest and most northern range of the Himalayas.</span><span class="hi-s">Himalaya ki sabse unchi aur sabse uttari shreni.</span></div></div>
+          <div class="gcard"><div class="gterm">Himachal</div><div class="gdef"><span class="en-s">The middle Himalayan range, known for hill stations and valleys.</span><span class="hi-s">Madhya Himalayi shreni, jo hill stations aur ghatiyon ke liye prasiddh hai.</span></div></div>
+          <div class="gcard"><div class="gterm">Shivalik</div><div class="gdef"><span class="en-s">The outermost and lowest Himalayan range.</span><span class="hi-s">Himalaya ki sabse baahari aur sabse neeche wali shreni.</span></div></div>
+          <div class="gcard"><div class="gterm">Alluvial Soil</div><div class="gdef"><span class="en-s">Fertile soil deposited by rivers.</span><span class="hi-s">Nadiyon dwara jama ki gayi upjaau mitti.</span></div></div>
+          <div class="gcard"><div class="gterm">Taanka</div><div class="gdef"><span class="en-s">Traditional underground tank used to store rainwater in desert areas.</span><span class="hi-s">Marusthali kshetron mein varsha jal sangrah ke liye istemal hone wala paramparik bhugarbh tank.</span></div></div>
+          <div class="gcard"><div class="gterm">Deccan Plateau</div><div class="gdef"><span class="en-s">The largest part of the Peninsular Plateau in south India.</span><span class="hi-s">Dakshin Bharat mein sthit Peninsular Plateau ka sabse bada hissa.</span></div></div>
+          <div class="gcard"><div class="gterm">Western Ghats</div><div class="gdef"><span class="en-s">The higher and more continuous mountain range along the western edge of the plateau.</span><span class="hi-s">Pathar ke paschimi kinaare ki unchi aur lagatar parvatmala.</span></div></div>
+          <div class="gcard"><div class="gterm">Eastern Ghats</div><div class="gdef"><span class="en-s">The lower and broken mountain range along the eastern side of the plateau.</span><span class="hi-s">Pathar ke poorvi bhaag ki neeche aur टूटी हुई parvatmala.</span></div></div>
+          <div class="gcard"><div class="gterm">Delta</div><div class="gdef"><span class="en-s">A triangular fertile landform formed at the mouth of a river.</span><span class="hi-s">Nadi ke मुहाने par bani trikoniya upjaau bhoo-akar.</span></div></div>
+          <div class="gcard"><div class="gterm">Estuary</div><div class="gdef"><span class="en-s">The tidal mouth of a river where freshwater meets seawater.</span><span class="hi-s">Nadi ka ज्वारीय मुहाना jahan meetha paani samudri paani se milta hai.</span></div></div>
+          <div class="gcard"><div class="gterm">Coral Island</div><div class="gdef"><span class="en-s">An island formed by the accumulation of coral deposits.</span><span class="hi-s">Coral ke जमाव se bana dweep.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 4: EXAM -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc4" onclick="togTab('exam',this)" id="pill-exam">
+      <div class="tpill-icon">📝</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Chapter Examination</div>
+        <div class="tpill-title hi-s">Chapter Pariksha</div>
+        <div class="tpill-sub en-s">Full exam - 40 marks</div>
+        <div class="tpill-sub hi-s">Poora exam - 40 marks</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-exam">
+      <div class="tc-inner">
+        <div class="exh">
+          <div class="exs"><div class="ev">⏱️45min</div><div class="el"><span class="en-s">Time</span><span class="hi-s">Samay</span></div></div>
+          <div class="exs"><div class="ev">40</div><div class="el"><span class="en-s">Marks</span><span class="hi-s">Marks</span></div></div>
+        </div>
+        <div class="exsec">📘 <span class="en-s">MCQ - 1 mark - 6</span><span class="hi-s">Bahuvikalpiya - 1 mark - 6</span></div>
+        <div id="exWrap"></div>
+        <div class="exsec">✍️ <span class="en-s">Short Answer - 2 marks - 5</span><span class="hi-s">Laghu Uttar - 2 marks - 5</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><b style="color:#2563eb;font-size:.84rem">Q7.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Name the three Himalayan ranges from north to south.</span><span class="hi-s">Uttar se dakshin kram mein Himalaya ki teen shreniyon ke naam likho.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s"><b>Himadri</b> (Greater Himalaya), <b>Himachal</b> (Lesser Himalaya), and <b>Shivalik</b> (Outer Himalaya).</span><span class="hi-s"><b>Himadri</b> (Greater Himalaya), <b>Himachal</b> (Lesser Himalaya), aur <b>Shivalik</b> (Outer Himalaya).</span></div></div></div>
+          <div><b style="color:#2563eb;font-size:.84rem">Q8.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Why are the Northern Plains densely populated?</span><span class="hi-s">Uttari maidanon mein ghanatva se jansankhya kyun payi jati hai?</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">They are <b>flat and fertile</b> due to alluvial deposits and have abundant water from major rivers, making farming, transport, and settlement easier.</span><span class="hi-s">Yeh maidan <b>samatal aur upjaau</b> hain (alluvial mitti ke karan), nadiyon ka paani milta hai, isliye kheti, yatra aur basna asaan hota hai.</span></div></div></div>
+          <div><b style="color:#2563eb;font-size:.84rem">Q9.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">How do people in the Thar Desert conserve water?</span><span class="hi-s">Thar marusthal mein log paani ka sanrakshan kaise karte hain?</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">They use traditional systems like <b>taanka</b> and <b>kunds</b> to store rainwater for dry months.</span><span class="hi-s">Woh paramparik pranaliyon jaise <b>taanka</b> aur <b>kund</b> ka upyog karke varsha jal sangrah karte hain.</span></div></div></div>
+          <div><b style="color:#2563eb;font-size:.84rem">Q10.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Write one difference between Western Ghats and Eastern Ghats.</span><span class="hi-s">Western Ghats aur Eastern Ghats mein ek antar likho.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">The <b>Western Ghats</b> are higher and more continuous, while the <b>Eastern Ghats</b> are lower and discontinuous (broken).</span><span class="hi-s"><b>Western Ghats</b> zyada unche aur lagatar hain, jabki <b>Eastern Ghats</b> tulanatmak roop se neeche aur toote hue hain.</span></div></div></div>
+          <div><b style="color:#2563eb;font-size:.84rem">Q11.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Name two island groups of India and one special feature of each.</span><span class="hi-s">Bharat ke do dweep samuhon ke naam likho aur har ek ki ek visheshta batao.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s"><b>Lakshadweep</b>: coral islands in the Arabian Sea. <b>Andaman and Nicobar</b>: volcanic island chain with India\'s only active volcano at Barren Island.</span><span class="hi-s"><b>Lakshadweep</b>: Arabian Sea mein coral dweep. <b>Andaman-Nicobar</b>: volcanic dweep samuh jahan Barren Island par Bharat ka active volcano milta hai.</span></div></div></div>
+        </div>
+        <div class="exsec">🧠 <span class="en-s">Long Answer - 5 marks - 3</span><span class="hi-s">Deergha Uttar - 5 marks - 3</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><b style="color:#f97316;font-size:.84rem">Q12.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Explain why the Himalayas are important for India\'s climate, rivers, and life.</span><span class="hi-s">Batayein ki Himalaya Bharat ke jalvayu, nadiyon aur jeevan ke liye kyon mahatvapurn hain.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">The Himalayas act as a climatic barrier by blocking cold winds from Central Asia. They also intercept monsoon winds and help bring rainfall. Snow and glaciers in the Himalayas feed perennial rivers such as the Ganga, Indus, and Brahmaputra, so they are called the <b>Water Tower of Asia</b>. These rivers support farming, drinking water, transport, and hydropower for millions of people.</span><span class="hi-s">Himalaya jalvayuyik avrodh ka kaam karte hain aur Central Asia ki thandi havaon ko rokne mein madad karte hain. Yeh monsoon havaon ko rok kar varsha mein bhi yogdan dete hain. Himalaya ki barf aur glaciers se Ganga, Indus aur Brahmaputra jaise sadabahaar nadi pranaliyan nikalti hain, isliye inhe <b>Water Tower of Asia</b> kaha jata hai. Yeh nadiyan kheti, peene ka paani, parivahan aur jal-vidyut ke liye bahut mahatvapurn hain.</span></div></div></div>
+          <div><b style="color:#f97316;font-size:.84rem">Q13.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Describe the Peninsular Plateau and explain the drainage pattern of its major rivers.</span><span class="hi-s">Peninsular Plateau ka varnan kijiye aur uski mukhya nadiyon ke pravah pattern ko samjhaiye.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">The Peninsular Plateau is an ancient triangular landmass in central and southern India, rich in minerals and hard rocks. Its largest part is the Deccan Plateau, lying between the Western and Eastern Ghats. River flow depends on slope: <b>Godavari and Krishna</b> flow eastward into the Bay of Bengal, while <b>Narmada and Tapti</b> flow westward into the Arabian Sea. This drainage pattern shapes agriculture, settlements, and water use in the region.</span><span class="hi-s">Peninsular Plateau Bharat ke madhya aur dakshini bhaag ka prachin trikoniya bhukhanda hai jo khanijo aur kathor patharon se samriddh hai. Iska sabse bada hissa Deccan Plateau hai, jo Western aur Eastern Ghats ke beech sthit hai. Nadiyon ka pravah dhalan par nirbhar karta hai: <b>Godavari aur Krishna</b> poorv ki or Bay of Bengal mein girti hain, jabki <b>Narmada aur Tapti</b> paschim ki or Arabian Sea mein milti hain. Yeh pravah pattern kheti, basav aur jal upyog ko prabhavit karta hai.</span></div></div></div>
+          <div><b style="color:#f97316;font-size:.84rem">Q14.</b> <span style="font-size:.84rem;color:#475569"><span class="en-s">Compare India\'s coastal and island regions with suitable examples.</span><span class="hi-s">Uchit udaharanon ke saath Bharat ke tatiya aur dweepee kshetron ka tulnatmak varnan kijiye.</span></span>
+            <div class="acc" style="margin-top:5px"><div class="aq" onclick="ta(this)"><span>✅ <span class="en-s">Answer</span><span class="hi-s">Jawab</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">India has over <b>7,500 km</b> of coastline. The eastern coast is known for broad deltas formed by major rivers, while the western coast has many estuaries and narrower plains. India has two major island groups: <b>Lakshadweep</b> (coral islands in the Arabian Sea) and <b>Andaman and Nicobar</b> (largely volcanic islands in the Bay of Bengal). Barren Island in Andaman has India\'s only active volcano, making the island region geologically important.</span><span class="hi-s">Bharat ki tat rekha <b>7,500 km se adhik</b> hai. Poorvi tat par bade-bade delta milte hain jo nadiyon dwara bane hain, jabki paschimi tat par estuaries aur tulanatmak roop se sankre maidan paye jaate hain. Bharat ke do mukhya dweep samuh hain: <b>Lakshadweep</b> (Arabian Sea ke coral islands) aur <b>Andaman-Nicobar</b> (Bay of Bengal ke adhiktar volcanic islands). Andaman ka Barren Island Bharat ka ekmatra active volcano rakhta hai, isliye dweepee kshetra bhugol aur bhugharbik drishtikon se bahut mahatvapurn hai.</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 5: NCERT SOLUTIONS -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc5" onclick="togTab('ncert',this)" id="pill-ncert">
+      <div class="tpill-icon">📚</div>
+      <div class="tpill-txt">
+        <div class="tpill-title">NCERT Solutions</div>
+        <div class="tpill-sub en-s">All NCERT questions with full solutions</div>
+        <div class="tpill-sub hi-s">Saare NCERT sawalon ke saath solutions</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-ncert">
+      <div class="tc-inner">
+        <div class="nsec">
+          <div class="nsec-h">🏔️ <span class="en-s">Let's Explore - Major Physical Regions</span><span class="hi-s">Let\'s Explore - Mukhya Bhaugolik Kshetra</span></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. Why is India called a subcontinent?</span><span class="hi-s">Q. Bharat ko upmahadweep kyun kaha jata hai?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">India is called a subcontinent because of its large size and distinct physical divisions like the Himalayas, plains, deserts, plateau, and islands.</span><span class="hi-s">Bharat ko upmahadweep isliye kaha jata hai kyunki iska akar bada hai aur isme Himalaya, maidan, marusthal, pathar aur dweep jaise alag-alag bhaugolik vibhag milte hain.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. Name the three Himalayan ranges.</span><span class="hi-s">Q. Himalaya ki teen mukhya shreniyan kaun si hain?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s"><b>Himadri</b> (Greater Himalaya), <b>Himachal</b> (Lesser Himalaya), and <b>Shivalik</b> (Outer Himalaya).</span><span class="hi-s"><b>Himadri</b> (Greater Himalaya), <b>Himachal</b> (Lesser Himalaya), aur <b>Shivalik</b> (Outer Himalaya).</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. Why are the Himalayas called the Water Tower of Asia?</span><span class="hi-s">Q. Himalaya ko Water Tower of Asia kyun kaha jata hai?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">Because many major rivers such as the Ganga, Indus, and Brahmaputra originate from Himalayan glaciers and snowfields.</span><span class="hi-s">Kyunki Ganga, Indus aur Brahmaputra jaise bade nadi pranaliyon ka udgam Himalayi barf aur himnadiyon se hota hai.</span></div></div>
+        </div>
+        <div class="nsec">
+          <div class="nsec-h">🌾 <span class="en-s">Let's Explore - Plains, Desert and Plateau</span><span class="hi-s">Let\'s Explore - Maidan, Marusthal aur Pathar</span></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. Why are the Northern Plains very fertile?</span><span class="hi-s">Q. Uttari maidan bahut upjaau kyun hain?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">They are formed by rich alluvial deposits brought by rivers like the Ganga, Indus, and Brahmaputra.</span><span class="hi-s">Yeh Ganga, Indus aur Brahmaputra jaise nadiyon dwara laayi gayi alluvial mitti ke jamav se bane hain, isliye bahut upjaau hain.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. How do people adapt to life in the Thar Desert?</span><span class="hi-s">Q. Thar marusthal mein log jeevan ke liye kaise anukoolan karte hain?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">They conserve water through traditional systems like <b>taanka</b> and <b>kunds</b>, and follow drought-resilient lifestyles.</span><span class="hi-s">Woh <b>taanka</b> aur <b>kund</b> jaise paramparik jal-sangrah upaayon ka upyog karte hain aur sukha-pratirodhi jeevan shailee apnate hain.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q. Differentiate between west-flowing and east-flowing plateau rivers with examples.</span><span class="hi-s">Q. Pathari nadiyon mein paschim aur poorv ki or behne wali nadiyon ka antar udaharan sahit bataiye.</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s"><b>East-flowing:</b> Godavari, Krishna (into Bay of Bengal). <b>West-flowing:</b> Narmada, Tapti (into Arabian Sea).</span><span class="hi-s"><b>Poorvabhimukh:</b> Godavari, Krishna (Bay of Bengal mein). <b>Paschimabhimukh:</b> Narmada, Tapti (Arabian Sea mein).</span></div></div>
+        </div>
+        <div class="nsec">
+          <div class="nsec-h">🏝️ <span class="en-s">Questions, Activities &amp; Projects - Coasts and Islands</span><span class="hi-s">Sawal, Gatividhiyan aur Projects - Tat aur Dweep</span></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q1. Mention two features of India\'s eastern coast.</span><span class="hi-s">Q1. Bharat ke poorvi tat ki do visheshtayen likhiye.</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">The eastern coast has broad coastal plains and large fertile deltas formed by rivers like the Mahanadi, Godavari, Krishna, and Kaveri.</span><span class="hi-s">Poorvi tat par vistrit tatiya maidan aur Mahanadi, Godavari, Krishna, Kaveri dwara bane bade upjaau delta milte hain.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q2. Compare Lakshadweep with Andaman and Nicobar Islands.</span><span class="hi-s">Q2. Lakshadweep aur Andaman-Nicobar dweepon ka tulnatmak varnan kijiye.</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s"><b>Lakshadweep</b> has small coral islands in the Arabian Sea. <b>Andaman and Nicobar</b> are larger island groups in the Bay of Bengal, mostly of volcanic origin.</span><span class="hi-s"><b>Lakshadweep</b> Arabian Sea ke chhote coral dweepon ka samuh hai. <b>Andaman-Nicobar</b> Bay of Bengal mein sthit bade dweep samuh hain, jo adhiktar volcanic mool ke hain.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q3. Where is India\'s only active volcano located?</span><span class="hi-s">Q3. Bharat ka ekmatra active volcano kahan sthit hai?</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">India\'s only active volcano is located on <b>Barren Island</b> in the Andaman region.</span><span class="hi-s">Bharat ka ekmatra active volcano Andaman kshetra ke <b>Barren Island</b> par sthit hai.</span></div></div>
+          <div class="acc"><div class="aq" onclick="ta(this)"><span><span class="en-s">Q4. Project: Prepare a chart of India\'s five physical divisions with one key fact each.</span><span class="hi-s">Q4. Project: Bharat ke paanch bhaugolik vibhagon ka chart banayein, har ek ki ek mukhya baat ke saath.</span></span><span class="ar">?</span></div><div class="aa"><span class="en-s">Suggested chart: Himalayas (young fold mountains), Northern Plains (alluvial fertility), Thar Desert (water conservation), Peninsular Plateau (mineral-rich old landmass), Coasts &amp; Islands (deltas, estuaries, coral/volcanic islands).</span><span class="hi-s">Sujhawit chart: Himalaya (young fold mountains), Uttari Maidan (alluvial upjaau mitti), Thar Marusthal (jal sanrakshan), Peninsular Plateau (khanij-samriddh prachin bhukhanda), Tat aur Dweep (delta, estuary, coral/volcanic islands).</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 6: ACTIVITIES -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc7" onclick="togTab('activities',this)" id="pill-activities">
+      <div class="tpill-icon">🎮</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Learn &amp; Fun Activities</div>
+        <div class="tpill-title hi-s">Seekho aur Khelo</div>
+        <div class="tpill-sub en-s">Games, puzzles &amp; interactive fun!</div>
+        <div class="tpill-sub hi-s">Games, puzzles aur maza!</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-activities">
+      <div class="tc-inner">
+        <div class="acard">
+          <h3>🧩 <span class="en-s">Activity 1 - Landform Match-Up</span><span class="hi-s">Activity 1 - Landform Match-Up</span></h3>
+          <p style="font-size:.82rem;color:#64748b;margin-bottom:10px"><span class="en-s">Match each Indian landform with its correct clue.</span><span class="hi-s">Har landform ko uski sahi clue se match karo.</span></p>
+          <div id="geoMatchArea" style="display:grid;grid-template-columns:1fr 1fr;gap:7px;max-width:460px"></div>
+          <button onclick="initGeoMatch()" style="margin-top:9px;background:#f8fafc;border:1px solid #e2e8f0;color:#64748b;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.76rem"><span class="en-s">New Match 🎲</span><span class="hi-s">Naya Match 🎲</span></button>
+          <div id="geoMatchMsg" class="mini-note"></div>
+        </div>
+        <div class="acard">
+          <h3>🌊 <span class="en-s">Activity 2 - River Flow Challenge</span><span class="hi-s">Activity 2 - River Flow Challenge</span></h3>
+          <p style="font-size:.82rem;color:#64748b;margin-bottom:10px"><span class="en-s">Choose where each river flows.</span><span class="hi-s">Har nadi kis taraf behati hai, sahi option chuno.</span></p>
+          <div id="riverFlowArea" class="flow-list"></div>
+          <button onclick="initRiverFlow()" style="margin-top:9px;background:#f8fafc;border:1px solid #e2e8f0;color:#64748b;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.76rem"><span class="en-s">Retry Challenge 🔁</span><span class="hi-s">Phir se Try 🔁</span></button>
+        </div>
+        <div class="acard">
+          <h3>🗺️ <span class="en-s">Activity 3 - Region Explorer</span><span class="hi-s">Activity 3 - Region Explorer</span></h3>
+          <p style="font-size:.82rem;color:#64748b;margin-bottom:10px"><span class="en-s">Tap a region to reveal its key feature.</span><span class="hi-s">Kisi region par click karke uski khaas baat dekho.</span></p>
+          <div class="geo-chip-row" id="regionChipRow">
+            <button class="geo-chip" type="button" data-region="himalayas" onclick="showRegionFact('himalayas',this)">Himalayas</button>
+            <button class="geo-chip" type="button" data-region="ladakh" onclick="showRegionFact('ladakh',this)">Ladakh</button>
+            <button class="geo-chip" type="button" data-region="plains" onclick="showRegionFact('plains',this)">Gangetic Plains</button>
+            <button class="geo-chip" type="button" data-region="thar" onclick="showRegionFact('thar',this)">Thar Desert</button>
+            <button class="geo-chip" type="button" data-region="plateau" onclick="showRegionFact('plateau',this)">Peninsular Plateau</button>
+            <button class="geo-chip" type="button" data-region="islands" onclick="showRegionFact('islands',this)">Islands</button>
+            <button class="geo-chip" type="button" data-region="sundarbans" onclick="showRegionFact('sundarbans',this)">Sundarbans</button>
+            <button class="geo-chip" type="button" data-region="northeast" onclick="showRegionFact('northeast',this)">Northeast Hills</button>
+          </div>
+          <div id="regionFactBox" class="geo-fact-box">Choose a region to explore India’s geographical diversity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 8: FLASH CARDS -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc8" style="background:linear-gradient(150deg,#818cf8,#6366f1,#4338ca)" onclick="togTab('flashcards',this)" id="pill-flashcards">
+      <div class="tpill-icon">🗂️</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Flash Cards</div>
+        <div class="tpill-title hi-s">Flash Cards</div>
+        <div class="tpill-sub en-s">Revise key concepts in a fun way!</div>
+        <div class="tpill-sub hi-s">Maza ke saath key points revise karo!</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-flashcards">
+      <div class="tc-inner">
+        <!-- Progress Bar -->
+        <div class="fc-progress">
+          <div class="fc-prog-txt" id="fcProgressTxt">0 out of 0 cards revised</div>
+          <div class="fc-prog-bar"><div class="fc-prog-fill" id="fcProgFill" style="width:0%"></div></div>
+          <div class="fc-status-row">
+            <span class="fc-spill easy">✅ Easy: <span id="fcEasyCount">0</span></span>
+            <span class="fc-spill need">🔁 Need Revision: <span id="fcNeedCount">0</span></span>
+            <span class="fc-spill mast">🏆 Mastered: <span id="fcMastCount">0</span></span>
+          </div>
+        </div>
+
+        <!-- Card Counter -->
+        <div class="fc-counter">Card <span id="fcCurrent">1</span> / <span id="fcTotal">12</span></div>
+
+        <!-- Flash Card -->
+        <div class="fc-wrap" id="fcWrap" onclick="flipCard()">
+          <div class="fc-inner" id="fcInner">
+            <div class="fc-front" id="fcFront">
+              <div class="fc-label">❓ Question</div>
+              <div class="fc-q" id="fcQuestion">Loading...</div>
+              <div class="fc-hint">🔄 Click to flip card</div>
+            </div>
+            <div class="fc-back" id="fcBack">
+              <div class="fc-label">✅ Answer</div>
+              <div class="fc-a" id="fcAnswer">Loading...</div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-tap-hint">💡 Click the card to flip, or use the buttons below</div>
+
+        <!-- Navigation Controls -->
+        <div class="fc-controls">
+          <button class="fcbtn prev" onclick="fcNav(-1)">◀ Previous</button>
+          <button class="fcbtn shuf" onclick="fcShuffle()">🔀 Shuffle</button>
+          <button class="fcbtn nxt" onclick="fcNav(1)">Next ▶</button>
+        </div>
+
+        <!-- Status Buttons -->
+        <div class="fc-controls">
+          <button class="fcbtn need" onclick="fcMark('need')">🔁 Need Revision</button>
+          <button class="fcbtn mast" onclick="fcMark('mast')">🏆 Mastered!</button>
+        </div>
+
+        <!-- Reset -->
+        <div style="text-align:center;margin-top:6px">
+          <button onclick="fcReset()" style="background:#f1f5f9;border:1.5px solid #e2e8f0;color:#64748b;padding:6px 16px;border-radius:20px;cursor:pointer;font-size:.76rem;font-weight:600">♻ Reset All Cards</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- -- TAB 9: DEBATE WITH AI -- -->
+  <div class="tab-wrap">
+    <button class="tab-pill tc9" style="background:linear-gradient(150deg,#f472b6,#ec4899,#be185d)" onclick="togTab('debate',this)" id="pill-debate">
+      <div class="tpill-icon">🤖</div>
+      <div class="tpill-txt">
+        <div class="tpill-title en-s">Debate with AI</div>
+        <div class="tpill-title hi-s">AI ke saath debate</div>
+        <div class="tpill-sub en-s">Ask, debate, and revise Chapter 1 with AI</div>
+        <div class="tpill-sub hi-s">AI ke saath Chapter 1 revise karo</div>
+      </div>
+      <div class="tpill-arr">▶</div>
+    </button>
+    <div class="tab-content" id="cnt-debate">
+      <div class="tc-inner">
+        <div style="background:linear-gradient(135deg,#fdf4ff,#fce7f3);border:2px solid #f9a8d4;border-radius:14px;padding:14px 16px;margin-bottom:18px">
+          <div style="font-size:.9rem;font-weight:700;color:#be185d;margin-bottom:5px">🤖 Geographical Diversity AI Chatbot</div>
+          <div style="font-size:.82rem;color:#9d174d;line-height:1.6">Ask doubts, share your view, or test your understanding of Himalayas, deserts, plains, plateaus, coasts, islands, and more.</div>
+        </div>
+
+        <div class="debate-topic-badge">Chapter Focus: Geographical Diversity of India</div>
+
+        <div class="debate-btn-row" style="margin-bottom:12px">
+          <button class="dbtn dreset" onclick="askGeoPrompt('Why are the Himalayas important for India?')">Himalayas</button>
+          <button class="dbtn dreset" onclick="askGeoPrompt('How is Ladakh different from the Thar Desert?')">Ladakh vs Thar</button>
+          <button class="dbtn dreset" onclick="askGeoPrompt('Why are the Gangetic Plains densely populated?')">Gangetic Plains</button>
+          <button class="dbtn dreset" onclick="askGeoPrompt('How do coastlines and islands help India?')">Coasts & Islands</button>
+        </div>
+
+        <div class="debate-arena open" id="debateArena" style="display:block">
+          <div class="ai-response-wrap show" id="aiResponseWrap">
+            <div id="aiConversation">
+              <div class="ai-bubble">
+                <div class="ai-name">AI Geography Buddy</div>
+                <div class="ai-txt">Namaste! I am your Geography Buddy. Ask me anything about Chapter 1: Geographical Diversity of India.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="debate-input-area" style="margin-top:12px">
+            <label>Type your question or opinion:</label>
+            <textarea class="debate-textarea" id="debateInput" placeholder="Example: Why is the Gangetic Plain very fertile?" rows="3"></textarea>
+          </div>
+
+          <div class="debate-btn-row">
+            <button class="dbtn submit" onclick="sendDebateMessage()">Send to AI</button>
+            <button class="dbtn dreset" onclick="clearDebateChat()">Clear Chat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer style="position:relative;z-index:1;background:rgba(255,255,255,.9);border-top:1px solid #e2e8f0;padding:12px 20px;text-align:center;font-size:.72rem;color:#94a3b8">
+  <strong style="color:#0d9488">OMNIGRID</strong> - Class 7 - Social Science - Chapter 1 - NCERT "Exploring Society: India and Beyond"
+</footer>
+
+<script>
+// -- LANG --
+function setLang(l){
+  document.body.className=l;
+  document.getElementById('lEn').className='lbtn'+(l==='en'?' on':'');
+  document.getElementById('lHi').className='lbtn'+(l==='hi'?' on':'');
+  setTimeout(()=>{buildQuiz();buildExam();initM();},30);
+}
+
+const ACTIVE_TAB_KEY='omni_active_tab';
+function openTabById(id,btn,shouldScroll){
+  const cnt=document.getElementById('cnt-'+id);
+  if(!cnt||!btn)return;
+
+  // Keep tabs independent: exactly one open at a time.
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('open'));
+  document.querySelectorAll('.tab-pill').forEach(p=>p.classList.remove('open'));
+
+  cnt.classList.add('open');
+  btn.classList.add('open');
+  localStorage.setItem(ACTIVE_TAB_KEY,id);
+
+  // Init Read tab section panel state when first opened.
+  if(id==='read'){
+    document.querySelectorAll('[id^="sp-s"]').forEach(s=>s.classList.remove('on'));
+    document.getElementById('sp-s1').classList.add('on');
+    document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on'));
+    document.querySelector('.stab').classList.add('on');
+  }
+
+  if(shouldScroll){
+    setTimeout(()=>btn.scrollIntoView({behavior:'smooth',block:'start'}),50);
+  }
+}
+
+// -- BACK BUTTON INJECT --
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.tc-inner').forEach(function(inner){
+    const wrap=document.createElement('div');
+    wrap.className='back-btn-wrap';
+    const btn=document.createElement('button');
+    btn.className='back-btn';
+    btn.innerHTML='<span class="back-arrow">←</span> Back to Tabs';
+    btn.setAttribute('aria-label','Close this tab');
+    btn.onclick=function(){
+      const content=inner.closest('.tab-content');
+      if(!content)return;
+      const pill=content.previousElementSibling;
+      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('open'));
+      document.querySelectorAll('.tab-pill').forEach(p=>p.classList.remove('open'));
+      localStorage.removeItem(ACTIVE_TAB_KEY);
+      if(pill)pill.scrollIntoView({behavior:'smooth',block:'center'});
+    };
+    wrap.appendChild(btn);
+    inner.insertBefore(wrap,inner.firstChild);
+  });
+
+  // Persist open tab across reload; only Back button clears it.
+  const savedTab=localStorage.getItem(ACTIVE_TAB_KEY);
+  if(savedTab){
+    const savedPill=document.getElementById('pill-'+savedTab);
+    if(savedPill)openTabById(savedTab,savedPill,false);
+  }
+});
+
+// -- TAB TOGGLE --
+function togTab(id,btn){
+  openTabById(id,btn,true);
+}
+
+// -- SECTION NAV --
+function goSec(id,btn){
+  document.querySelectorAll('[id^="sp-s"]').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('sp-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+// -- CITY --
+function ci(n,c,raw){
+  document.getElementById('cityBox').style.display='block';
+  document.getElementById('cN').textContent=n;
+  document.getElementById('cC').textContent=c;
+  const hi=document.body.className==='hi';
+  const p=raw.split('|');
+  document.getElementById('cF').textContent=hi&&p[1]?p[1].replace('Hi:','').trim():p[0].replace('En:','').trim();
+}
+
+// -- ACCORDION --
+function ta(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
+
+// -- QUIZ DATA --
+const QD=[
+  {en:'What is the approximate length of the Himalayan mountain range?',hi:'What is the approximate length of the Himalayan mountain range?',o:{en:['1,500 km','2,500 km','3,500 km','5,000 km'],hi:['1,500 km','2,500 km','3,500 km','5,000 km']},a:1,e:{en:'The Himalayan mountain range is about 2,500 km long.',hi:'The Himalayan mountain range is about 2,500 km long.'}},
+  {en:'Which part of the Himalayas is home to popular hill stations like Shimla?',hi:'Which part of the Himalayas is home to popular hill stations like Shimla?',o:{en:['Himadri','Shivalik','Himachal','Purvanchal'],hi:['Himadri','Shivalik','Himachal','Purvanchal']},a:2,e:{en:'Himachal or the Lower Himalayas include hill stations like Shimla and Mussoorie.',hi:'Himachal or the Lower Himalayas include hill stations like Shimla and Mussoorie.'}},
+  {en:'The Indian landmass was originally part of which ancient supercontinent?',hi:'The Indian landmass was originally part of which ancient supercontinent?',o:{en:['Eurasia','Tethys','Pangea','Gondwana'],hi:['Eurasia','Tethys','Pangea','Gondwana']},a:3,e:{en:'The Indian landmass was originally part of Gondwana.',hi:'The Indian landmass was originally part of Gondwana.'}},
+  {en:'Why is Ladakh often called "Moonland"?',hi:'Why is Ladakh often called "Moonland"?',o:{en:['It is very bright at night.','Its rugged, rocky terrain looks like the moon.','It has a very thin atmosphere.','It is only visible during the full moon.'],hi:['It is very bright at night.','Its rugged, rocky terrain looks like the moon.','It has a very thin atmosphere.','It is only visible during the full moon.']},a:1,e:{en:'Ladakh is called Moonland because its rugged rocky terrain resembles the moon.',hi:'Ladakh is called Moonland because its rugged rocky terrain resembles the moon.'}},
+  {en:'Which river system helps make the Gangetic Plains highly fertile?',hi:'Which river system helps make the Gangetic Plains highly fertile?',o:{en:['Narmada and Tapti','Godavari and Krishna','Indus, Ganga, and Brahmaputra','Kaveri and Mahanadi'],hi:['Narmada and Tapti','Godavari and Krishna','Indus, Ganga, and Brahmaputra','Kaveri and Mahanadi']},a:2,e:{en:'The Indus, Ganga, and Brahmaputra systems deposit fertile silt in the plains.',hi:'The Indus, Ganga, and Brahmaputra systems deposit fertile silt in the plains.'}},
+  {en:'Which mountain range prevents the Thar Desert from expanding eastward?',hi:'Which mountain range prevents the Thar Desert from expanding eastward?',o:{en:['The Himalayas','The Aravalli Hills','The Western Ghats','The Vindhya Range'],hi:['The Himalayas','The Aravalli Hills','The Western Ghats','The Vindhya Range']},a:1,e:{en:'The Aravalli Hills act as a barrier against the eastward spread of the desert.',hi:'The Aravalli Hills act as a barrier against the eastward spread of the desert.'}},
+  {en:'What is a "taanka" used for in the Thar Desert?',hi:'What is a "taanka" used for in the Thar Desert?',o:{en:['Cooking food','Storing rainwater','Housing livestock','Transporting goods'],hi:['Cooking food','Storing rainwater','Housing livestock','Transporting goods']},a:1,e:{en:'A taanka is a traditional system used to store rainwater.',hi:'A taanka is a traditional system used to store rainwater.'}},
+  {en:'Which side of the Peninsular Plateau is bordered by a tall, continuous "wall" of mountains?',hi:'Which side of the Peninsular Plateau is bordered by a tall, continuous "wall" of mountains?',o:{en:['The North','The East','The West (Western Ghats)','The South'],hi:['The North','The East','The West (Western Ghats)','The South']},a:2,e:{en:'The Western Ghats form the tall continuous wall on the western side.',hi:'The Western Ghats form the tall continuous wall on the western side.'}},
+  {en:'Most rivers in the Peninsular Plateau flow toward the east because:',hi:'Most rivers in the Peninsular Plateau flow toward the east because:',o:{en:['The plateau tilts to the east.','There is more rainfall in the east.','The Western Ghats are lower than the Eastern Ghats.','The Bay of Bengal pulls the water.'],hi:['The plateau tilts to the east.','There is more rainfall in the east.','The Western Ghats are lower than the Eastern Ghats.','The Bay of Bengal pulls the water.']},a:0,e:{en:'Most Peninsular rivers flow east because the plateau slopes eastward.',hi:'Most Peninsular rivers flow east because the plateau slopes eastward.'}},
+  {en:'How many islands make up the Lakshadweep archipelago?',hi:'How many islands make up the Lakshadweep archipelago?',o:{en:['10','36','100','500'],hi:['10','36','100','500']},a:1,e:{en:'Lakshadweep consists of 36 islands.',hi:'Lakshadweep consists of 36 islands.'}},
+  {en:'Where is India’s only active volcano located?',hi:'Where is India’s only active volcano located?',o:{en:['Mount Abu','Barren Island','Kanchenjunga','The Sundarbans'],hi:['Mount Abu','Barren Island','Kanchenjunga','The Sundarbans']},a:1,e:{en:'India’s only active volcano is on Barren Island.',hi:'India’s only active volcano is on Barren Island.'}},
+  {en:'What are the "living root bridges" of the Northeast made from?',hi:'What are the "living root bridges" of the Northeast made from?',o:{en:['Dried bamboo','Woven tree roots','Stone and wood','Recycled materials'],hi:['Dried bamboo','Woven tree roots','Stone and wood','Recycled materials']},a:1,e:{en:'Living root bridges are made from woven tree roots.',hi:'Living root bridges are made from woven tree roots.'}}
+];
+let sc=0,cc=0,wc=0,ac=0;
+function buildQuiz(){
+  const w=document.getElementById('qWrap');if(!w)return;w.innerHTML='';
+  const hi=document.body.className==='hi';
+  QD.forEach((q,i)=>{
+    const d=document.createElement('div');d.className='qcard';
+    const opts=hi?q.o.hi:q.o.en;
+    d.innerHTML=`<div class="qnum">QUESTION ${i+1} OF ${QD.length}</div>
+    <div class="qtxt">${hi?q.hi:q.en}</div>
+    <div class="qopts">${opts.map((o,j)=>`<button class="qopt" onclick="chk(this,${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div>
+    <div class="qfb" id="qf${i}"></div>`;
+    w.appendChild(d);
+  });
+}
+function chk(btn,qi,oi){
+  const hi=document.body.className==='hi';
+  const opts=btn.parentElement.querySelectorAll('.qopt');
+  if(btn.disabled)return;opts.forEach(o=>o.disabled=true);ac++;
+  const fb=document.getElementById('qf'+qi);
+  if(oi===QD[qi].a){btn.classList.add('ok');cc++;sc+=10;fb.textContent='? '+(hi?QD[qi].e.hi:QD[qi].e.en);fb.className='qfb show ok';}
+  else{btn.classList.add('no');opts[QD[qi].a].classList.add('ok');wc++;fb.textContent='? '+(hi?QD[qi].e.hi:QD[qi].e.en);fb.className='qfb show no';}
+  document.getElementById('qSc').textContent=sc;document.getElementById('qC').textContent=cc;document.getElementById('qW').textContent=wc;document.getElementById('qAt').textContent=ac;
+}
+
+// -- EXAM MCQs --
+const EQ=[
+  {en:'The Himalayas are popularly known as the:',hi:'Himalaya ko lokpriya roop se kya kaha jata hai?',o:{en:['Roof of Deccan','Water Tower of Asia','Coral Belt','Lava Mountains'],hi:['Roof of Deccan','Water Tower of Asia','Coral Belt','Lava Mountains']},a:1},
+  {en:'Ladakh is best described as a:',hi:'Ladakh ko sabse sahi roop mein kaise bataya jata hai?',o:{en:['Hot coastal plain','Cold desert','Delta region','Tropical rainforest'],hi:['Garam tatiya maidan','Cold desert','Delta kshetra','Tropical rainforest']},a:1},
+  {en:'Which river flows westward into the Arabian Sea?',hi:'Kaunsi nadi paschim ki or behkar Arabian Sea mein girti hai?',o:{en:['Godavari','Krishna','Narmada','Mahanadi'],hi:['Godavari','Krishna','Narmada','Mahanadi']},a:2},
+  {en:'The Thar Desert mainly lies in:',hi:'Thar Desert mukhyata kis rajya mein sthit hai?',o:{en:['Kerala','Rajasthan','Sikkim','Odisha'],hi:['Kerala','Rajasthan','Sikkim','Odisha']},a:1},
+  {en:'Lakshadweep islands are mostly:',hi:'Lakshadweep ke dweep adhiktar kis prakaar ke hain?',o:{en:['Volcanic islands','Coral islands','River islands','Glacial islands'],hi:['Volcanic islands','Coral islands','River islands','Glacial islands']},a:1},
+  {en:'India\'s only active volcano is on:',hi:'Bharat ka ekmatra active volcano kahan hai?',o:{en:['Majuli Island','Barren Island','Diu Island','Minicoy'],hi:['Majuli Island','Barren Island','Diu Island','Minicoy']},a:1}
+];
+function buildExam(){
+  const w=document.getElementById('exWrap');if(!w)return;w.innerHTML='';
+  const hi=document.body.className==='hi';
+  EQ.forEach((q,i)=>{
+    const d=document.createElement('div');d.className='qcard';
+    const opts=hi?q.o.hi:q.o.en;
+    d.innerHTML=`<div class="qnum">Q${i+1}. (1 Mark)</div>
+    <div class="qtxt">${hi?q.hi:q.en}</div>
+    <div class="qopts">${opts.map((o,j)=>`<button class="qopt" onclick="chkE(this,${i},${j},${q.a})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div>
+    <div class="qfb" id="ef${i}"></div>`;
+    w.appendChild(d);
+  });
+}
+function chkE(btn,qi,oi,ans){
+  const opts=btn.parentElement.querySelectorAll('.qopt');
+  if(btn.disabled)return;opts.forEach(o=>o.disabled=true);
+  const hi=document.body.className==='hi';
+  const fb=document.getElementById('ef'+qi);
+  if(oi===ans){btn.classList.add('ok');fb.textContent=hi?'? Sahi!':'? Correct!';fb.className='qfb show ok';}
+  else{btn.classList.add('no');opts[ans].classList.add('ok');fb.textContent=hi?'? Galat!':'? Wrong!';fb.className='qfb show no';}
+}
+
+// -- LEARN & FUN ACTIVITIES --
+const GEO_MATCH_DATA=[
+  {left:'Himalayas',right:'Highest young fold mountains and source of major rivers'},
+  {left:'Ladakh',right:'Cold desert known as Moonland'},
+  {left:'Gangetic Plains',right:'Fertile alluvial plains with dense population'},
+  {left:'Thar Desert',right:'Golden sand dunes, taankas, and dry climate'},
+  {left:'Peninsular Plateau',right:'Triangular plateau rich in minerals'},
+  {left:'Sundarbans',right:'Mangrove delta famous for the Royal Bengal Tiger'}
+];
+const RIVER_FLOW_DATA=[
+  {river:'Godavari',answer:'Bay of Bengal',fact:'Godavari flows eastward across the Peninsular Plateau.'},
+  {river:'Krishna',answer:'Bay of Bengal',fact:'Krishna also flows eastward into the Bay of Bengal.'},
+  {river:'Narmada',answer:'Arabian Sea',fact:'Narmada flows westward into the Arabian Sea.'},
+  {river:'Tapti',answer:'Arabian Sea',fact:'Tapti is another important west-flowing river.'}
+];
+const REGION_FACTS={
+  himalayas:'The Himalayas protect India from cold winds and feed rivers like the Ganga, Yamuna, and Brahmaputra.',
+  ladakh:'Ladakh is a high-altitude cold desert with rocky Moonland terrain, salt-water lakes, and Yak rearing.',
+  plains:'The Gangetic Plains are flat, fertile, and densely populated because rivers deposit rich alluvial soil here.',
+  thar:'The Thar Desert is known for sand dunes, water-saving systems like taanka, and the barrier role of the Aravalli Hills.',
+  plateau:'The Peninsular Plateau is an old triangular landmass bordered by the Western and Eastern Ghats and rich in minerals.',
+  islands:'Lakshadweep has coral islands, while Andaman and Nicobar are larger island groups in the Bay of Bengal.',
+  sundarbans:'The Sundarbans is the world\'s largest mangrove forest and a habitat of the Royal Bengal Tiger.',
+  northeast:'The Northeast Hills receive heavy rainfall and are famous for forests, tribal cultures, and living root bridges.'
+};
+let geoSel=null;
+function initGeoMatch(){
+  const area=document.getElementById('geoMatchArea');
+  const msg=document.getElementById('geoMatchMsg');
+  if(!area||!msg)return;
+  geoSel=null;
+  msg.textContent='';
+  const lefts=[...GEO_MATCH_DATA].map(item=>({text:item.left,key:item.left,type:'left'})).sort(()=>Math.random()-.5);
+  const rights=[...GEO_MATCH_DATA].map(item=>({text:item.right,key:item.left,type:'right'})).sort(()=>Math.random()-.5);
+  area.innerHTML='<div style="font-weight:700;color:#0d9488;text-align:center;font-size:.76rem;padding:4px">Landform</div><div style="font-weight:700;color:#f97316;text-align:center;font-size:.76rem;padding:4px">Clue</div>';
+  lefts.forEach(item=>{const d=document.createElement('div');d.className='dc';d.style.fontSize='.74rem';d.style.minHeight='42px';d.textContent=item.text;d.dataset.key=item.key;d.dataset.type='left';d.onclick=()=>pickGeoMatch(d);area.appendChild(d);});
+  rights.forEach(item=>{const d=document.createElement('div');d.className='dc';d.style.fontSize='.71rem';d.style.minHeight='42px';d.textContent=item.text;d.dataset.key=item.key;d.dataset.type='right';d.onclick=()=>pickGeoMatch(d);area.appendChild(d);});
+}
+function pickGeoMatch(el){
+  const msg=document.getElementById('geoMatchMsg');
+  if(el.classList.contains('ok'))return;
+  if(!geoSel){geoSel=el;el.style.outline='2px solid #0d9488';return;}
+  if(geoSel===el){geoSel.style.outline='';geoSel=null;return;}
+  if(geoSel.dataset.type===el.dataset.type){geoSel.style.outline='';geoSel=el;el.style.outline='2px solid #0d9488';return;}
+  const previous=geoSel;
+  const ok=previous.dataset.key===el.dataset.key;
+  previous.style.outline='';
+  if(ok){previous.classList.add('ok');el.classList.add('ok');msg.textContent='Correct match! Keep going.';}
+  else{
+    previous.style.background='#fee2e2';el.style.background='#fee2e2';msg.textContent='Not quite. Try another clue.';
+    setTimeout(()=>{previous.style.background='';el.style.background='';},800);
+  }
+  geoSel=null;
+}
+function initRiverFlow(){
+  const area=document.getElementById('riverFlowArea');
+  if(!area)return;
+  area.innerHTML='';
+  RIVER_FLOW_DATA.forEach((item,index)=>{
+    const card=document.createElement('div');
+    card.className='flow-card';
+    card.innerHTML=`<div class="flow-q">${index+1}. ${item.river} flows into:</div>
+      <div class="flow-btns">
+        <button class="flow-btn" onclick="answerRiverFlow(this,${index},'Bay of Bengal')">Bay of Bengal</button>
+        <button class="flow-btn" onclick="answerRiverFlow(this,${index},'Arabian Sea')">Arabian Sea</button>
+      </div>
+      <div class="mini-note" id="riverMsg${index}"></div>`;
+    area.appendChild(card);
+  });
+}
+function answerRiverFlow(btn,index,choice){
+  const card=btn.closest('.flow-card');
+  const buttons=card.querySelectorAll('.flow-btn');
+  const msg=document.getElementById('riverMsg'+index);
+  const item=RIVER_FLOW_DATA[index];
+  if(buttons[0].disabled)return;
+  buttons.forEach(button=>button.disabled=true);
+  if(choice===item.answer){
+    btn.classList.add('ok');
+    msg.textContent='Correct. '+item.fact;
+  }else{
+    btn.classList.add('no');
+    buttons.forEach(button=>{if(button.textContent===item.answer)button.classList.add('ok');});
+    msg.textContent='Answer: '+item.answer+'. '+item.fact;
+  }
+}
+function showRegionFact(key,btn){
+  const box=document.getElementById('regionFactBox');
+  if(!box)return;
+  box.textContent=REGION_FACTS[key]||'Choose a region to explore India\'s geographical diversity.';
+  document.querySelectorAll('#regionChipRow .geo-chip').forEach(chip=>chip.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  else{
+    const autoBtn=document.querySelector(`#regionChipRow .geo-chip[data-region="${key}"]`);
+    if(autoBtn)autoBtn.classList.add('active');
+  }
+}
+function initM(){
+  initGeoMatch();
+  initRiverFlow();
+  showRegionFact('himalayas');
+}
+
+
+// ----------------------------------
+// -- FLASH CARDS DATA & LOGIC --
+// ----------------------------------
+const FC_DATA = [
+  {q:'Why is India called a subcontinent?', a:'India is called a subcontinent because of its large size and distinct physical divisions: mountains, plains, desert, plateau, coastlines, and islands.'},
+  {q:'Name the three major Himalayan ranges in order.', a:'From north to south: Himadri (Greater Himalaya), Himachal (Lesser Himalaya), and Shivalik (Outer Himalaya).'},
+  {q:'Why are the Himalayas called the Water Tower of Asia?', a:'Snow and glaciers in the Himalayas feed major perennial rivers like the Ganga, Indus, and Brahmaputra.'},
+  {q:'How were the Himalayas formed?', a:'Around 50 million years ago, the Indian plate (once part of Gondwana) collided with the Eurasian plate and folded upward.'},
+  {q:'What is special about Ladakh in this chapter?', a:'Ladakh is a cold desert or moonland with high altitude, rocky terrain, very low rainfall, and sub-zero temperatures.'},
+  {q:'Why are the Northern Plains densely populated?', a:'They are flat, fertile, and watered by major rivers. This supports agriculture, transport networks, and large settlements.'},
+  {q:'How do people in the Thar Desert conserve water?', a:'Traditional methods like taanka and kunds store rainwater for use during dry periods.'},
+  {q:'What is the role of the Aravalli Hills near the Thar region?', a:'The Aravalli range acts as a natural barrier and helps limit the eastward expansion of the Thar Desert.'},
+  {q:'What are the main features of the Peninsular Plateau?', a:'It is an old triangular landmass rich in minerals, with the Deccan Plateau between the Western and Eastern Ghats.'},
+  {q:'How do Peninsular rivers flow differently?', a:'Godavari and Krishna flow eastward into the Bay of Bengal; Narmada and Tapti flow westward into the Arabian Sea.'},
+  {q:'How are India\'s east and west coasts different?', a:'The east coast has broad fertile deltas, while the west coast is narrower and has many estuaries.'},
+  {q:'What are the two major island groups of India?', a:'Lakshadweep (coral islands in the Arabian Sea) and Andaman-Nicobar (mostly volcanic islands in the Bay of Bengal, including active Barren Island).'},
+];
+
+let fcCards = [...FC_DATA];
+let fcIndex = 0;
+const fcStatus = new Array(FC_DATA.length).fill('none'); // none, need, mast
+
+function fcRender() {
+  const card = fcCards[fcIndex];
+  document.getElementById('fcQuestion').textContent = card.q;
+  document.getElementById('fcAnswer').textContent = card.a;
+  document.getElementById('fcCurrent').textContent = fcIndex + 1;
+  document.getElementById('fcTotal').textContent = fcCards.length;
+  // remove flip
+  document.getElementById('fcWrap').classList.remove('flipped');
+  fcUpdateProgress();
+}
+
+function flipCard() {
+  document.getElementById('fcWrap').classList.toggle('flipped');
+}
+
+function fcNav(dir) {
+  document.getElementById('fcWrap').classList.remove('flipped');
+  fcIndex = (fcIndex + dir + fcCards.length) % fcCards.length;
+  setTimeout(fcRender, 180);
+}
+
+function fcShuffle() {
+  for (let i = fcCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [fcCards[i], fcCards[j]] = [fcCards[j], fcCards[i]];
+  }
+  fcIndex = 0;
+  document.getElementById('fcWrap').classList.remove('flipped');
+  fcRender();
+}
+
+function fcMark(status) {
+  // find original index
+  const q = fcCards[fcIndex].q;
+  const oi = FC_DATA.findIndex(c => c.q === q);
+  if (oi >= 0) fcStatus[oi] = status;
+  fcUpdateProgress();
+  // auto advance
+  if (fcIndex < fcCards.length - 1) {
+    setTimeout(() => fcNav(1), 300);
+  }
+}
+
+function fcUpdateProgress() {
+  const mastered = fcStatus.filter(s => s === 'mast').length;
+  const need = fcStatus.filter(s => s === 'need').length;
+  const easy = fcStatus.filter(s => s === 'easy').length;
+  const done = mastered + need + easy;
+  const total = FC_DATA.length;
+  const hi=document.body.className==='hi';
+  document.getElementById('fcProgressTxt').textContent = hi
+    ? `${total} cards mein se ${done} revise ho chuke hain`
+    : `${done} out of ${total} cards revised`;
+  document.getElementById('fcProgFill').style.width = `${(done/total)*100}%`;
+  document.getElementById('fcEasyCount').textContent = easy;
+  document.getElementById('fcNeedCount').textContent = need;
+  document.getElementById('fcMastCount').textContent = mastered;
+}
+
+function fcReset() {
+  fcCards = [...FC_DATA];
+  fcIndex = 0;
+  fcStatus.fill('none');
+  document.getElementById('fcWrap').classList.remove('flipped');
+  fcRender();
+}
+
+// ----------------------------------
+// -- DEBATE WITH AI LOGIC --
+// ----------------------------------
+const GEO_AI_KB = [
+  {
+    keys: ['himalaya', 'himalayas', 'himadri', 'himachal', 'shivalik', 'mountain'],
+    answer: 'Great question. The Himalayas are a climate shield for India, block cold winds, and are the source region of major rivers like Ganga, Yamuna, and Brahmaputra. They also support biodiversity and tourism.',
+    ask: 'Can you name one way the Himalayas help farming in the plains?'
+  },
+  {
+    keys: ['ladakh', 'cold desert', 'frozen desert', 'karakoram'],
+    answer: 'Ladakh is a cold desert because rainfall is very low and altitude is very high. So, it has desert-like dryness but freezing winters. People adapt with yak rearing, terrace farming, and careful water use.',
+    ask: 'How is a cold desert different from a hot desert in daily life?'
+  },
+  {
+    keys: ['thar', 'hot desert', 'rajasthan', 'sand dune', 'camel'],
+    answer: 'The Thar Desert is hot, dry, and sandy, mainly in Rajasthan. Rainfall is low, vegetation is sparse, and people use traditional water storage systems. Camels are important for transport and livelihood.',
+    ask: 'Why do you think water conservation is essential in the Thar region?'
+  },
+  {
+    keys: ['gangetic', 'ganga plain', 'plain', 'alluvial', 'fertile', 'population'],
+    answer: 'The Gangetic Plains are very fertile because rivers deposit alluvial soil every year. Flat land, water availability, and fertile soil support agriculture and dense population.',
+    ask: 'Which crops are commonly grown in the Gangetic Plains?'
+  },
+  {
+    keys: ['aravalli', 'old mountain', 'desert wind'],
+    answer: 'The Aravalli range is one of the oldest mountain systems in the world. Even though heavily eroded, it still acts as a barrier and helps reduce the spread of desert conditions eastward.',
+    ask: 'What could happen if this natural barrier was completely lost?'
+  },
+  {
+    keys: ['plateau', 'deccan', 'peninsular'],
+    answer: 'The Peninsular Plateau is an ancient landmass with hard rocks and rich minerals. It is important for mining and supports black soil regions where crops like cotton are grown.',
+    ask: 'Can you connect mineral resources of the plateau with industries?'
+  },
+  {
+    keys: ['coast', 'coastline', 'western coast', 'eastern coast', 'port', 'fishing'],
+    answer: 'India has long coastlines that support fishing, ports, and maritime trade. Coastal plains also influence local climate and settlement patterns.',
+    ask: 'Why are ports usually located on coasts, not in mountain regions?'
+  },
+  {
+    keys: ['island', 'andaman', 'nicobar', 'lakshadweep', 'coral'],
+    answer: 'India has two major island groups: Andaman and Nicobar in the Bay of Bengal, and Lakshadweep in the Arabian Sea. They are ecologically sensitive and important for biodiversity and security.',
+    ask: 'Which island group is famous for coral reefs?'
+  },
+  {
+    keys: ['sundarban', 'delta', 'mangrove', 'bengal tiger'],
+    answer: 'The Sundarbans is a deltaic mangrove ecosystem formed by river deposition. It protects coasts from storms and is home to the Royal Bengal Tiger.',
+    ask: 'How do mangroves help people during cyclones?'
+  },
+  {
+    keys: ['northeast', 'north east', 'hills', 'rainfall', 'biodiversity'],
+    answer: 'Northeast India has hilly terrain, very high rainfall in many areas, rich forests, and great cultural diversity. It is one of India\'s biodiversity hotspots.',
+    ask: 'How does high rainfall shape life and farming in hilly areas?'
+  }
+];
+
+const GEO_AI_FOLLOWUPS = [
+  'Would you like a 2-line exam answer for this?',
+  'Want me to compare two regions quickly?',
+  'Should I give you one MCQ on this topic?'
+];
+
+function geoReply(inputText) {
+  const q = (inputText || '').toLowerCase();
+  let best = null;
+  let bestScore = 0;
+
+  GEO_AI_KB.forEach(item => {
+    const score = item.keys.reduce((acc, key) => acc + (q.includes(key) ? 1 : 0), 0);
+    if (score > bestScore) {
+      bestScore = score;
+      best = item;
+    }
+  });
+
+  if (!best) {
+    const generic = 'Nice thought. In this chapter, India\'s diversity is explained through mountains, plains, deserts, plateaus, coasts, islands, climate, and people. Try asking with a region name so I can give a sharper answer.';
+    const follow = GEO_AI_FOLLOWUPS[Math.floor(Math.random() * GEO_AI_FOLLOWUPS.length)];
+    return `${generic} ${follow}`;
+  }
+
+  return `${best.answer} ${best.ask}`;
+}
+
+function appendDebateBubble(role, text) {
+  const convo = document.getElementById('aiConversation');
+  if (!convo) return;
+
+  if (role === 'user') {
+    const userDiv = document.createElement('div');
+    userDiv.className = 'user-bubble';
+    userDiv.innerHTML = `<div class="u-name">You</div><div class="u-txt">${escapeHtml(text)}</div>`;
+    convo.appendChild(userDiv);
+  } else {
+    const aiDiv = document.createElement('div');
+    aiDiv.className = 'ai-bubble';
+    aiDiv.innerHTML = `<div class="ai-name">AI Geography Buddy</div><div class="ai-txt">${escapeHtml(text)}</div>`;
+    convo.appendChild(aiDiv);
+  }
+
+  convo.lastElementChild.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function sendDebateMessage(seedText) {
+  const inputEl = document.getElementById('debateInput');
+  if (!inputEl) return;
+
+  const text = (typeof seedText === 'string' ? seedText : inputEl.value).trim();
+  if (!text) {
+    inputEl.style.borderColor = '#f97316';
+    inputEl.placeholder = 'Please type a question or opinion first.';
+    setTimeout(() => {
+      inputEl.style.borderColor = '';
+      inputEl.placeholder = 'Example: Why is the Gangetic Plain very fertile?';
+    }, 1200);
+    return;
+  }
+
+  appendDebateBubble('user', text);
+
+  const convo = document.getElementById('aiConversation');
+  const loadId = 'aiLoad_' + Date.now();
+  convo.innerHTML += `<div class="ai-loading" id="${loadId}"><div class="thinking"><span></span><span></span><span></span></div> AI is thinking...</div>`;
+  convo.lastElementChild.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  setTimeout(() => {
+    const loadEl = document.getElementById(loadId);
+    if (loadEl) loadEl.remove();
+    appendDebateBubble('ai', geoReply(text));
+  }, 500);
+
+  inputEl.value = '';
+}
+
+function askGeoPrompt(promptText) {
+  const inputEl = document.getElementById('debateInput');
+  if (!inputEl) return;
+  inputEl.value = promptText;
+  sendDebateMessage(promptText);
+}
+
+function clearDebateChat() {
+  const convo = document.getElementById('aiConversation');
+  if (!convo) return;
+  convo.innerHTML = '<div class="ai-bubble"><div class="ai-name">AI Geography Buddy</div><div class="ai-txt">Chat cleared. Ask me anything about Geographical Diversity of India.</div></div>';
+  const inputEl = document.getElementById('debateInput');
+  if (inputEl) {
+    inputEl.value = '';
+    inputEl.placeholder = 'Example: Why is the Gangetic Plain very fertile?';
+  }
+}
+
+function initDebateChatbot() {
+  const inputEl = document.getElementById('debateInput');
+  if (!inputEl) return;
+  inputEl.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' && !ev.shiftKey) {
+      ev.preventDefault();
+      sendDebateMessage();
+    }
+  });
+}
+
+function escapeHtml(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// -- INIT --
+document.addEventListener('DOMContentLoaded',()=>{
+  buildQuiz();buildExam();initM();
+  fcRender();
+  initDebateChatbot();
+});
+</script>
+</body>
+</html>
