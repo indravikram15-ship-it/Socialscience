@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geographical Diversity of India - Interactive Learning</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+    #root { width: 100%; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+      100% { box-shadow: 0 0 30px rgba(255,255,255,0.6); }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+const { useState, useEffect } = React;
+
+const TABS = [
+  { id: "read", label: "📖 Read Chapter", icon: "📖", color: "#2196F3" },
+  { id: "summary", label: "📋 Chapter Summary", icon: "📋", color: "#4CAF50" },
+  { id: "activity", label: "🎮 Learn 7 Fun Activities", icon: "🎮", color: "#FF9800" },
+  { id: "flashcards", label: "🃏 Flash Cards", icon: "🃏", color: "#9C27B0" },
+  { id: "doubt", label: "💬 Ask me !", icon: "💬", color: "#F44336" },
+];
+
+const QUIZ_QUESTIONS = [
+  {
+    q: "What is Geographical Diversity?",
+    options: [
+      "Presence of different cultures only",
+      "Presence of different landforms, climates, vegetation, and human adaptation",
+      "Variety of languages spoken in India",
+      "Different types of food eaten in India",
+    ],
+    answer: 1,
+    explanation: "Geographical Diversity refers to the variety in physical features, climate, soil types, vegetation, and wildlife across a region.",
+  },
+  {
+    q: "Which is the highest and innermost range of the Himalayas?",
+    options: ["Shiwalik", "Himachal", "Himadri", "Vindhyas"],
+    answer: 2,
+    explanation: "Himadri (Greater Himalayas) is the highest and innermost range, with peaks above 6,000 meters like Mount Everest.",
+  },
+  {
+    q: "Why are the Himalayas called the 'Water Tower of Asia'?",
+    options: [
+      "They have underground water tanks",
+      "They receive the most rainfall in Asia",
+      "They store snow that melts into rivers feeding millions",
+      "They are the widest mountain range",
+    ],
+    answer: 2,
+    explanation: "Himalayan glaciers like Gangotri store snow that melts and feeds major rivers like Ganga, Indus, and Brahmaputra.",
+  },
+  {
+    q: "Which famous hill stations are found in the Himachal range?",
+    options: [
+      "Haridwar and Rishikesh",
+      "Shimla, Mussoorie, and Darjeeling",
+      "Gangotri and Kedarnath",
+      "Patna and Varanasi",
+    ],
+    answer: 1,
+    explanation: "Himachal (Lesser Himalayas) is known for beautiful hill stations like Shimla, Mussoorie, Darjeeling, and Nainital.",
+  },
+  {
+    q: "The Northern Plains are formed by deposits from which rivers?",
+    options: [
+      "Krishna, Godavari, Cauvery",
+      "Narmada, Tapti, Mahanadi",
+      "Ganga, Yamuna, Brahmaputra",
+      "Beas, Chenab, Ravi only",
+    ],
+    answer: 2,
+    explanation: "The Northern Plains were formed by alluvial deposits from the Ganga, Yamuna, Brahmaputra and their tributaries.",
+  },
+  {
+    q: "Which region is known as the 'Granary of India'?",
+    options: ["Thar Desert", "Deccan Plateau", "Northern Plains", "Coastal Plains"],
+    answer: 2,
+    explanation: "The Northern Plains are called the Granary of India due to high crop productivity — wheat in Punjab, rice in Bengal, sugarcane in UP.",
+  },
+  {
+    q: "What is the Shiwalik range also known as?",
+    options: ["Greater Himalayas", "Middle Himalayas", "Outer Foothills / Outer Himalayas", "Tibetan Plateau"],
+    answer: 2,
+    explanation: "Shiwalik is the outermost range of the Himalayas, bordering the plains, also called the Outer Foothills.",
+  },
+  {
+    q: "The Himalayas were formed by the collision of which two tectonic plates?",
+    options: [
+      "African Plate and Eurasian Plate",
+      "Indo-Australian Plate and Eurasian Plate",
+      "Pacific Plate and Indian Plate",
+      "North American Plate and Asian Plate",
+    ],
+    answer: 1,
+    explanation: "India (Indo-Australian plate) drifted north from Gondwana and collided with the Eurasian plate ~50 million years ago, creating the Himalayas.",
+  },
+];
+
+const ACTIVITY_QUESTIONS = [
+  {
+    region: "🏔️ Himalayas",
+    clues: ["Snow-covered peaks", "Woolen clothing", "Wooden houses", "Terrace farming"],
+    answer: "himalaya",
+    color: "#4a90d9",
+  },
+  {
+    region: "🌾 Northern Plains",
+    clues: ["Flat fertile land", "Alluvial soil", "Rice and wheat farming", "Dense population"],
+    answer: "plains",
+    color: "#7cb342",
+  },
+  {
+    region: "🏜️ Thar Desert",
+    clues: ["Hot and dry", "Camel transport", "Loose cotton clothes", "Water conservation"],
+    answer: "desert",
+    color: "#f9a825",
+  },
+  {
+    region: "🌊 Coastal Areas",
+    clues: ["Fish in diet", "Seafood trade", "Houses on stilts", "Near the sea"],
+    answer: "coastal",
+    color: "#00acc1",
+  },
+  {
+    region: "🌳 Forests",
+    clues: ["Dense trees", "Wildlife habitats", "Tribal communities", "Timber and herbs"],
+    answer: "forests",
+    color: "#388e3c",
+  },
+  {
+    region: "⛰️ Plateaus",
+    clues: ["Elevated flat land", "Mineral rich", "Dry climate", "Ancient rocks"],
+    answer: "plateaus",
+    color: "#8d6e63",
+  },
+  {
+    region: "🏝️ Islands",
+    clues: ["Surrounded by water", "Coral reefs", "Coconut trees", "Fishing communities"],
+    answer: "islands",
+    color: "#0097a7",
+  },
+];
+
+function App() {
+  const [onLandingPage, setOnLandingPage] = useState(true);
+  const [activeTab, setActiveTab] = useState("read");
+  const [quizIndex, setQuizIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [quizDone, setQuizDone] = useState(false);
+  const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [activityStep, setActivityStep] = useState(0);
+  const [activityInput, setActivityInput] = useState("");
+  const [activityResult, setActivityResult] = useState(null);
+  const [activityScore, setActivityScore] = useState(0);
+  const [activityDone, setActivityDone] = useState(false);
+  const [doubt, setDoubt] = useState("");
+  const [doubts, setDoubts] = useState([]);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [readSection, setReadSection] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const READ_SECTIONS = [
+    {
+      title: "What is Geographical Diversity?",
+      emoji: "🌍",
+      bg: "linear-gradient(135deg, #1a5276 0%, #154360 100%)",
+      content: (
+        <div>
+          <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: 16, padding: "20px 24px", marginBottom: 20 }}>
+            <h3 style={{ color: "#f7dc6f", margin: "0 0 15px", fontSize: 18 }}>🌍 About India</h3>
+            <ul style={{ fontSize: 16, lineHeight: 2, margin: 0, paddingLeft: 25, color: "#e8f4fd" }}>
+              <li><strong style={{ color: "#f7dc6f" }}>India</strong> is the <strong style={{ color: "#82e0aa" }}>7th largest country</strong> in the world and part of Asia.</li>
+              <li>Along with neighbours like <strong style={{ color: "#f0b27a" }}>Pakistan, Nepal, Bhutan, Bangladesh, Sri Lanka, and Myanmar</strong>, it forms the <strong style={{ color: "#82e0aa" }}>Indian Subcontinent</strong>.</li>
+            </ul>
+          </div>
+          <div style={{ background: "rgba(247,220,111,0.15)", border: "2px solid #f7dc6f", borderRadius: 16, padding: "20px 24px", marginBottom: 20 }}>
+            <h3 style={{ color: "#f7dc6f", margin: "0 0 15px", fontSize: 18 }}>📚 Definition of Geographical Diversity</h3>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.8, marginBottom: 15 }}>
+              <strong style={{ color: "#f7dc6f" }}>Geographical Diversity</strong> is the presence of different <em>landforms, climates, vegetation, and human adaptation</em> across a region.
+            </p>
+            <div style={{ background: "rgba(255,255,255,0.1)", borderRadius: 12, padding: "15px", marginTop: 12 }}>
+              <p style={{ margin: 0, fontSize: 15, color: "#82e0aa", marginBottom: 8 }}>
+                <strong>🔥 Example:</strong> Hot deserts in <strong>Rajasthan</strong> (scorching heat, sparse vegetation, camel herding)
+              </p>
+              <p style={{ margin: 0, fontSize: 15, color: "#a9cce3" }}>
+                <strong>❄️ Example:</strong> Snow-covered mountains in <strong>Kashmir</strong> (freezing cold, alpine vegetation, different lifestyle)
+              </p>
+            </div>
+            <div style={{ marginTop: 20, padding: "18px", borderRadius: 20, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 20px 50px rgba(0,0,0,0.15)", animation: "glow 3s ease-in-out infinite alternate" }}>
+              <h4 style={{ color: "#f7dc6f", marginBottom: 12, textAlign: "center" }}>Geographical Diversity Map</h4>
+              <img src="./Screenshot 2026-05-11 165929.png" alt="Physical divisions map of India" style={{ width: "100%", maxWidth: 620, display: "block", margin: "0 auto", borderRadius: 16, border: "2px solid rgba(247,220,111,0.35)" }} />
+              <p style={{ marginTop: 12, color: "rgba(232,244,253,0.9)", fontSize: 14, textAlign: "center" }}>This image shows physical divisions of India, highlighting the varied landscapes that create geographical diversity.</p>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
+            {[
+              { icon: "🏔️", label: "Mountains", ex: "Himalayas, Western Ghats" },
+              { icon: "🌾", label: "Plains", ex: "Ganga, Indus Plains" },
+              { icon: "🏜️", label: "Deserts", ex: "Thar Desert, Rajasthan" },
+              { icon: "🏝️", label: "Islands", ex: "Andaman, Lakshadweep" },
+            ].map((item) => (
+              <div key={item.label} style={{ background: "rgba(255,255,255,0.1)", borderRadius: 12, padding: "14px 16px" }}>
+                <div style={{ fontSize: 28, marginBottom: 6 }}>{item.icon}</div>
+                <div style={{ fontWeight: 700, color: "#f7dc6f", marginBottom: 4 }}>{item.label}</div>
+                <div style={{ fontSize: 13, opacity: 0.8 }}>{item.ex}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "The Himalayas – A Natural Wonder",
+      emoji: "🏔️",
+      bg: "linear-gradient(135deg, #2c3e50 0%, #1a252f 100%)",
+      content: (
+        <div>
+          <div style={{ background: "rgba(133,193,233,0.15)", border: "2px solid #85c1e9", borderRadius: 16, padding: 20, marginBottom: 20 }}>
+            <h3 style={{ color: "#85c1e9", margin: "0 0 14px" }}>⛰️ Facts about the Himalayas</h3>
+            {[
+              { icon: "🏔️", title: "Eight Thousanders", desc: "Peaks above 8,000 metres" },
+              { icon: "💧", title: "Water Tower of Asia", desc: "Feeds Ganga, Indus, Brahmaputra" },
+            ].map((f) => (
+              <div key={f.title} style={{ display: "flex", gap: 12, marginBottom: 14 }}>
+                <span style={{ fontSize: 24 }}>{f.icon}</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: "#f7dc6f" }}>{f.title}</div>
+                  <div style={{ fontSize: 14, opacity: 0.85 }}>{f.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "The Northern Plains",
+      emoji: "🌾",
+      bg: "linear-gradient(135deg, #1e8449 0%, #0b5345 100%)",
+      content: (
+        <div>
+          <p style={{ fontSize: 16, lineHeight: 1.8, marginBottom: 20, background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: 16 }}>
+            The Northern Plains were formed by deposits from Himalayan rivers. Called the <strong style={{ color: "#f7dc6f" }}>'Granary of India'</strong> due to high productivity.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {[
+              { region: "Punjab Plains", crops: "Wheat", color: "#f9e79f" },
+              { region: "Ganga Plains", crops: "Rice, Wheat", color: "#82e0aa" },
+              { region: "Brahmaputra Plains", crops: "Tea, Rice", color: "#85c1e9" },
+            ].map((sub) => (
+              <div key={sub.region} style={{ background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: "12px 16px", borderLeft: `4px solid ${sub.color}` }}>
+                <div style={{ fontWeight: 700, color: sub.color }}>{sub.region}</div>
+                <div style={{ fontSize: 13, opacity: 0.85 }}>🌾 {sub.crops}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const bubbleStyle = {
+    background: 'transparent',
+    border: '2px solid rgba(255,255,255,0.5)',
+    borderRadius: '20px',
+    padding: '5px 15px',
+    animation: 'float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate',
+    display: 'inline-block',
+    marginLeft: '10px'
+  };
+
+  const handleQuizSelect = (optIdx) => {
+    setSelected(optIdx);
+  };
+
+  const handleNextQuiz = () => {
+    const isCorrect = selected === QUIZ_QUESTIONS[quizIndex].answer;
+    setAnswers([...answers, { question: QUIZ_QUESTIONS[quizIndex].q, selected: QUIZ_QUESTIONS[quizIndex].options[selected], correct: QUIZ_QUESTIONS[quizIndex].options[QUIZ_QUESTIONS[quizIndex].answer], isCorrect }]);
+    if (isCorrect) setScore(score + 1);
+    if (quizIndex < QUIZ_QUESTIONS.length - 1) {
+      setQuizIndex(quizIndex + 1);
+      setSelected(null);
+    } else {
+      setQuizDone(true);
+    }
+  };
+
+  const resetQuiz = () => {
+    setQuizIndex(0);
+    setSelected(null);
+    setQuizDone(false);
+    setScore(0);
+    setAnswers([]);
+  };
+
+  const handleActivityCheck = () => {
+    const correct = ACTIVITY_QUESTIONS[activityStep].answer.toLowerCase().includes(activityInput.toLowerCase());
+    setActivityResult(correct ? "Correct!" : "Try again!");
+    if (correct) {
+      setActivityScore(activityScore + 1);
+      if (activityStep < ACTIVITY_QUESTIONS.length - 1) {
+        setTimeout(() => {
+          setActivityStep(activityStep + 1);
+          setActivityInput("");
+          setActivityResult(null);
+        }, 1000);
+      } else {
+        setActivityDone(true);
+      }
+    }
+  };
+
+  const handleActivityNext = () => {
+    if (activityStep < ACTIVITY_QUESTIONS.length - 1) {
+      setActivityStep(activityStep + 1);
+      setActivityInput("");
+      setActivityResult(null);
+    } else {
+      setActivityDone(true);
+    }
+  };
+
+  const resetActivity = () => {
+    setActivityStep(0);
+    setActivityInput("");
+    setActivityResult(null);
+    setActivityScore(0);
+    setActivityDone(false);
+  };
+
+  const handleAskDoubt = () => {
+    if (!doubt.trim()) return;
+    setAiLoading(true);
+    const newDoubts = [...doubts, { question: doubt, answer: "Thinking..." }];
+    setDoubts(newDoubts);
+    setTimeout(() => {
+      const updated = newDoubts.map((d, i) => 
+        i === newDoubts.length - 1 
+          ? { ...d, answer: "That's a great question! " + doubt + " is an important aspect of geographical diversity." } 
+          : d
+      );
+      setDoubts(updated);
+      setAiLoading(false);
+    }, 1500);
+    setDoubt("");
+  };
+
+  const quizPercent = answers.length > 0 ? Math.round((score / QUIZ_QUESTIONS.length) * 100) : 0;
+  const activityPercent = activityDone ? Math.round((activityScore / ACTIVITY_QUESTIONS.length) * 100) : 0;
+  const overallPercent = Math.round((quizPercent + activityPercent) / 2);
+  const grade = overallPercent >= 90 ? "A+" : overallPercent >= 75 ? "A" : overallPercent >= 60 ? "B" : "Keep Trying!";
+
+  return (
+    <div style={{ fontFamily: "Arial, sans-serif", background: "#f0f2f5", minHeight: "100vh" }}>
+      {/* LANDING PAGE */}
+      {onLandingPage && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          backgroundImage: "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          zIndex: 2000
+        }}>
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(180deg, rgba(10, 25, 35, 0.82) 0%, rgba(15, 30, 42, 0.55) 45%, rgba(15, 30, 42, 0.82) 100%)",
+            zIndex: 1
+          }} />
+
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 2,
+            pointerEvents: "none",
+            backgroundImage: "radial-gradient(circle at 15% 25%, rgba(247,220,111,0.18) 0%, transparent 22%), radial-gradient(circle at 85% 30%, rgba(40,167,69,0.18) 0%, transparent 24%), radial-gradient(circle at 50% 80%, rgba(74,35,90,0.18) 0%, transparent 22%)",
+            filter: "blur(2px)"
+          }} />
+
+          <div style={{
+            position: "relative",
+            zIndex: 3,
+            width: "100%",
+            maxWidth: "980px",
+            padding: "48px 32px",
+            display: "grid",
+            gap: "28px",
+            justifyItems: "center",
+            textAlign: "center"
+          }}>
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "10px 18px",
+              borderRadius: "999px",
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              color: "#f7dc6f",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              fontSize: "14px"
+            }}>
+              <span style={{ fontSize: "18px" }}>🌏</span>
+              DISCOVER INDIA'S GEOGRAPHICAL WONDERS
+            </div>
+
+            <div style={{ width: "100%", maxWidth: "760px" }}>
+              <h1 style={{
+                fontSize: "68px",
+                fontWeight: 900,
+                margin: "0 0 24px",
+                lineHeight: 1.02,
+                letterSpacing: "-0.03em",
+                color: "#ffffff",
+                textShadow: "0 10px 40px rgba(0,0,0,0.45)"
+              }}>
+                Geographical Diversity<br />
+                <span style={{ color: "#f7dc6f" }}>of India</span>
+              </h1>
+
+              <p style={{
+                fontSize: "20px",
+                lineHeight: 1.8,
+                margin: "0 auto",
+                maxWidth: "700px",
+                color: "#e6f7ea",
+                textShadow: "0 2px 18px rgba(0,0,0,0.35)"
+              }}>
+                Explore the breathtaking landscapes, diverse climates, and rich ecosystems that make India a geographical marvel. From snow-capped Himalayas to lush forests and vast plains.
+              </p>
+
+              <p style={{
+                margin: "18px auto 0",
+                maxWidth: "640px",
+                color: "#d8e9cf",
+                fontSize: "16px"
+              }}>
+                Discover mountain peaks, green valleys, ancient deserts, and shimmering coasts in one vibrant learning adventure.
+              </p>
+            </div>
+
+            <div style={{
+              display: "flex",
+              gap: "18px",
+              flexWrap: "wrap",
+              justifyContent: "center"
+            }}>
+              <button onClick={() => setOnLandingPage(false)} style={{
+                padding: "16px 56px",
+                fontSize: "18px",
+                fontWeight: "800",
+                background: "linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%)",
+                color: "#fff",
+                border: "3px solid rgba(255, 77, 77, 0.95)",
+                borderRadius: "56px",
+                cursor: "pointer",
+                boxShadow: "0 0 45px rgba(255, 77, 77, 0.9), inset 0 0 12px rgba(255, 255, 255, 0.18)",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                animation: "floatButton 2.8s ease-in-out infinite",
+                textTransform: "uppercase",
+                letterSpacing: "1.2px"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-4px)";
+                e.target.style.boxShadow = "0 0 55px rgba(255, 77, 77, 1)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 0 45px rgba(255, 77, 77, 0.9)";
+              }}
+              onMouseDown={(e) => {
+                e.target.style.transform = "translateY(3px)";
+                e.target.style.boxShadow = "0 0 20px rgba(255, 77, 77, 0.8)";
+              }}
+              onMouseUp={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 0 55px rgba(255, 77, 77, 1)";
+              }}
+              onTouchStart={(e) => {
+                e.target.style.transform = "translateY(3px)";
+                e.target.style.boxShadow = "0 0 20px rgba(255, 77, 77, 0.8)";
+              }}
+              onTouchEnd={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 0 55px rgba(255, 77, 77, 1)";
+              }}>
+                🚀 Start Learning
+              </button>
+            </div>
+
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#fff",
+              opacity: 0.9,
+              fontSize: "14px"
+            }}>
+              <div style={{ width: "40px", height: "40px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.5)", display: "grid", placeItems: "center" }}>
+                🌱
+              </div>
+              <div>Begin your journey through India’s mountains, plains, deserts and coasts.</div>
+            </div>
+          </div>
+
+          <style>{`
+            @keyframes slideUp {
+              from {
+                opacity: 0;
+                transform: translateY(50px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+            
+            @keyframes floatButton {
+              0%, 100% {
+                transform: translateY(0);
+              }
+              50% {
+                transform: translateY(-8px);
+              }
+            }
+            
+            @keyframes pulse {
+              0%, 100% {
+                opacity: 0.7;
+              }
+              50% {
+                opacity: 1;
+              }
+            }
+          `}</style>
+        </div>
+      )}
+
+      {/* MAIN APP (hidden when on landing page) */}
+      {!onLandingPage && (
+        <>
+          {/* Header */}
+          <header style={{ background: scrolled ? "#fff" : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", color: scrolled ? "#000" : "#fff", padding: "20px", position: "fixed", top: 0, width: "100%", zIndex: 1000, boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.1)" : "none" }}>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
+              <h1 style={{ margin: 0, fontSize: "24px", cursor: "pointer" }} onClick={() => setOnLandingPage(true)}>🌍 Geographical Diversity</h1>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
+                {TABS.map((tab) => (
+                  <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
+                    background: activeTab === tab.id ? tab.color : "rgba(255,255,255,0.18)",
+                    color: activeTab === tab.id ? "#fff" : scrolled ? "#000" : "#fff",
+                    border: `2px solid ${activeTab === tab.id ? tab.color : "rgba(255,255,255,0.25)"}`,
+                    padding: "12px 18px",
+                    borderRadius: "25px",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: activeTab === tab.id ? "bold" : "500",
+                    boxShadow: activeTab === tab.id ? `0 0 20px ${tab.color}80` : "0 4px 12px rgba(0,0,0,0.08)",
+                    transition: "all 0.3s ease",
+                    textAlign: "center"
+                  }}>
+                    {tab.icon} {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </header>
+
+          {/* Main Content */}
+          <main style={{ paddingTop: "80px", maxWidth: "1200px", margin: "0 auto", padding: "100px 20px 20px" }}>
+        {activeTab === "read" && (
+          <div>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📖 Read Chapter</h2>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px", gap: "10px" }}>
+              <button onClick={() => readSection === 0 ? setOnLandingPage(true) : setReadSection(Math.max(0, readSection - 1))} style={{
+                padding: "10px 20px",
+                background: "#4CAF50",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                transition: "all 0.3s ease",
+                opacity: readSection === 0 ? 1 : 1
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-2px) scale(1.05)";
+                e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0) scale(1)";
+                e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+              }}>← Prev</button>
+              <span style={{ textAlign: "center", flex: 1 }}>Section {readSection + 1} of {READ_SECTIONS.length}</span>
+              <button onClick={() => setReadSection(Math.min(READ_SECTIONS.length - 1, readSection + 1))} disabled={readSection === READ_SECTIONS.length - 1} style={{
+                padding: "10px 20px",
+                background: "#4CAF50",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                transition: "all 0.3s ease",
+                opacity: readSection === READ_SECTIONS.length - 1 ? 0.5 : 1
+              }}
+              onMouseEnter={(e) => {
+                if (readSection !== READ_SECTIONS.length - 1) {
+                  e.target.style.transform = "translateY(-2px) scale(1.05)";
+                  e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0) scale(1)";
+                e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+              }}>Next →</button>
+            </div>
+            <div style={{ background: READ_SECTIONS[readSection].bg, color: "#fff", padding: "40px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+              <h3 style={{ textAlign: "center", fontSize: "28px", marginBottom: "20px" }}>{READ_SECTIONS[readSection].emoji} <span style={bubbleStyle}>{READ_SECTIONS[readSection].title}</span></h3>
+              {READ_SECTIONS[readSection].content}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "summary" && (
+          <div>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📋 Summary</h2>
+            <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+              <p style={{ fontSize: "18px", lineHeight: "1.6", marginBottom: "20px" }}>
+                India exhibits remarkable geographical diversity with varied landforms, climates, and ecosystems spanning from the Himalayas in the north to coastal regions in the south.
+              </p>
+              <ul style={{ fontSize: "16px", lineHeight: "1.8", marginLeft: "20px" }}>
+                <li><strong>Himalayas:</strong> Young fold mountains, source of major rivers</li>
+                <li><strong>Northern Plains:</strong> Fertile alluvial soil, intensive agriculture</li>
+                <li><strong>Deserts:</strong> Arid regions requiring special adaptations</li>
+                <li><strong>Coastal Areas:</strong> Fishing communities and trade centers</li>
+                <li><strong>Plateaus:</strong> Rich mineral resources</li>
+              </ul>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "quiz" && (
+          <div>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🧠 Quiz</h2>
+            {!quizDone ? (
+              <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                <h3 style={{ marginBottom: "20px" }}>Q{quizIndex + 1}: {QUIZ_QUESTIONS[quizIndex].q}</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
+                  {QUIZ_QUESTIONS[quizIndex].options.map((opt, i) => (
+                    <button key={i} onClick={() => handleQuizSelect(i)} style={{ padding: "15px", background: selected === i ? "#4CAF50" : "#f0f0f0", color: selected === i ? "#fff" : "#000", border: "none", borderRadius: "5px", cursor: "pointer", textAlign: "left", fontSize: "16px", fontWeight: selected === i ? "bold" : "normal" }}>
+                      {i + 1}. {opt}
+                    </button>
+                  ))}
+                </div>
+                <button onClick={handleNextQuiz} disabled={selected === null} style={{
+                  padding: "10px 20px",
+                  background: "#4CAF50",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                  transition: "all 0.3s ease",
+                  width: "100%",
+                  opacity: selected === null ? 0.5 : 1
+                }}
+                onMouseEnter={(e) => {
+                  if (selected !== null) {
+                    e.target.style.transform = "translateY(-2px) scale(1.05)";
+                    e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0) scale(1)";
+                  e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+                }}>
+                  {quizIndex < QUIZ_QUESTIONS.length - 1 ? "Next Question" : "Finish Quiz"}
+                </button>
+              </div>
+            ) : (
+              <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Quiz Results</h3>
+                <p style={{ textAlign: "center", fontSize: "24px", marginBottom: "20px" }}>Score: {score}/{QUIZ_QUESTIONS.length} ({quizPercent}%)</p>
+                <button onClick={resetQuiz} style={{
+                  padding: "10px 20px",
+                  background: "#4CAF50",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                  transition: "all 0.3s ease",
+                  width: "100%"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px) scale(1.05)";
+                  e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0) scale(1)";
+                  e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+                }}>Retake Quiz</button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === "flashcards" && (
+          <div>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🃏 Flash Cards</h2>
+            <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", textAlign: "center" }}>
+              <p style={{ fontSize: "18px", marginBottom: "20px" }}>Test your knowledge with interactive flash cards!</p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px" }}>
+                {[
+                  { front: "What is Geographical Diversity?", back: "Presence of different landforms, climates, vegetation, and human adaptation." },
+                  { front: "Highest range of Himalayas?", back: "Himadri (Greater Himalayas)" },
+                  { front: "Why are Himalayas called 'Water Tower'?", back: "They store snow that melts into rivers." },
+                  { front: "Northern Plains formed by?", back: "Deposits from Himalayan rivers." },
+                  { front: "Thar Desert known for?", back: "Hot and dry climate, camels." },
+                  { front: "Coastal areas famous for?", back: "Fishing and seafood trade." },
+                ].map((card, i) => (
+                  <div key={i} style={{
+                    background: "#f0f0f0",
+                    borderRadius: "10px",
+                    padding: "20px",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                    transition: "transform 0.3s ease"
+                  }}
+                  onClick={(e) => {
+                    const back = e.target.querySelector('.back');
+                    const front = e.target.querySelector('.front');
+                    if (back.style.display === 'none') {
+                      back.style.display = 'block';
+                      front.style.display = 'none';
+                      e.target.style.transform = 'rotateY(180deg)';
+                    } else {
+                      back.style.display = 'none';
+                      front.style.display = 'block';
+                      e.target.style.transform = 'rotateY(0deg)';
+                    }
+                  }}>
+                    <div className="front" style={{ display: 'block' }}>
+                      <p style={{ fontWeight: "bold", margin: 0 }}>{card.front}</p>
+                    </div>
+                    <div className="back" style={{ display: 'none' }}>
+                      <p style={{ margin: 0 }}>{card.back}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "activity" && (
+          <div>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🎮 Learn 7 Fun Activities</h2>
+            {!activityDone ? (
+              <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                <h3 style={{ marginBottom: "20px" }}>Guess the Region! (Activity {activityStep + 1} of 7)</h3>
+                <p style={{ fontSize: "18px", marginBottom: "20px" }}>Clues: {ACTIVITY_QUESTIONS[activityStep].clues.join(", ")}</p>
+                <input type="text" value={activityInput} onChange={(e) => setActivityInput(e.target.value)} placeholder="Your guess..." style={{ padding: "10px", width: "100%", marginBottom: "15px", border: "1px solid #ccc", borderRadius: "5px", fontSize: "16px" }} />
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <button onClick={handleActivityCheck} style={{
+                    padding: "10px 20px",
+                    background: "#4CAF50",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                    transition: "all 0.3s ease",
+                    flex: 1
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = "translateY(-2px) scale(1.05)";
+                    e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = "translateY(0) scale(1)";
+                    e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+                  }}>Check</button>
+                  <button onClick={handleActivityNext} style={{
+                    padding: "10px 20px",
+                    background: "#2196F3",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 10px rgba(33,150,243,0.3)",
+                    transition: "all 0.3s ease",
+                    flex: 1
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = "translateY(-2px) scale(1.05)";
+                    e.target.style.boxShadow = "0 6px 20px rgba(33,150,243,0.6)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = "translateY(0) scale(1)";
+                    e.target.style.boxShadow = "0 4px 10px rgba(33,150,243,0.3)";
+                  }}>Skip</button>
+                </div>
+                {activityResult && <p style={{ marginTop: "10px", fontSize: "18px", color: activityResult === "Correct!" ? "#4CAF50" : "#f44336", fontWeight: "bold" }}>{activityResult}</p>}
+              </div>
+            ) : (
+              <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", textAlign: "center", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                <h3>Activity Complete!</h3>
+                <p style={{ fontSize: "24px", marginBottom: "20px" }}>Score: {activityScore}/{ACTIVITY_QUESTIONS.length}</p>
+                <button onClick={resetActivity} style={{
+                  padding: "10px 20px",
+                  background: "#4CAF50",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px) scale(1.05)";
+                  e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0) scale(1)";
+                  e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+                }}>Try Again</button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === "report" && (
+          <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📊 Report Card</h2>
+            <div style={{ display: "flex", justifyContent: "space-around", marginBottom: "30px", flexWrap: "wrap", gap: "20px" }}>
+              <div style={{ textAlign: "center" }}>
+                <p style={{ fontSize: "48px", color: "#4CAF50", margin: "0" }}>{quizPercent}%</p>
+                <p style={{ margin: "0", color: "#666" }}>Quiz</p>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <p style={{ fontSize: "48px", color: "#2196F3", margin: "0" }}>{activityPercent}%</p>
+                <p style={{ margin: "0", color: "#666" }}>Activity</p>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <p style={{ fontSize: "48px", color: "#FF9800", margin: "0" }}>{overallPercent}%</p>
+                <p style={{ margin: "0", color: "#666" }}>Overall</p>
+              </div>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ fontSize: "24px", margin: "0" }}>Grade: <strong style={{ color: grade === "A+" ? "#4CAF50" : grade === "A" ? "#2196F3" : "#FF9800" }}>{grade}</strong></p>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "doubt" && (
+          <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+            <h2 style={{ textAlign: "center", marginBottom: "30px" }}>💬 Ask Your Doubt</h2>
+            <div style={{ marginBottom: "20px" }}>
+              <input type="text" value={doubt} onChange={(e) => setDoubt(e.target.value)} placeholder="Ask a question..." style={{ padding: "10px", width: "100%", border: "1px solid #ccc", borderRadius: "5px", fontSize: "16px", marginBottom: "10px" }} />
+              <button onClick={handleAskDoubt} disabled={aiLoading} style={{
+                padding: "10px 20px",
+                background: "#4CAF50",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                boxShadow: "0 4px 10px rgba(76,175,80,0.3)",
+                transition: "all 0.3s ease",
+                width: "100%",
+                opacity: aiLoading ? 0.5 : 1
+              }}
+              onMouseEnter={(e) => {
+                if (!aiLoading) {
+                  e.target.style.transform = "translateY(-2px) scale(1.05)";
+                  e.target.style.boxShadow = "0 6px 20px rgba(76,175,80,0.6)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0) scale(1)";
+                e.target.style.boxShadow = "0 4px 10px rgba(76,175,80,0.3)";
+              }}>
+                {aiLoading ? "⏳ Thinking..." : "Ask AI"}
+              </button>
+            </div>
+            <div>
+              {doubts.map((d, i) => (
+                <div key={i} style={{ marginBottom: "15px", padding: "15px", background: "#f0f0f0", borderRadius: "5px" }}>
+                  <p style={{ margin: "0 0 10px", fontWeight: "bold" }}>Q: {d.question}</p>
+                  <p style={{ margin: "0" }}>A: {d.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
+
+      <footer style={{ background: "#333", color: "#fff", padding: "20px", textAlign: "center", marginTop: "40px" }}>
+        <p style={{ margin: "0" }}>🌍 Geographical Diversity of India • Interactive Learning Platform</p>
+      </footer>
+        </>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

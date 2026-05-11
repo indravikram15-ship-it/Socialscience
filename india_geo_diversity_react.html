@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geographical Diversity of India - React App</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    import { useState, useEffect, useRef } from "react";
+
+    const TABS = [
+      { id: "read", label: "📖 Read Chapter", icon: "📖" },
+      { id: "summary", label: "📋 Chapter Summary", icon: "📋" },
+      { id: "quiz", label: "🧠 Quiz", icon: "🧠" },
+      { id: "mindmap", label: "🗺️ Mindmap", icon: "🗺️" },
+      { id: "activity", label: "🎮 Learn & Fun Activity", icon: "🎮" },
+      { id: "report", label: "📊 My Report Card", icon: "📊" },
+      { id: "doubt", label: "💬 Ask Your Doubt", icon: "💬" },
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        q: "What is Geographical Diversity?",
+        options: [
+          "Presence of different cultures only",
+          "Presence of different landforms, climates, vegetation, and human adaptation",
+          "Variety of languages spoken in India",
+          "Different types of food eaten in India",
+        ],
+        answer: 1,
+        explanation: "Geographical Diversity refers to the variety in physical features, climate, soil types, vegetation, and wildlife across a region.",
+      },
+      {
+        q: "Which is the highest and innermost range of the Himalayas?",
+        options: ["Shiwalik", "Himachal", "Himadri", "Vindhyas"],
+        answer: 2,
+        explanation: "Himadri (Greater Himalayas) is the highest and innermost range, with peaks above 6,000 meters like Mount Everest.",
+      },
+      {
+        q: "Why are the Himalayas called the 'Water Tower of Asia'?",
+        options: [
+          "They have underground water tanks",
+          "They receive the most rainfall in Asia",
+          "They store snow that melts into rivers feeding millions",
+          "They are the widest mountain range",
+        ],
+        answer: 2,
+        explanation: "Himalayan glaciers like Gangotri store snow that melts and feeds major rivers like Ganga, Indus, and Brahmaputra.",
+      },
+      {
+        q: "Which famous hill stations are found in the Himachal range?",
+        options: [
+          "Haridwar and Rishikesh",
+          "Shimla, Mussoorie, and Darjeeling",
+          "Gangotri and Kedarnath",
+          "Patna and Varanasi",
+        ],
+        answer: 1,
+        explanation: "Himachal (Lesser Himalayas) is known for beautiful hill stations like Shimla, Mussoorie, Darjeeling, and Nainital.",
+      },
+      {
+        q: "The Northern Plains are formed by deposits from which rivers?",
+        options: [
+          "Krishna, Godavari, Cauvery",
+          "Narmada, Tapti, Mahanadi",
+          "Ganga, Yamuna, Brahmaputra",
+          "Beas, Chenab, Ravi only",
+        ],
+        answer: 2,
+        explanation: "The Northern Plains were formed by alluvial deposits from the Ganga, Yamuna, Brahmaputra and their tributaries.",
+      },
+      {
+        q: "Which region is known as the 'Granary of India'?",
+        options: ["Thar Desert", "Deccan Plateau", "Northern Plains", "Coastal Plains"],
+        answer: 2,
+        explanation: "The Northern Plains are called the Granary of India due to high crop productivity — wheat in Punjab, rice in Bengal, sugarcane in UP.",
+      },
+      {
+        q: "What is the Shiwalik range also known as?",
+        options: ["Greater Himalayas", "Middle Himalayas", "Outer Foothills / Outer Himalayas", "Tibetan Plateau"],
+        answer: 2,
+        explanation: "Shiwalik is the outermost range of the Himalayas, bordering the plains, also called the Outer Foothills.",
+      },
+      {
+        q: "The Himalayas were formed by the collision of which two tectonic plates?",
+        options: [
+          "African Plate and Eurasian Plate",
+          "Indo-Australian Plate and Eurasian Plate",
+          "Pacific Plate and Indian Plate",
+          "North American Plate and Asian Plate",
+        ],
+        answer: 1,
+        explanation: "India (Indo-Australian plate) drifted north from Gondwana and collided with the Eurasian plate ~50 million years ago, creating the Himalayas.",
+      },
+    ];
+
+    const ACTIVITY_QUESTIONS = [
+      {
+        region: "🏔️ Himalayas",
+        clues: ["Snow-covered peaks", "Woolen clothing", "Wooden houses", "Terrace farming"],
+        answer: "himalaya",
+        color: "#4a90d9",
+      },
+      {
+        region: "🌾 Northern Plains",
+        clues: ["Flat fertile land", "Alluvial soil", "Rice and wheat farming", "Dense population"],
+        answer: "plains",
+        color: "#7cb342",
+      },
+      {
+        region: "🏜️ Thar Desert",
+        clues: ["Hot and dry", "Camel transport", "Loose cotton clothes", "Water conservation"],
+        answer: "desert",
+        color: "#f9a825",
+      },
+      {
+        region: "🌊 Coastal Areas",
+        clues: ["Fish in diet", "Seafood trade", "Houses on stilts", "Near the sea"],
+        answer: "coastal",
+        color: "#00acc1",
+      },
+    ];
+
+    export default function App() {
+      const [activeTab, setActiveTab] = useState("read");
+      const [quizIndex, setQuizIndex] = useState(0);
+      const [selected, setSelected] = useState(null);
+      const [quizDone, setQuizDone] = useState(false);
+      const [score, setScore] = useState(0);
+      const [answers, setAnswers] = useState([]);
+      const [activityStep, setActivityStep] = useState(0);
+      const [activityInput, setActivityInput] = useState("");
+      const [activityResult, setActivityResult] = useState(null);
+      const [activityScore, setActivityScore] = useState(0);
+      const [activityDone, setActivityDone] = useState(false);
+      const [doubt, setDoubt] = useState("");
+      const [doubts, setDoubts] = useState([]);
+      const [aiAnswer, setAiAnswer] = useState("");
+      const [aiLoading, setAiLoading] = useState(false);
+      const [readSection, setReadSection] = useState(0);
+      const [scrolled, setScrolled] = useState(false);
+
+      useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 100);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
+      const READ_SECTIONS = [
+        {
+          title: "What is Geographical Diversity?",
+          emoji: "🌍",
+          bg: "linear-gradient(135deg, #1a5276 0%, #154360 100%)",
+          content: (
+            <div>
+              <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: 16, padding: "20px 24px", marginBottom: 20 }}>
+                <p style={{ fontSize: 17, lineHeight: 1.8, margin: 0 }}>
+                  <strong style={{ color: "#f7dc6f" }}>India</strong> is the <strong style={{ color: "#82e0aa" }}>7th largest country</strong> in the world and is part of Asia. Along with its neighbours — Pakistan, Nepal, Bhutan, Bangladesh, Sri Lanka, and Myanmar — it forms the <strong style={{ color: "#f0b27a" }}>Indian Subcontinent</strong>.
+                </p>
+              </div>
+              <div style={{ background: "rgba(247,220,111,0.15)", border: "2px solid #f7dc6f", borderRadius: 16, padding: "20px 24px", marginBottom: 20 }}>
+                <h3 style={{ color: "#f7dc6f", margin: "0 0 10px" }}>📚 Definition</h3>
+                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.8 }}>
+                  <strong style={{ color: "#f7dc6f" }}>Geographical Diversity</strong> is the presence of different <em>landforms, climates, vegetation, and human adaptation</em> across a region.
+                </p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
+                {[
+                  { icon: "🏔️", label: "Mountains", ex: "Himalayas, Western Ghats" },
+                  { icon: "🌾", label: "Plains", ex: "Ganga, Indus Plains" },
+                  { icon: "🏜️", label: "Deserts", ex: "Thar Desert, Rajasthan" },
+                  { icon: "🏝️", label: "Islands", ex: "Andaman, Lakshadweep" },
+                ].map((item) => (
+                  <div key={item.label} style={{ background: "rgba(255,255,255,0.1)", borderRadius: 12, padding: "14px 16px" }}>
+                    <div style={{ fontSize: 28, marginBottom: 6 }}>{item.icon}</div>
+                    <div style={{ fontWeight: 700, color: "#f7dc6f", marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontSize: 13, opacity: 0.8 }}>{item.ex}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ background: "rgba(130,224,170,0.15)", border: "2px solid #82e0aa", borderRadius: 14, padding: "16px 20px" }}>
+                <p style={{ margin: 0, fontSize: 15 }}>
+                  🌟 <strong style={{ color: "#82e0aa" }}>Fun Fact:</strong> India has <em>almost every major landform</em> on Earth — from snowy Himalayan peaks to tropical coastlines to scorching deserts! It's like a mini world!
+                </p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "India's Major Physical Divisions",
+          emoji: "🗺️",
+          bg: "linear-gradient(135deg, #1e8449 0%, #145a32 100%)",
+          content: (
+            <div>
+              <p style={{ fontSize: 16, lineHeight: 1.8, marginBottom: 20, background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: 16 }}>
+                India is divided into <strong style={{ color: "#f7dc6f" }}>5 major physical divisions</strong>. Natural boundaries like the Himalayas, Thar Desert, Arabian Sea, Bay of Bengal, and Indian Ocean separate India from the rest of Asia.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {[
+                  { num: "01", name: "The Himalayan Mountains", icon: "🏔️", color: "#85c1e9", desc: "Highest mountain range, northern boundary" },
+                  { num: "02", name: "The Northern Plains", icon: "🌾", color: "#82e0aa", desc: "Ganga & Indus plains, most fertile land" },
+                  { num: "03", name: "The Desert Region", icon: "🏜️", color: "#f9e79f", desc: "Thar Desert, hot and arid landscape" },
+                  { num: "04", name: "The Southern Peninsula", icon: "⛰️", color: "#f0b27a", desc: "Deccan Plateau, Eastern & Western Ghats" },
+                  { num: "05", name: "The Islands", icon: "🏝️", color: "#a9cce3", desc: "Andaman & Nicobar, Lakshadweep" },
+                ].map((div) => (
+                  <div key={div.num} style={{ display: "flex", alignItems: "center", gap: 16, background: "rgba(255,255,255,0.08)", borderRadius: 14, padding: "14px 18px", borderLeft: `4px solid ${div.color}` }}>
+                    <span style={{ fontSize: 13, fontWeight: 900, color: div.color, minWidth: 28 }}>{div.num}</span>
+                    <span style={{ fontSize: 28 }}>{div.icon}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, color: div.color, fontSize: 16 }}>{div.name}</div>
+                      <div style={{ fontSize: 13, opacity: 0.8 }}>{div.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 20, background: "rgba(255,255,255,0.08)", borderRadius: 14, padding: 16 }}>
+                <h4 style={{ color: "#f7dc6f", margin: "0 0 12px" }}>🌏 Geography Shapes Lifestyle</h4>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                  {[
+                    { region: "Mountains", lifestyle: "Wool clothing, wooden homes, terrace farming" },
+                    { region: "Deserts", lifestyle: "Cotton clothes, camels, water conservation" },
+                    { region: "Coastal", lifestyle: "Fish diet, stilt houses, seafood trade" },
+                    { region: "Plains", lifestyle: "Large-scale farming, dense settlements" },
+                  ].map((r) => (
+                    <div key={r.region} style={{ background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 12px" }}>
+                      <div style={{ color: "#82e0aa", fontWeight: 700, fontSize: 13, marginBottom: 4 }}>{r.region}</div>
+                      <div style={{ fontSize: 12, opacity: 0.85 }}>{r.lifestyle}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "The Himalayas – A Natural Wonder",
+          emoji: "🏔️",
+          bg: "linear-gradient(135deg, #2c3e50 0%, #1a252f 100%)",
+          content: (
+            <div>
+              <div style={{ background: "rgba(133,193,233,0.15)", border: "2px solid #85c1e9", borderRadius: 16, padding: 20, marginBottom: 20 }}>
+                <h3 style={{ color: "#85c1e9", margin: "0 0 14px" }}>⛰️ Amazing Facts about the Himalayas</h3>
+                {[
+                  { icon: "🏔️", title: "Eight Thousanders", desc: "Many peaks rise above 8,000 metres — among the world's highest!" },
+                  { icon: "🌍", title: "Across Six Nations", desc: "Spans India, Nepal, Bhutan, China, Pakistan, and Afghanistan" },
+                  { icon: "💧", title: "Water Tower of Asia", desc: "Feeds the Ganga, Indus, and Brahmaputra rivers" },
+                  { icon: "🙏", title: "Sacred Peaks", desc: "Dotted with temples and monasteries of deep spiritual value" },
+                ].map((f) => (
+                  <div key={f.title} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "flex-start" }}>
+                    <span style={{ fontSize: 24, minWidth: 32 }}>{f.icon}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, color: "#f7dc6f" }}>{f.title}</div>
+                      <div style={{ fontSize: 14, opacity: 0.85 }}>{f.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ background: "rgba(231,76,60,0.15)", border: "2px solid #e74c3c", borderRadius: 16, padding: 20 }}>
+                <h3 style={{ color: "#e74c3c", margin: "0 0 14px" }}>🌋 How Were the Himalayas Formed?</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {[
+                    "India was once near Africa as part of the supercontinent Gondwana",
+                    "It moved north and collided with the Eurasian plate ~50 million years ago",
+                    "The land folded upwards like a wrinkled carpet, creating the Himalayas",
+                    "India still moves 5 cm/year — so the mountains grow 5 mm every year!",
+                  ].map((step, i) => (
+                    <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                      <span style={{ background: "#e74c3c", color: "#fff", borderRadius: "50%", width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900, flexShrink: 0 }}>{i + 1}</span>
+                      <span style={{ fontSize: 14, lineHeight: 1.6 }}>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "Three Divisions of the Himalayas",
+          emoji: "🗻",
+          bg: "linear-gradient(135deg, #4a235a 0%, #2e1a47 100%)",
+          content: (
+            <div>
+              <p style={{ background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: 14, margin: "0 0 20px", fontSize: 15, lineHeight: 1.7 }}>
+                The Himalayas are divided into <strong style={{ color: "#f7dc6f" }}>three parallel ranges</strong>, each with unique features.
+              </p>
+              {[
+                {
+                  name: "1. Himadri", subtitle: "(Greater Himalayas)", color: "#85c1e9", altRange: "Above 6,000 m",
+                  features: ["Highest and innermost range", "Permanently snow-covered peaks", "Mt. Everest, Kanchenjunga, Nanda Devi", "Gangotri Glacier — source of the Ganga", "Few people live here due to extreme cold"],
+                },
+                {
+                  name: "2. Himachal", subtitle: "(Lesser Himalayas)", color: "#82e0aa", altRange: "3,700 – 4,500 m",
+                  features: ["Lies south of Himadri", "Moderate climate with forests", "Hill stations: Shimla, Mussoorie, Darjeeling, Nainital", "Supports biodiversity and human life", "Beautiful valleys ideal for agriculture"],
+                },
+                {
+                  name: "3. Shiwalik", subtitle: "(Outer Foothills)", color: "#f0b27a", altRange: "900 – 1,200 m",
+                  features: ["Lowest and outermost range", "Rolling hills and dense forests", "Dehradun and Haridwar at its feet", "Rich in wildlife", "Acts as transition zone to Northern Plains"],
+                },
+              ].map((range) => (
+                <div key={range.name} style={{ background: "rgba(255,255,255,0.07)", border: `2px solid ${range.color}`, borderRadius: 16, padding: "18px 20px", marginBottom: 16 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                    <div>
+                      <h3 style={{ color: range.color, margin: 0, fontSize: 18 }}>{range.name}</h3>
+                      <div style={{ fontSize: 13, opacity: 0.7 }}>{range.subtitle}</div>
+                    </div>
+                    <div style={{ background: range.color + "33", border: `1px solid ${range.color}`, borderRadius: 8, padding: "4px 10px", fontSize: 12, color: range.color, fontWeight: 700 }}>{range.altRange}</div>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: 18 }}>
+                    {range.features.map((f, i) => (
+                      <li key={i} style={{ fontSize: 14, lineHeight: 1.8, opacity: 0.9 }}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div style={{ background: "rgba(247,220,111,0.15)", border: "2px solid #f7dc6f", borderRadius: 12, padding: "14px 18px" }}>
+                <p style={{ margin: 0, fontSize: 14 }}>🏠 <strong style={{ color: "#f7dc6f" }}>Fun Fact:</strong> In the western Himalayas, people build earthquake-resistant homes called <strong>'Kath-kuni'</strong> or <strong>'Dhajji-dewari'</strong> — made with local stone and wood!</p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "Importance of the Himalayas",
+          emoji: "🌟",
+          bg: "linear-gradient(135deg, #1a5276 0%, #0e3460 100%)",
+          content: (
+            <div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
+                {[
+                  { icon: "🌍", title: "Geographical", color: "#85c1e9", desc: "Natural boundary between India and neighbouring countries. Feeds major rivers like Ganga and Yamuna." },
+                  { icon: "🌧️", title: "Climate", color: "#82e0aa", desc: "Blocks cold Arctic winds. Helps bring monsoon rains to India by intercepting moisture-laden clouds." },
+                  { icon: "🦁", title: "Biodiversity", color: "#f0b27a", desc: "Home to snow leopard, Himalayan blue poppy, and thousands of unique species of flora and fauna." },
+                  { icon: "💰", title: "Economic", color: "#f7dc6f", desc: "Rich in timber and herbs. Attracts millions of tourists, contributing significantly to the economy." },
+                  { icon: "🛡️", title: "Defence", color: "#e74c3c", desc: "Acts as a natural wall protecting India from external invasions and threats." },
+                  { icon: "💧", title: "Water Source", color: "#a9cce3", desc: "Glaciers are the source of perennial rivers that support agriculture and drinking water for millions." },
+                ].map((item) => (
+                  <div key={item.title} style={{ background: "rgba(255,255,255,0.08)", border: `2px solid ${item.color}40`, borderRadius: 14, padding: "14px 16px" }}>
+                    <div style={{ fontSize: 28, marginBottom: 8 }}>{item.icon}</div>
+                    <div style={{ fontWeight: 700, color: item.color, marginBottom: 6, fontSize: 14 }}>{item.title}</div>
+                    <div style={{ fontSize: 13, lineHeight: 1.6, opacity: 0.85 }}>{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "The Northern Plains",
+          emoji: "🌾",
+          bg: "linear-gradient(135deg, #1e8449 0%, #0b5345 100%)",
+          content: (
+            <div>
+              <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: 14, padding: 18, marginBottom: 20 }}>
+                <h3 style={{ color: "#82e0aa", margin: "0 0 12px" }}>🌊 Formation</h3>
+                <p style={{ margin: 0, fontSize: 15, lineHeight: 1.8 }}>
+                  The Northern Plains were formed by the <strong style={{ color: "#f7dc6f" }}>deposition of alluvium</strong> (fine fertile soil) carried by Himalayan rivers — Ganga, Yamuna, Indus, and Brahmaputra — over millions of years. This makes them <strong style={{ color: "#82e0aa" }}>highly fertile, flat, and densely populated</strong>.
+                </p>
+              </div>
+              <h3 style={{ color: "#f7dc6f", margin: "0 0 12px" }}>Three Sub-regions:</h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
+                {[
+                  { region: "Punjab Plains", rivers: "Sutlej, Beas", states: "Punjab, Haryana", crops: "Wheat", color: "#f9e79f" },
+                  { region: "Ganga Plains", rivers: "Ganga, Yamuna", states: "UP, Bihar, West Bengal", crops: "Rice, Wheat, Jute", color: "#82e0aa" },
+                  { region: "Brahmaputra Plains", rivers: "Brahmaputra", states: "Assam", crops: "Tea, Rice", color: "#85c1e9" },
+                ].map((sub) => (
+                  <div key={sub.region} style={{ display: "flex", gap: 14, background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: "12px 16px", borderLeft: `4px solid ${sub.color}` }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: 700, color: sub.color, marginBottom: 4 }}>{sub.region}</div>
+                      <div style={{ fontSize: 13, opacity: 0.85 }}>🏞️ {sub.states} &nbsp;|&nbsp; 💧 {sub.rivers} &nbsp;|&nbsp; 🌾 {sub.crops}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <h3 style={{ color: "#f7dc6f", margin: "0 0 12px" }}>🏆 Agricultural Significance</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                {[
+                  { reason: "Alluvial Soil", desc: "Fine, fertile soil from rivers — perfect for crops" },
+                  { reason: "River Irrigation", desc: "Constant water supply from major river systems" },
+                  { reason: "Flat Land", desc: "Easy to plough, ideal for large-scale farming" },
+                  { reason: "Dense Population", desc: "Plenty of agricultural labour available" },
+                ].map((r) => (
+                  <div key={r.reason} style={{ background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "12px 14px" }}>
+                    <div style={{ color: "#82e0aa", fontWeight: 700, fontSize: 13, marginBottom: 4 }}>{r.reason}</div>
+                    <div style={{ fontSize: 12, opacity: 0.85 }}>{r.desc}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ background: "rgba(247,220,111,0.15)", border: "2px solid #f7dc6f", borderRadius: 12, padding: 14 }}>
+                <p style={{ margin: 0, fontSize: 14 }}>⭐ <strong style={{ color: "#f7dc6f" }}>Fun Fact:</strong> The <strong>Ganga-Brahmaputra basin</strong> is one of the most fertile regions in the entire world! It's called the <strong>'Granary of India'</strong>.</p>
+              </div>
+            </div>
+          ),
+        },
+      ];
+
+      const handleQuizSelect = (optIdx) => {
+        setSelected(optIdx);
+      };
+
+      const handleNextQuiz = () => {
+        const isCorrect = selected === QUIZ_QUESTIONS[quizIndex].answer;
+        setAnswers([...answers, { question: QUIZ_QUESTIONS[quizIndex].q, selected: QUIZ_QUESTIONS[quizIndex].options[selected], correct: QUIZ_QUESTIONS[quizIndex].options[QUIZ_QUESTIONS[quizIndex].answer], isCorrect }]);
+        if (isCorrect) setScore(score + 1);
+        if (quizIndex < QUIZ_QUESTIONS.length - 1) {
+          setQuizIndex(quizIndex + 1);
+          setSelected(null);
+        } else {
+          setQuizDone(true);
+        }
+      };
+
+      const resetQuiz = () => {
+        setQuizIndex(0);
+        setSelected(null);
+        setQuizDone(false);
+        setScore(0);
+        setAnswers([]);
+      };
+
+      const handleActivityCheck = () => {
+        const correct = ACTIVITY_QUESTIONS[activityStep].answer.toLowerCase().includes(activityInput.toLowerCase());
+        setActivityResult(correct ? "Correct!" : "Try again!");
+        if (correct) {
+          setActivityScore(activityScore + 1);
+          if (activityStep < ACTIVITY_QUESTIONS.length - 1) {
+            setActivityStep(activityStep + 1);
+            setActivityInput("");
+            setActivityResult(null);
+          } else {
+            setActivityDone(true);
+          }
+        }
+      };
+
+      const handleActivityNext = () => {
+        if (activityStep < ACTIVITY_QUESTIONS.length - 1) {
+          setActivityStep(activityStep + 1);
+          setActivityInput("");
+          setActivityResult(null);
+        } else {
+          setActivityDone(true);
+        }
+      };
+
+      const resetActivity = () => {
+        setActivityStep(0);
+        setActivityInput("");
+        setActivityResult(null);
+        setActivityScore(0);
+        setActivityDone(false);
+      };
+
+      const handleAskDoubt = async () => {
+        if (!doubt.trim()) return;
+        setAiLoading(true);
+        setDoubts([...doubts, { question: doubt, answer: "Thinking..." }]);
+        // Simulate AI response
+        setTimeout(() => {
+          setAiAnswer("That's a great question! Based on geographical diversity, " + doubt + " relates to how different regions adapt to their environments.");
+          setDoubts(doubts.map((d, i) => i === doubts.length ? { ...d, answer: "That's a great question! Based on geographical diversity, " + doubt + " relates to how different regions adapt to their environments." } : d));
+          setAiLoading(false);
+        }, 2000);
+        setDoubt("");
+      };
+
+      const totalQuizAttempted = answers.length;
+      const quizPercent = totalQuizAttempted > 0 ? Math.round((score / QUIZ_QUESTIONS.length) * 100) : 0;
+      const activityPercent = activityDone ? Math.round((activityScore / ACTIVITY_QUESTIONS.length) * 100) : 0;
+      const overallPercent = Math.round((quizPercent + activityPercent) / 2);
+
+      const grade = overallPercent >= 90 ? "A+" : overallPercent >= 75 ? "A" : overallPercent >= 60 ? "B" : overallPercent >= 40 ? "C" : "Keep Trying!";
+
+      return (
+        <div style={{ fontFamily: "Arial, sans-serif", background: "#f0f2f5", minHeight: "100vh" }}>
+          {/* Header */}
+          <header style={{ background: scrolled ? "#fff" : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", color: scrolled ? "#000" : "#fff", padding: "20px", position: "fixed", top: 0, width: "100%", zIndex: 1000, boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.1)" : "none", transition: "all 0.3s" }}>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <h1 style={{ margin: 0, fontSize: "24px" }}>🌍 Geographical Diversity of India</h1>
+              <div style={{ display: "flex", gap: "10px" }}>
+                {TABS.map((tab) => (
+                  <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ background: activeTab === tab.id ? "#4CAF50" : "transparent", color: scrolled ? "#000" : "#fff", border: "none", padding: "10px 20px", borderRadius: "5px", cursor: "pointer", fontSize: "16px" }}>
+                    {tab.icon} {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </header>
+
+          {/* Main Content */}
+          <main style={{ paddingTop: "100px", maxWidth: "1200px", margin: "0 auto", padding: "100px 20px 20px" }}>
+            {activeTab === "read" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📖 Read Chapter</h2>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
+                  <button onClick={() => setReadSection(Math.max(0, readSection - 1))} disabled={readSection === 0} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Previous</button>
+                  <span>Section {readSection + 1} of {READ_SECTIONS.length}</span>
+                  <button onClick={() => setReadSection(Math.min(READ_SECTIONS.length - 1, readSection + 1))} disabled={readSection === READ_SECTIONS.length - 1} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Next</button>
+                </div>
+                <div style={{ background: READ_SECTIONS[readSection].bg, color: "#fff", padding: "40px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                  <h3 style={{ textAlign: "center", fontSize: "28px", marginBottom: "20px" }}>{READ_SECTIONS[readSection].emoji} {READ_SECTIONS[readSection].title}</h3>
+                  {READ_SECTIONS[readSection].content}
+                </div>
+              </div>
+            )}
+
+            {activeTab === "summary" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📋 Chapter Summary</h2>
+                <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                  <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
+                    India exhibits remarkable geographical diversity with varied landforms, climates, and ecosystems. The Himalayas form the northern boundary, the Northern Plains provide fertile agricultural land, the Thar Desert showcases arid conditions, and the Southern Peninsula includes plateaus and coastal regions. This diversity influences lifestyles, economies, and cultures across different regions.
+                  </p>
+                  <ul style={{ fontSize: "16px", lineHeight: "1.8" }}>
+                    <li><strong>Himalayas:</strong> Young fold mountains, source of major rivers, diverse flora and fauna.</li>
+                    <li><strong>Northern Plains:</strong> Fertile alluvial soil, intensive agriculture, high population density.</li>
+                    <li><strong>Peninsular India:</strong> Ancient rocks, varied relief, rich mineral resources.</li>
+                    <li><strong>Coastal Areas:</strong> Fishing communities, ports, diverse marine life.</li>
+                    <li><strong>Islands:</strong> Coral formations, unique biodiversity, strategic locations.</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "quiz" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🧠 Quiz</h2>
+                {!quizDone ? (
+                  <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                    <h3 style={{ marginBottom: "20px" }}>Question {quizIndex + 1} of {QUIZ_QUESTIONS.length}</h3>
+                    <p style={{ fontSize: "18px", marginBottom: "20px" }}>{QUIZ_QUESTIONS[quizIndex].q}</p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                      {QUIZ_QUESTIONS[quizIndex].options.map((opt, i) => (
+                        <button key={i} onClick={() => handleQuizSelect(i)} style={{ padding: "15px", background: selected === i ? "#4CAF50" : "#f0f0f0", border: "none", borderRadius: "5px", cursor: "pointer", textAlign: "left", fontSize: "16px" }}>
+                          {opt}
+                        </button>
+                      ))}
+                    </div>
+                    <button onClick={handleNextQuiz} disabled={selected === null} style={{ marginTop: "20px", padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+                      {quizIndex < QUIZ_QUESTIONS.length - 1 ? "Next" : "Finish"}
+                    </button>
+                  </div>
+                ) : (
+                  <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                    <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Quiz Results</h3>
+                    <p style={{ textAlign: "center", fontSize: "24px", marginBottom: "20px" }}>Score: {score} / {QUIZ_QUESTIONS.length}</p>
+                    <div style={{ marginBottom: "20px" }}>
+                      {answers.map((ans, i) => (
+                        <div key={i} style={{ marginBottom: "15px", padding: "15px", background: ans.isCorrect ? "#d4edda" : "#f8d7da", borderRadius: "5px" }}>
+                          <p style={{ margin: "0 0 10px", fontWeight: "bold" }}>{ans.question}</p>
+                          <p style={{ margin: "0", color: ans.isCorrect ? "#155724" : "#721c24" }}>Your answer: {ans.selected}</p>
+                          {!ans.isCorrect && <p style={{ margin: "5px 0 0", color: "#155724" }}>Correct answer: {ans.correct}</p>}
+                        </div>
+                      ))}
+                    </div>
+                    <button onClick={resetQuiz} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Retake Quiz</button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTab === "mindmap" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🗺️ Mindmap</h2>
+                <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", textAlign: "center" }}>
+                  <p style={{ fontSize: "18px" }}>Interactive mindmap would be displayed here.</p>
+                  <p style={{ fontSize: "16px", color: "#666" }}>Visual representation of geographical diversity concepts.</p>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "activity" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🎮 Learn & Fun Activity</h2>
+                {!activityDone ? (
+                  <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                    <h3 style={{ marginBottom: "20px" }}>Guess the Region!</h3>
+                    <p style={{ fontSize: "18px", marginBottom: "20px" }}>Clues: {ACTIVITY_QUESTIONS[activityStep].clues.join(", ")}</p>
+                    <input type="text" value={activityInput} onChange={(e) => setActivityInput(e.target.value)} placeholder="Enter your guess" style={{ padding: "10px", width: "100%", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px", fontSize: "16px" }} />
+                    <button onClick={handleActivityCheck} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer", marginRight: "10px" }}>Check</button>
+                    <button onClick={handleActivityNext} style={{ padding: "10px 20px", background: "#2196F3", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Skip</button>
+                    {activityResult && <p style={{ marginTop: "10px", fontSize: "18px", color: activityResult === "Correct!" ? "#4CAF50" : "#f44336" }}>{activityResult}</p>}
+                  </div>
+                ) : (
+                  <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", textAlign: "center" }}>
+                    <h3 style={{ marginBottom: "20px" }}>Activity Completed!</h3>
+                    <p style={{ fontSize: "24px", marginBottom: "20px" }}>Score: {activityScore} / {ACTIVITY_QUESTIONS.length}</p>
+                    <button onClick={resetActivity} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Play Again</button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTab === "report" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>📊 My Report Card</h2>
+                <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                  <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Overall Performance</h3>
+                  <div style={{ display: "flex", justifyContent: "space-around", marginBottom: "30px" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <p style={{ fontSize: "48px", color: "#4CAF50", margin: "0" }}>{quizPercent}%</p>
+                      <p style={{ margin: "0", color: "#666" }}>Quiz Score</p>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <p style={{ fontSize: "48px", color: "#2196F3", margin: "0" }}>{activityPercent}%</p>
+                      <p style={{ margin: "0", color: "#666" }}>Activity Score</p>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <p style={{ fontSize: "48px", color: "#FF9800", margin: "0" }}>{overallPercent}%</p>
+                      <p style={{ margin: "0", color: "#666" }}>Overall</p>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                    <p style={{ fontSize: "24px", margin: "0" }}>Grade: <strong style={{ color: grade === "A+" ? "#4CAF50" : grade === "A" ? "#2196F3" : grade === "B" ? "#FF9800" : "#f44336" }}>{grade}</strong></p>
+                  </div>
+                  <div style={{ background: "#f0f0f0", padding: "20px", borderRadius: "10px" }}>
+                    <h4 style={{ margin: "0 0 10px" }}>Recommendations</h4>
+                    <ul style={{ margin: "0", paddingLeft: "20px" }}>
+                      {overallPercent >= 80 ? (
+                        <li>Excellent work! Keep exploring geographical concepts.</li>
+                      ) : overallPercent >= 60 ? (
+                        <li>Good job! Review the chapter summary for better understanding.</li>
+                      ) : (
+                        <li>Keep practicing! Revisit the read section and try the activities again.</li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "doubt" && (
+              <div>
+                <h2 style={{ textAlign: "center", marginBottom: "30px" }}>💬 Ask Your Doubt</h2>
+                <div style={{ background: "#fff", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+                  <div style={{ marginBottom: "20px" }}>
+                    <input type="text" value={doubt} onChange={(e) => setDoubt(e.target.value)} placeholder="Ask your question about geographical diversity..." style={{ padding: "10px", width: "100%", border: "1px solid #ccc", borderRadius: "5px", fontSize: "16px", marginBottom: "10px" }} />
+                    <button onClick={handleAskDoubt} disabled={aiLoading} style={{ padding: "10px 20px", background: "#4CAF50", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+                      {aiLoading ? "Thinking..." : "Ask AI"}
+                    </button>
+                  </div>
+                  <div>
+                    {doubts.map((d, i) => (
+                      <div key={i} style={{ marginBottom: "15px", padding: "15px", background: "#f0f0f0", borderRadius: "5px" }}>
+                        <p style={{ margin: "0 0 10px", fontWeight: "bold" }}>Q: {d.question}</p>
+                        <p style={{ margin: "0" }}>A: {d.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </main>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
